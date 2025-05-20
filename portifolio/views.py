@@ -1,11 +1,15 @@
 from django.shortcuts import render
-from .models import Experience
+from .models import Experience, BlogPost, Skill, Formacao
 
 def home(request):
     experiencias = Experience.objects.all()
-    return render(request, 'index.html', {'experiencias': experiencias})
-
-from .models import BlogPost
+    skills = Skill.objects.all()
+    formacoes = Formacao.objects.all()
+    return render(request, 'index.html', {
+        'experiencias': experiencias,
+        'skills': skills,
+        'formacoes': formacoes,
+    })
 
 def blog(request):
     posts = BlogPost.objects.all().order_by('-data_publicacao')

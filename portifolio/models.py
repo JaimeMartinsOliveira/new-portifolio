@@ -30,3 +30,27 @@ class Experience(models.Model):
 
     def __str__(self):
         return f"{self.cargo} - {self.empresa}"
+
+class Skill(models.Model):
+        nome = models.CharField(max_length=100)
+        nivel = models.CharField(max_length=50, blank=True)
+        imagem = models.ImageField(upload_to='experiencias/', blank=True, null=True)
+
+        def __str__(self):
+            return self.nome
+
+class Formacao(models.Model):
+        imagem = models.ImageField(upload_to='experiencias/', blank=True, null=True)
+        curso = models.CharField(max_length=200)
+        instituicao = models.CharField(max_length=200)
+        ano_conclusao = models.CharField(max_length=4)
+
+        def __str__(self):
+            return f"{self.curso} - {self.instituicao}"
+
+
+class SobreMim(models.Model):
+    sobre = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.sobre
