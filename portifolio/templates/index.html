@@ -1,0 +1,575 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça meu portfólio e descubra meus projetos e habilidades, desenvolvedor front end - habilidaes em JavaScript, react, typescript, html, css, Tailwindcss e Bootstrap.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'img/profile.png' %}" type="image/x-icon">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jaime Martins - desenvolvedor">
+    <meta property="og:image" content="https://zaion1997.vercel.app/assets/profile.png">
+    <meta property="og:description" content="Portfólio pessoal - veja as minhas habilidades">
+    <meta property="og:site_name" content="Jaime Martins">
+
+    <link rel="stylesheet" href="{% static 'styles/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/css/output.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script defer type="module" src="{% static 'js/main.js' %}"></script>
+
+    <title>Jaime Martins - Desenvolvedor</title>
+</head>
+
+<body>
+    <header class="max-w-7xl m-auto"> 
+        <button id="scrollTopButton" class="scrollTop" aria-label="Ir para o topo da página">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+       <nav class="nav w-full flex justify-between items-center flex-row lg:my-7 my-5 px-5">
+            <h1 class="text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text mb-0">LG</h1>
+            <div>
+                <ul class="js-menu nav-list flex items-center gap-5 text-gray-800">
+                    <li>
+                        <a class="relative flex items-center text-lg transition before:absolute before:text-purple-900 before:opacity-0 before:transition before:content-['{'] after:absolute after:right-0 after:text-purple-900 after:opacity-0 after:transition after:content-['}'] hover:text-target before:hover:-translate-x-4 before:hover:opacity-100 after:hover:translate-x-4 after:hover:opacity-100" href="#sobre">Sobre mim</a>
+                    </li>
+                    <li>
+                        <a class="relative flex items-center text-lg transition before:absolute before:text-purple-900 before:opacity-0 before:transition before:content-['{'] after:absolute after:right-0 after:text-purple-900 after:opacity-0 after:transition after:content-['}'] hover:text-target before:hover:-translate-x-4 before:hover:opacity-100 after:hover:translate-x-4 after:hover:opacity-100" href="#experiencia">Experiência</a>
+                    </li>
+                    <li>
+                        <a class="relative flex items-center text-lg transition before:absolute before:text-purple-900 before:opacity-0 before:transition before:content-['{'] after:absolute after:right-0 after:text-purple-900 after:opacity-0 after:transition after:content-['}'] hover:text-target before:hover:-translate-x-4 before:hover:opacity-100 after:hover:translate-x-4 after:hover:opacity-100" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div> 
+            <div class="mobile-menu lg:hidden lg:remove md:hidden md:remove flex">
+                <button class="hamburguer"></button>
+            </div>
+        </nav> 
+    </header>
+    <main>
+        <section class="max-w-7xl flex items-center m-auto">
+            <div class="w-full flex justify-center items-center lg:flex-row flex-col lg:gap-16 md:gap-16 gap-10 lg:pt-10 md:pt-10 pt-0 lg:min-h-[90vh] md:min-h-[70vh] min-h-[60vh]">
+                <div>
+                    <img class="lg:max-w-[400px] md:max-w-[400px] max-w-[250px] object-contain rounded-full" src="./assets/profile.png" alt="Foto de perfil">
+                </div>
+                <div class="flex justify-center lg:items-start items-center flex-col lg:gap-6 md:gap-8 gap-7 mx-3">
+                    <h2 class="font-bold lg:text-start md:text-center text-center lg:text-7xl md:text-5xl text-4xl flex flex-col text-gray-800">
+                        <span>Desenvolvedor</span>
+                        <span class="bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">Front End <i class="fas fa-code"></i></span>
+                    </h2>
+                    <p class="max-w-4xl lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">
+                        Olá me chamo <strong>Jaime Martins</strong>, Sou um desenvolvedor extremamente esforçado. Costumo dizer que 'O trabalho duro vence o dom natural.' Por isso, estou sempre me esforçando cada vez mais para ser um profissional melhor.
+                    </p>
+                    <ul class="flex items-center gap-5 lg:text-xl md:text-xl text-base">
+                        <li>
+                            <a class="hover:text-purple-900 transition-all duration-300 ease-in-out" href="https://github.com/JaimeMartinsOliveira" target="_blank" rel="noopener noreferrer" aria-label="Visitar GitHub de Jaime Martins">Github <i class="fab fa-github"></i></a>
+                        </li>
+                        <li>
+                            <a class="hover:text-purple-900 transition-all duration-300 ease-in-out" href="https://www.linkedin.com/in/jaime-martins-de-oliveira/" target="_blank" rel="noopener noreferrer" aria-label="Visitar LinkedIn de Jaime Martins">Linkedin <i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li>
+                            <a class="hover:text-purple-900 transition-all duration-300 ease-in-out" href="https://drive.google.com/file/d/1irHFY9wM3P7YMLeR8P_cB2jPEJAgBmIF/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Visualizar Currículo de Jaime Martins">Currículo <i class="fas fa-file-alt"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="absolute z-50 lg:bottom-20 md:bottom-[-40px] lg:flex hidden left-1/2 transform -translate-x-1/2 transition-transform hover:translate-y-1 animate-seta">
+                <i class="animate__animated animate__fadeIn fas fa-angle-down text-4xl text-purple-900"></i>
+            </div>
+        </section>
+        <section class="max-w-7xl m-auto" id="sobre">
+            <div class="wow animate__animated animate__fadeIn flex justify-center items-center flex-col lg:gap-10 gap-7 lg:py-10 md:py-7 py-10 mx-3">
+                <h2 class="font-bold lg:text-4xl md:text-4xl text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">Sobre mim <i class="fas fa-code"></i></h2>
+                <p class="max-w-6xl lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">Possuo experiência como <strong>Front End</strong> utilizando <strong> Javascript, React, NextJs, TypeScript, Tailwind Css, Bootstrap, e Sass</strong>, <strong>metodologia Scrum</strong> e aplicando o fluxo de trabalho <strong>Git Flow</strong>, Formado em <strong>Análise e Desenvolvimento de Sistemas</strong>🎓, praticando e buscando novas oportunidades.</p>
+            </div>
+        </section>
+        <section class="max-w-7xl m-auto">
+            <div class="wow animate__animated animate__fadeIn flex justify-center items-center lg:gap-10 gap-4 flex-col lg:py-10 md:py-10 py-5 mx-3">
+                <h2 class="text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent pb-10 bg-clip-text">Skills <i class="fas fa-brain"></i></h2>
+        
+                <ul class="max-w-5xl w-full flex-wrap flex justify-center items-center lg:gap-8 md:gap-6 gap-5">
+                    <li class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
+                        <img class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain" src="./assets/html5-original.svg" alt="Logo do Html"
+                        title="HTML é uma linguagem de marcação usada para criar e estruturar páginas web.">
+                        <span class="font-bold select-none">
+                            HTML5
+                        </span>
+                    </li>
+                    <li class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
+                        <img class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain" src="./assets/css3-original.svg" alt="Logo do Css"
+                        title="CSS é uma linguagem de estilo usada para estilizar o layout e a apresentação de páginas web">
+                        <span class="font-bold select-none">
+                            CSS3
+                        </span>
+                    </li>
+                    <li class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
+                        <img class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain" src="./assets/javascript-original.svg" alt="Logo do Javascript"
+                        title="JavaScript é uma linguagem para adicionar interatividade e funcionalidades a páginas web.">
+                        <span class="font-bold select-none">
+                            Javascript
+                        </span>
+                    </li>
+                    <li class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
+                        <img class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain" src="./assets/react-original.svg" alt="Logo do React"
+                        title="React é uma biblioteca JavaScript utilizada para construir interfaces de usuário interativas e dinâmicas para aplicações web e móveis.">
+                        <span class="font-bold select-none">
+                            React
+                        </span>
+                    </li>
+                    <li class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
+                        <img class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain" src="./assets/typescript-original.svg" alt="Logo do Typescript"
+                        title="TypeScript é uma linguagem de programação que adiciona tipagem estática opcional ao JavaScript, facilitando o desenvolvimento de aplicativos robustos e escaláveis.">
+                        <span class="font-bold select-none">
+                            Typescript
+                        </span>
+                    </li>
+                    <li class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
+                        <img class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain" src="./assets/sass-original.svg" alt="Lodo do Sass"
+                        title="Sass estende o CSS, simplificando a escrita e manutenção de estilos web com variáveis, aninhamento de seletores e mixins.">
+                        <span class="font-bold select-none">
+                            Sass
+                        </span>
+                    </li>
+                    <li class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
+                        <img class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain" src="./assets/BootStrap-logo.svg" alt="Logo do BootStrap"
+                        title="Bootstrap é um framework front-end para criar interfaces web responsivas e atrativas.">
+                        <span class="font-bold select-none">
+                            BootStrap
+                        </span>
+                    </li>
+                    <li class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
+                        <img class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain" src="./assets/tailwindcss-original.svg" alt="Logo do Tailwind css"
+                        title="Tailwind CSS é uma estrutura de CSS utilitária que permite criar designs personalizados de forma rápida e eficiente, através da aplicação de classes pré-definidas.">
+                        <span class="font-bold select-none ">
+                            Tailwindcss
+                        </span>
+                    </li>
+                    <li class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
+                        <img class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain" src="./assets/firebase-svgrepo-com.svg" alt="Logo do Firebase"
+                        title="Firebase é uma plataforma para desenvolvimento de aplicativos, oferecendo serviços como armazenamento em nuvem, autenticação de usuários e banco de dados em tempo real.">
+                        <span class="font-bold select-none">
+                            Firebase
+                        </span>
+                    </li>
+                    <li class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
+                        <img class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain" src="./assets/git-svgrepo-com.svg" alt="Logo do Git"
+                        title="Git é um sistema de controle de versão utilizado para rastrear mudanças no código durante o desenvolvimento de software.">
+                        <span class="font-bold select-none">
+                            Git
+                        </span>
+                    </li>
+                    <li class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
+                        <img class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain" src="./assets/next-js.svg" alt="Logo do nextjs"
+                        title="NextJs">
+                        <span class="font-bold select-none">
+                            NextJs
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="max-w-10xl m-auto">
+            <div class="flex justify-center items-center lg:gap-10 gap-4 flex-col lg:pt-10 pt-5 lg:pb-10 md:pb-10 pb-5 mx-3">
+                <h2 class="font-bold text-center lg:text-4xl md:text-4xl text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent pb-10 bg-clip-text">Formação Acadêmica <i class="fas fa-graduation-cap"></i></h2>
+        
+                <ul class="w-full text-center flex justify-center items-center flex-wrap lg:gap-8 gap-10">
+                    <li class="wow animate__animated animate__fadeIn lg:w-[300px] md:w-[300px] w-[250px] flex justify-center items-center flex-col gap-5">
+                        <img class="rounded-full lg:max-w-[200px] max-w-[150px]" src="assets/OneBitCode.webp" alt="Logo Onebitcode">
+                        <p class="font-bold lg:text-xl md:text-xl text-base w-full lg:h-14 md:h-12 h-10">Programador full stack javascript</p>
+                        <p class="w-full text-center text-zinc-600">Onebitcode - Em andamento</p>
+                    </li>
+                    <li class="wow animate__animated animate__fadeIn lg:w-[300px] md:w-[300px] w-[250px] flex justify-center items-center flex-col gap-5">
+                        <img class="rounded-full lg:max-w-[200px] max-w-[150px]" src="assets/descomplica.webp" alt="Logo descomplica">
+                        <p class="font-bold lg:text-xl md:text-xl text-base w-full lg:h-14 md:h-12 h-10">Análise e desenvolvimento de sistemas</p>
+                        <p class="w-full text-center text-zinc-600">Descomplica - Concluído</p>
+                    </li>
+                    <li class="wow animate__animated animate__fadeIn lg:w-[300px] md:w-[300px] w-[250px] flex justify-center items-center flex-col gap-5">
+                        <img class="rounded-full lg:max-w-[200px] max-w-[150px]" src="assets/Origamid.webp" alt="Logo Origamid">
+                        <p class="font-bold lg:text-xl md:text-xl text-base w-full lg:h-14 md:h-12 h-10">UX/UI Design and Front-End Development </p>
+                        <p class="w-full text-center text-zinc-600">Origamid - Em andamento</p>
+                    </li>
+                    <li class="wow animate__animated animate__fadeIn lg:w-[300px] md:w-[300px] w-[250px] flex justify-center items-center flex-col gap-5">
+                        <img class="rounded-full lg:max-w-[200px] max-w-[150px]" src="assets/vainaweb.jpg" alt="Logo Vai na web">
+                        <p class="font-bold lg:text-xl md:text-xl text-base lg:h-14 md:h-12 h-10">Desenvolvedor <br> Full Stack</p>
+                        <p class="w-full text-center text-zinc-600">Vai Na Web - Em andamento</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="max-w-7xl m-auto wow animate__animated animate__fadeIn" id="experiencia">
+            <div class="flex justify-center items-center flex-col lg:gap-10 gap-7 lg:py-10 md:py-7 py-10 mx-3">
+                <h2 class="font-bold lg:text-4xl md:text-4xl text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">Experiência <i class="fas fa-code"></i></h2>
+                <div class="flex flex-col justify-center items-center gap-3">
+                    <div class="flex flex-col gap-3">
+                        <h2 class="font-bold sm:text-xl md:text-2xl lg:text-2xl text-center">Agência Pixel Creative</h2>
+                        <div class="flex lg:flex-row md:flex-row flex-col gap-3">
+                            <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">Desenvolvedor front-end</p>
+                            <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">(Autônomo) | Jul/2024 - Set/2024</p>
+                        </div>
+                    </div>
+                    <p class="max-w-4xl sm:text-base md:text-lg lg:text-lg lg:leading-4">
+                        Desenvolvedor Front end em soluções web, utilizando as tecnologias, 
+                        <strong>JavaScript</strong>, <strong>HTML</strong>, <strong>CSS</strong>, <strong>Sass</strong> e <strong>Next.js</strong>, 
+                        versionamento de códigos utilizando <strong>Git</strong>. Contribui para o desenvolvimento de um software que atende 
+                        uma empresa com presença em quatro estados do Brasil, demonstrando capacidade de trabalhar em projetos de grande 
+                        impacto e alcance. 
+                    </p>                    
+                    <ul class="flex justify-center flex-wrap gap-3">
+                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
+                        title="" >
+                            NextJs
+                        </li>
+                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
+                        title="TypeScript é uma linguagem de programação que adiciona tipagem estática opcional ao JavaScript, facilitando o desenvolvimento de aplicativos robustos e escaláveis." >
+                            Typescript
+                        </li>
+                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
+                        title="" >
+                            Sass
+                        </li>
+                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
+                        title="" >
+                            Html
+                        </li>
+                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
+                        title="" >
+                            Css
+                        </li>
+                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
+                        title="" >
+                            Javascript
+                        </li>
+                    </ul>
+                    <div class="flex flex-col gap-3 mt-2">
+                        <h2 class="font-bold sm:text-xl md:text-2xl lg:text-2xl text-center">Comunidade FrontEnd Fusion</h2>
+                        <div class="flex lg:flex-row md:flex-row flex-col gap-3">
+                            <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">Desenvolvedor Front End - (Voluntário)</p>
+                            <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">01/2025 - (Presente)</p>
+                        </div>
+                    </div>
+                    <p class="max-w-4xl sm:text-base md:text-lg lg:text-lg lg:leading-4">
+                        Atuo no desenvolvimento de soluções tecnológicas com impacto social, utilizando <strong>React.js</strong>, 
+                        <strong>Tailwind CSS</strong> e <strong>TypeScript</strong>. Trabalho seguindo a <strong>metodologia Scrum</strong> e aplicando o fluxo de trabalho <strong>Git Flow</strong> para
+                        garantir organização e eficiência no <strong>versionamento de código</strong>. Colaboro com a equipe para construir interfaces
+                        modernas, acessíveis e responsivas, sempre buscando a melhoria contínua e a entrega de valor para a comunidade.
+                    </p>                    
+                    <ul class="flex justify-center flex-wrap gap-3">
+                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
+                        title="" >
+                            React.js
+                        </li>
+                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
+                        title="TypeScript é uma linguagem de programação que adiciona tipagem estática opcional ao JavaScript, facilitando o desenvolvimento de aplicativos robustos e escaláveis." >
+                            Typescript
+                        </li>
+                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
+                        title="TypeScript é uma linguagem de programação que adiciona tipagem estática opcional ao JavaScript, facilitando o desenvolvimento de aplicativos robustos e escaláveis." >
+                            Tailwind CSS
+                        </li>
+                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
+                        title="" >
+                            Git Flow
+                        </li>
+                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
+                        title="" >
+                            Mentodologia Scrum
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="max-w-7xl m-auto">
+            <div class="w-full flex justify-center items-center lg:gap-15 gap-10 flex-col lg:py-10 py-5">
+                <h2 class="wow animate__animated animate__fadeInLeft text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text lg:pb-5 pb-2">
+                    Projetos <i class="fas fa-sitemap"></i></i>
+                </h2>
+                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
+                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
+                        <img class="w-full rounded-lg" src="assets/imgProjects/ticketControle.png" alt="imagem inicial do site">
+                    </div>
+                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
+                        <h3 class="font-bold text-2xl uppercase">Ticket Controle</h3>
+                        <ul class="flex justify-start flex-wrap gap-3">
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Next.js
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Prisma
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                MongoDB
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                NextAuth
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                React Hook
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Tailwind CSS
+                            </li>
+        
+                        </ul>
+                        <p class="max-w-[600px] leading-7">
+                            Ticket Controle é um sistema web desenvolvido com Next.js, Prisma ORM, MongoDB e TailwindCSS para gerenciar clientes e chamados de atendimento de forma eficiente e fácil.
+                        </p>
+                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                            <a href="https://github.com/Jaime Martinsgomesdacruz/Chamados" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
+                            <a href="https://chamados-pi.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
+                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
+                        <img class="w-full rounded-lg" src="assets/imgProjects/devmotors.png" alt="imagem inicial do site">
+                    </div>
+                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
+                        <h3 class="font-bold text-2xl uppercase">Dev motors</h3>
+                        <ul class="flex justify-start flex-wrap gap-3">
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                NextJs
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Typescript
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Sass
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                CosmicJs
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                REST API
+                            </li>
+        
+                        </ul>
+                        <p class="max-w-[600px] leading-7">
+                            Desenvolvido utilizando Next.js e SCSS , consome conteúdo de um CMS usando a Cosmic API.
+                            O site oferece uma experiência de usuário suave com design responsivo e uma UI moderna. Ele exibe várias seções, como serviços, informações de contato e muito mais, todas preenchidas dinamicamente com dados da Cosmic. Ele inclui recursos como uma página inicial, página de serviços e detalhes de contato, com tratamento de erros adicional e estados de carregamento para garantir uma navegação perfeita.
+                        </p>
+                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                            <a href="https://github.com/Jaime Martinsgomesdacruz/devmotors" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
+                            <a href="https://devmotors-teal.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
+                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
+                        <img class="w-full rounded-lg" src="assets/imgProjects/webcarros.png" alt="imagem inicial do site">
+                    </div>
+                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
+                        <h3 class="font-bold text-2xl uppercase">WebCarros</h3>
+                        <ul class="flex justify-start flex-wrap gap-3">
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                HTML5
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                TailwindCss
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                React
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Typescript
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Firebase
+                            </li>
+                        </ul>
+                        <p class="max-w-[600px] leading-7">
+                            WebCarros é uma plataforma de e-commerce para compra e venda de carros, desenvolvida com React, TypeScript e Vite, Listagem de Carros: Veja todos os carros disponíveis para compra, Adicione e remova carros do seu Dashboard, Detalhes do Carro: Informações detalhadas sobre cada carro,
+                            Finalização de Compra: Conclua a compra dos carros atravéz do whatsapp do anunciante Autenticação: Cadastro e login de usuários usando Firebase.
+                        </p>
+                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                            <a href="https://github.com/Jaime Martinsgomesdacruz/webCarros" target="_blank" rel="noopener noreferrer" aria-label="Visitar Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
+                            <a href="https://web-carros-dun.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
+                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
+                        <img class="w-full rounded-lg" src="assets/imgProjects/petladingpage.png" alt="imagem inicial do site">
+                    </div>
+                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
+                        <h3 class="font-bold text-2xl uppercase">Landing page Pet</h3>
+                        <ul class="flex justify-start flex-wrap gap-3">
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                NextJs
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Typescript
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Tailwind CSS
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                CosmicJs
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Embla Carousel 
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                AOS
+                            </li>
+        
+                        </ul>
+                        <p class="max-w-[600px] leading-7">
+                            Este é um projeto desenvolvido para um pet shop, com o objetivo de oferecer serviços de cuidados para animais de estimação, como banho e tosa, consultas veterinárias, táxi pet, entre outros. O site tem um design responsivo e utiliza diversas tecnologias como Next.js, Tailwind CSS, React, e Embla Carousel - Biblioteca para criar carrosséis interativos de serviços e marcas, AOS - Biblioteca para animações de rolagem, proporcionando efeitos visuais interativos.
+                        </p>
+                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                            <a href="https://github.com/Jaime Martinsgomesdacruz/pet" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
+                            <a href="https://pet-nine-umber.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
+                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
+                        <img class="w-full rounded-lg" src="assets/imgProjects/dalygames.png" alt="imagem inicial do site">
+                    </div>
+                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
+                        <h3 class="font-bold text-2xl uppercase">DalyGames</h3>
+                        <ul class="flex justify-center flex-wrap gap-3">
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                NextJs
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Typescript
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Tailwind Css
+                            </li>
+                        </ul>
+                        <p class="max-w-[600px] leading-7">
+                            Daly Games é uma aplicação web que exibe uma coleção de jogos, oferecendo aos usuários uma sugestão diária de jogo e informações detalhadas sobre cada jogo. Este projeto foi construído utilizando Next.js e estilizado com Tailwind CSS. A aplicação consome dados de APIs personalizadas para fornecer conteúdo dinâmico e experiências personalizadas.
+                        </p>
+                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                            <a href="https://github.com/Jaime Martinsgomesdacruz/DalyGames" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
+                            <a href="https://daly-games-j9sy.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
+                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
+                        <img class="w-full rounded-lg" src="assets/imgProjects/PrimeFit.png" alt="imagem inicial do site">
+                    </div>
+                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
+                        <h3 class="font-bold text-2xl uppercase">PrimeFit</h3>
+                        <ul class="flex justify-center flex-wrap gap-3">
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                HTML5
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                CSS
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Bootstrap
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Javascript
+                            </li>
+                        </ul>
+                        <p class="max-w-[600px] leading-7">
+                            Integrando uma API mokada para o blog. Destaco a usabilidade aprimorada com manipulação eficiente do DOM e a modernização visual com FontAwesome. O código organizado e a otimização de imagens para WebP contribuem para um desempenho eficiente. Este projeto demonstra minha habilidade em criar websites interativos e visualmente atraentes. HTML, CSS, Bootstrap e JavaScript.
+                        </p>
+                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                            <a href="https://github.com/Jaime Martinsgomesdacruz/Primefit" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
+                            <a href="https://Jaime Martinsgomesdacruz.github.io/Primefit/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
+                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
+                        <img class="w-full rounded-lg" src="assets/imgProjects/cardapio.png" alt="imagem inicial do site">
+                    </div>
+                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-wrap flex-col gap-3">
+                        <h3 class="font-bold text-2xl uppercase">Cardápio online</h3>
+                        <ul class="flex justify-center gap-3">
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                HTML5
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                CSS
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Bootstrap
+                            </li>
+                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
+                                Javascript
+                            </li>
+                        </ul>
+                        <p class="max-w-[600px] leading-7">
+                            O Cardápio online é uma aplicação web interativa que simula um cardápio online de uma hamburgueria, permitindo aos clientes visualizar os itens disponíveis, integrando a API via CEP para localizar o endereço, fazer pedidos e enviá-los diretamente para a hamburgueria via WhatsApp. Desenvolvido com HTML, CSS, Bootstrap e JavaScript, o projeto oferece uma experiência fluida e envolvente para os usuários.
+                        </p>
+                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                            <a href="https://github.com/Jaime Martinsgomesdacruz/cardapioOnline" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
+                            <a href="https://Jaime Martinsgomesdacruz.github.io/cardapioOnline/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="wow animate__animated animate__fadeIn max-w-7xl m-auto" id="contato">
+            <div class="max-w-[90%] lg:text-start md:text-start text-center flex justify-center items-center gap-3 flex-col lg:pt-10 pt-7 lg:pb-20 md:pb-10 pb-7 mx-auto">
+                <h2 class="text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                    Contato <i class="far fa-paper-plane"></i>
+                </h2>
+                <h3 class="lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">Me mande uma mensagem!</h3>
+                <p class="lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">Tem uma pergunta ou proposta, ou apenas quer dizer "olá"? Vá em frente.</p>
+            </div>
+            <div class="flex justify-center items-center">
+                <form action="https://formspree.io/f/mleqavgq" method="POST" id="contactForm" class="w-full max-w-[1000px] bg-gray-100 p-2 rounded-lg">
+                    <div class="grid lg:grid-cols-2 grid-cols-1 gap-4 mb-4">
+                        <div>
+                            <label for="nome" class="block text-gray-800 font-bold mb-2">Seu nome:</label>
+                            <input type="text" id="nome" name="nome" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none" required>
+                            <span class="erro"></span>
+                        </div>
+                        <div>
+                            <label for="endereco" class="block text-gray-800 font-bold mb-2">Endereço de E-mail:</label>
+                            <input type="email" id="endereco" name="endereco" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none" required>
+                            <span class="erro"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="mensagem" class="block text-gray-800 font-bold mb-2">Mensagem:</label>
+                        <textarea id="mensagem" name="mensagem" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none" required></textarea>
+                    </div>
+                    <div class="flex justify-center mt-5">
+                        <button
+                            aria-label="Enviar E-mail para Jaime Martins"
+                            type="submit" class="w-[200px] bg-blue-700 hover:bg-blue-500  text-white font-bold py-2 px-4 rounded focus:outline-none transition-all">
+                            Enviar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="wow animate__animated animate__fadeIn  max-w-7xl m-auto">
+        <div class="w-full flex justify-center items-center flex-wrap-reverse gap-5 pt-10 pb-10">
+            <p class="w-full text-center font-bold lg:text-xl md:text-xl text-sm text-gray-500">
+                © 2024 - Design and Code by Jaime Martins.
+            </p>
+            <div class="flex justify-center items-center lg:flex-row md:flex-row flex-col font-medium gap-5">
+                <a class="hover:text-purple-900 transition-all duration-300 ease-in-out lg:text-xl text-2xl" href="https://www.linkedin.com/in/lucaass1997/" target="_blank" rel="noopener noreferrer" aria-label="Visitar LinkedIn de Jaime Martins">
+                    Linkedin <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a class="hover:text-purple-900 transition-all duration-300 ease-in-out lg:text-xl text-2xl" href="https://wa.me/5521992117045" target="_blank" rel="noopener noreferrer" aria-label="Enviar mensagem para WhatsApp">
+                    WhatsApp <i class="fab fa-whatsapp"></i>
+                </a>
+                <a class="hover:text-purple-900 transition-all duration-300 ease-in-out lg:text-xl text-2xl" href="mailto:lucaass1997@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Enviar E-mail para Jaime Martins" >
+                    E-mail <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
