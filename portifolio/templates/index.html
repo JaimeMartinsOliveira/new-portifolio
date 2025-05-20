@@ -189,34 +189,30 @@
 </section>
 
 
-<section class="max-w-7xl m-auto">
-    <div class="w-full flex justify-center items-center lg:gap-15 gap-10 flex-col lg:py-10 py-5">
-        <h2 class="wow animate__animated animate__fadeInLeft text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text lg:pb-5 pb-2">
-            Projetos <i class="fas fa-sitemap"></i>
-        </h2>
-
-        {% for project in project %}
-        <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
-            <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
-                <img class="w-full rounded-lg" src="{{ project.image.url }}" alt="Imagem do projeto {{ project.title }}">
-            </div>
-            <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
-                <h3 class="font-bold text-2xl uppercase">{{ project.title }}</h3>
-                <ul class="flex justify-start flex-wrap gap-3">
-                    {% for tech in project.technologies.all %}
-                    <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">{{ tech.name }}</li>
-                    {% endfor %}
-                </ul>
-                <p class="max-w-[600px] leading-7">{{ project.description }}</p>
-                <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-                    <a href="{{ project.repository_url }}" target="_blank" rel="noopener noreferrer">Repositório <i class="fab fa-github"></i></a>
-                    <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer">Ver Demo <i class="fas fa-file-code"></i></a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+{% for projeto in projetos %}
+<div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
+    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
+        {% if projeto.imagem %}
+        <img class="w-full rounded-lg" src="{{ projeto.imagem.url }}" alt="Imagem do projeto {{ projeto.titulo }}">
+        {% endif %}
     </div>
-</section>
+    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
+        <h3 class="font-bold text-2xl uppercase">{{ projeto.titulo }}</h3>
+        <ul class="flex justify-start flex-wrap gap-3">
+            {% for tech in projeto.tecnologias.all %}
+            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">{{ tech.nome }}</li>
+            {% endfor %}
+        </ul>
+        <p class="max-w-[600px] leading-7">{{ projeto.descricao }}</p>
+        {% if projeto.link %}
+        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+            <a href="{{ projeto.link }}" target="_blank" rel="noopener noreferrer">Ver Projeto <i class="fas fa-link"></i></a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+
 
         <section class="wow animate__animated animate__fadeIn max-w-7xl m-auto" id="contato">
             <div class="max-w-[90%] lg:text-start md:text-start text-center flex justify-center items-center gap-3 flex-col lg:pt-10 pt-7 lg:pb-20 md:pb-10 pb-7 mx-auto">

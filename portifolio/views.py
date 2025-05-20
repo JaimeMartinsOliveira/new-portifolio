@@ -6,14 +6,14 @@ def home(request):
     skills = Skill.objects.all()
     formacoes = Formacao.objects.all()
     sobre = SobreMim.objects.first()
-    project = Projeto.objects.all()
+    projetos = Projeto.objects.all()
 
     return render(request, 'index.html', {
         'experiences': experiences,
         'skills': skills,
         'formacoes': formacoes,
         'sobre': sobre,
-        'project': project,
+        'projetos': projetos,
     })
 
 def blog(request):
