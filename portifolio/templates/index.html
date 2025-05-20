@@ -57,36 +57,42 @@
         </nav> 
     </header>
     <main>
-        <section class="max-w-7xl flex items-center m-auto">
-            <div class="w-full flex justify-center items-center lg:flex-row flex-col lg:gap-16 md:gap-16 gap-10 lg:pt-10 md:pt-10 pt-0 lg:min-h-[90vh] md:min-h-[70vh] min-h-[60vh]">
-                <div>
-                    <img class="lg:max-w-[400px] md:max-w-[400px] max-w-[250px] object-contain rounded-full" src="./assets/profile.png" alt="Foto de perfil">
-                </div>
-                <div class="flex justify-center lg:items-start items-center flex-col lg:gap-6 md:gap-8 gap-7 mx-3">
-                    <h2 class="font-bold lg:text-start md:text-center text-center lg:text-7xl md:text-5xl text-4xl flex flex-col text-gray-800">
-                        <span>Desenvolvedor</span>
-                        <span class="bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">Front Back-end <i class="fas fa-code"></i></span>
-                    </h2>
-                    <p class="max-w-4xl lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">
-                        Olá me chamo <strong>Jaime Martins</strong>, Sou um desenvolvedor extremamente esforçado. Costumo dizer que 'O trabalho duro vence o dom natural.' Por isso, estou sempre me esforçando cada vez mais para ser um profissional melhor.
-                    </p>
-                    <ul class="flex items-center gap-5 lg:text-xl md:text-xl text-base">
-                        <li>
-                            <a class="hover:text-purple-900 transition-all duration-300 ease-in-out" href="https://github.com/JaimeMartinsOliveira" target="_blank" rel="noopener noreferrer" aria-label="Visitar GitHub de Jaime Martins">Github <i class="fab fa-github"></i></a>
-                        </li>
-                        <li>
-                            <a class="hover:text-purple-900 transition-all duration-300 ease-in-out" href="https://www.linkedin.com/in/jaime-martins-de-oliveira/" target="_blank" rel="noopener noreferrer" aria-label="Visitar LinkedIn de Jaime Martins">Linkedin <i class="fab fa-linkedin-in"></i></a>
-                        </li>
-                        <li>
-                            <a class="hover:text-purple-900 transition-all duration-300 ease-in-out" href="https://drive.google.com/file/d/1irHFY9wM3P7YMLeR8P_cB2jPEJAgBmIF/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Visualizar Currículo de Jaime Martins">Currículo <i class="fas fa-file-alt"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="absolute z-50 lg:bottom-20 md:bottom-[-40px] lg:flex hidden left-1/2 transform -translate-x-1/2 transition-transform hover:translate-y-1 animate-seta">
-                <i class="animate__animated animate__fadeIn fas fa-angle-down text-4xl text-purple-900"></i>
-            </div>
-        </section>
+     <section class="max-w-7xl flex items-center m-auto">
+    <div class="w-full flex justify-center items-center lg:flex-row flex-col lg:gap-16 md:gap-16 gap-10 lg:pt-10 md:pt-10 pt-0 lg:min-h-[90vh] md:min-h-[70vh] min-h-[60vh]">
+        <div>
+            <img class="lg:max-w-[400px] md:max-w-[400px] max-w-[250px] object-contain rounded-full" src="{{ apresentacao.imagem.url }}" alt="Foto de perfil">
+        </div>
+        <div class="flex justify-center lg:items-start items-center flex-col lg:gap-6 md:gap-8 gap-7 mx-3">
+            <h2 class="font-bold lg:text-start md:text-center text-center lg:text-7xl md:text-5xl text-4xl flex flex-col text-gray-800">
+                <span>{{ apresentacao.titulo }}</span>
+                <span class="bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                    {{ apresentacao.subtitulo }} <i class="fas fa-code"></i>
+                </span>
+            </h2>
+            <p class="max-w-4xl lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">
+                {{ apresentacao.descricao }}
+            </p>
+            <ul class="flex items-center gap-5 lg:text-xl md:text-xl text-base">
+                {% if apresentacao.github %}
+                <li>
+                    <a class="hover:text-purple-900 transition-all duration-300 ease-in-out" href="{{ apresentacao.github }}" target="_blank">Github <i class="fab fa-github"></i></a>
+                </li>
+                {% endif %}
+                {% if apresentacao.linkedin %}
+                <li>
+                    <a class="hover:text-purple-900 transition-all duration-300 ease-in-out" href="{{ apresentacao.linkedin }}" target="_blank">Linkedin <i class="fab fa-linkedin-in"></i></a>
+                </li>
+                {% endif %}
+                {% if apresentacao.curriculo %}
+                <li>
+                    <a class="hover:text-purple-900 transition-all duration-300 ease-in-out" href="{{ apresentacao.curriculo }}" target="_blank">Currículo <i class="fas fa-file-alt"></i></a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</section>
+
         <section class="max-w-7xl m-auto" id="sobre">
             <div class="wow animate__animated animate__fadeIn flex justify-center items-center flex-col lg:gap-10 gap-7 lg:py-10 md:py-7 py-10 mx-3">
                 <h2 class="font-bold lg:text-4xl md:text-4xl text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">Sobre mim <i class="fas fa-code"></i></h2>

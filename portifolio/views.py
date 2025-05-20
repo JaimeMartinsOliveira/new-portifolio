@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Experience, BlogPost, Skill, Formacao, SobreMim, Projeto
+from .models import Experience, BlogPost, Skill, Formacao, SobreMim, Projeto, Apresentacao
 
 def home(request):
+    apresentacao = Apresentacao.objects.first()  # <-- novo
     experiences = Experience.objects.all()
     skills = Skill.objects.all()
     formacoes = Formacao.objects.all()
@@ -9,6 +10,7 @@ def home(request):
     projetos = Projeto.objects.all()
 
     return render(request, 'index.html', {
+        'apresentacao': apresentacao,  # <-- novo
         'experiences': experiences,
         'skills': skills,
         'formacoes': formacoes,

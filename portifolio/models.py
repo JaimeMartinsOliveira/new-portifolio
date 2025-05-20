@@ -69,3 +69,16 @@ class SobreMim(models.Model):
 
     def __str__(self):
         return self.sobre[:50]
+
+class Apresentacao(models.Model):
+        nome = models.CharField(max_length=100)
+        titulo = models.CharField(max_length=200)
+        subtitulo = models.CharField(max_length=200)
+        descricao = models.TextField()
+        imagem = models.ImageField(upload_to='apresentacao/', blank=True, null=True)
+        github = models.URLField(blank=True, null=True)
+        linkedin = models.URLField(blank=True, null=True)
+        curriculo = models.URLField(blank=True, null=True)
+
+        def __str__(self):
+            return self.nome
