@@ -9,7 +9,7 @@ def home(request):
     sobre = SobreMim.objects.first()  # Adicionando o "Sobre Mim"
 
     return render(request, 'index.html', {
-        'experiencias': experiencias,
+        'experiences': experiencias,
         'skills': skills,
         'formacoes': formacoes,
         'sobre': sobre,

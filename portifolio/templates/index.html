@@ -153,88 +153,41 @@
 
 
 
-        <section class="max-w-7xl m-auto wow animate__animated animate__fadeIn" id="experiencia">
-            <div class="flex justify-center items-center flex-col lg:gap-10 gap-7 lg:py-10 md:py-7 py-10 mx-3">
-                <h2 class="font-bold lg:text-4xl md:text-4xl text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">Experiência <i class="fas fa-code"></i></h2>
-                <div class="flex flex-col justify-center items-center gap-3">
-                    <div class="flex flex-col gap-3">
-                        <h2 class="font-bold sm:text-xl md:text-2xl lg:text-2xl text-center">Agência Pixel Creative</h2>
-                        <div class="flex lg:flex-row md:flex-row flex-col gap-3">
-                            <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">Desenvolvedor front-end</p>
-                            <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">(Autônomo) | Jul/2024 - Set/2024</p>
-                        </div>
-                    </div>
-                    <p class="max-w-4xl sm:text-base md:text-lg lg:text-lg lg:leading-4">
-                        Desenvolvedor Front end em soluções web, utilizando as tecnologias, 
-                        <strong>JavaScript</strong>, <strong>HTML</strong>, <strong>CSS</strong>, <strong>Sass</strong> e <strong>Next.js</strong>, 
-                        versionamento de códigos utilizando <strong>Git</strong>. Contribui para o desenvolvimento de um software que atende 
-                        uma empresa com presença em quatro estados do Brasil, demonstrando capacidade de trabalhar em projetos de grande 
-                        impacto e alcance. 
-                    </p>                    
-                    <ul class="flex justify-center flex-wrap gap-3">
-                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
-                        title="" >
-                            NextJs
-                        </li>
-                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
-                        title="TypeScript é uma linguagem de programação que adiciona tipagem estática opcional ao JavaScript, facilitando o desenvolvimento de aplicativos robustos e escaláveis." >
-                            Typescript
-                        </li>
-                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
-                        title="" >
-                            Sass
-                        </li>
-                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
-                        title="" >
-                            Html
-                        </li>
-                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
-                        title="" >
-                            Css
-                        </li>
-                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
-                        title="" >
-                            Javascript
-                        </li>
-                    </ul>
-                    <div class="flex flex-col gap-3 mt-2">
-                        <h2 class="font-bold sm:text-xl md:text-2xl lg:text-2xl text-center">Comunidade FrontEnd Fusion</h2>
-                        <div class="flex lg:flex-row md:flex-row flex-col gap-3">
-                            <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">Desenvolvedor Front End - (Voluntário)</p>
-                            <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">01/2025 - (Presente)</p>
-                        </div>
-                    </div>
-                    <p class="max-w-4xl sm:text-base md:text-lg lg:text-lg lg:leading-4">
-                        Atuo no desenvolvimento de soluções tecnológicas com impacto social, utilizando <strong>React.js</strong>, 
-                        <strong>Tailwind CSS</strong> e <strong>TypeScript</strong>. Trabalho seguindo a <strong>metodologia Scrum</strong> e aplicando o fluxo de trabalho <strong>Git Flow</strong> para
-                        garantir organização e eficiência no <strong>versionamento de código</strong>. Colaboro com a equipe para construir interfaces
-                        modernas, acessíveis e responsivas, sempre buscando a melhoria contínua e a entrega de valor para a comunidade.
-                    </p>                    
-                    <ul class="flex justify-center flex-wrap gap-3">
-                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
-                        title="" >
-                            React.js
-                        </li>
-                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
-                        title="TypeScript é uma linguagem de programação que adiciona tipagem estática opcional ao JavaScript, facilitando o desenvolvimento de aplicativos robustos e escaláveis." >
-                            Typescript
-                        </li>
-                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
-                        title="TypeScript é uma linguagem de programação que adiciona tipagem estática opcional ao JavaScript, facilitando o desenvolvimento de aplicativos robustos e escaláveis." >
-                            Tailwind CSS
-                        </li>
-                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
-                        title="" >
-                            Git Flow
-                        </li>
-                        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
-                        title="" >
-                            Mentodologia Scrum
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+<section class="max-w-7xl m-auto wow animate__animated animate__fadeIn" id="experiencia">
+  <div class="flex justify-center items-center flex-col lg:gap-10 gap-7 lg:py-10 md:py-7 py-10 mx-3">
+    <h2 class="font-bold lg:text-4xl md:text-4xl text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+      Experiência <i class="fas fa-code"></i>
+    </h2>
+    <div class="flex flex-col justify-center items-center gap-3">
+
+      {% for exp in experiencias %}
+      <div class="flex flex-col gap-3">
+        <h2 class="font-bold sm:text-xl md:text-2xl lg:text-2xl text-center">{{ exp.empresa }}</h2>
+        <div class="flex lg:flex-row md:flex-row flex-col gap-3">
+          <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">{{ exp.titulo }}</p>
+          <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">{{ exp.periodo }}</p>
+        </div>
+      </div>
+
+      <p class="max-w-4xl sm:text-base md:text-lg lg:text-lg lg:leading-4">
+        {{ exp.descricao|linebreaksbr }}
+      </p>
+
+      {% if exp.tecnologias.all %}
+      <ul class="flex justify-center flex-wrap gap-3 mt-2">
+        {% for tech in exp.tecnologias.all %}
+        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none" title="{{ tech.descricao|default:'' }}">
+          {{ tech.nome }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
         <section class="max-w-7xl m-auto">
             <div class="w-full flex justify-center items-center lg:gap-15 gap-10 flex-col lg:py-10 py-5">
                 <h2 class="wow animate__animated animate__fadeInLeft text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text lg:pb-5 pb-2">

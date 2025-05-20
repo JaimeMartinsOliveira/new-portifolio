@@ -26,10 +26,7 @@ class Experience(models.Model):
     link = models.URLField(blank=True, null=True)
 
     def __str__(self):
-        return self.titulo
-
-    def __str__(self):
-        return f"{self.cargo} - {self.empresa}"
+        return f"{self.empresa} - {self.titulo}"
 
 class Skill(models.Model):
         nome = models.CharField(max_length=100)
