@@ -160,7 +160,7 @@
     </h2>
     <div class="flex flex-col justify-center items-center gap-3">
 
-      {% for exp in experiencias %}
+      {% for exp in experiences %}
       <div class="flex flex-col gap-3">
         <h2 class="font-bold sm:text-xl md:text-2xl lg:text-2xl text-center">{{ exp.empresa }}</h2>
         <div class="flex lg:flex-row md:flex-row flex-col gap-3">
@@ -188,236 +188,36 @@
   </div>
 </section>
 
-        <section class="max-w-7xl m-auto">
-            <div class="w-full flex justify-center items-center lg:gap-15 gap-10 flex-col lg:py-10 py-5">
-                <h2 class="wow animate__animated animate__fadeInLeft text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text lg:pb-5 pb-2">
-                    Projetos <i class="fas fa-sitemap"></i></i>
-                </h2>
-                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
-                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
-                        <img class="w-full rounded-lg" src="assets/imgProjects/ticketControle.png" alt="imagem inicial do site">
-                    </div>
-                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
-                        <h3 class="font-bold text-2xl uppercase">Ticket Controle</h3>
-                        <ul class="flex justify-start flex-wrap gap-3">
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Next.js
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Prisma
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                MongoDB
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                NextAuth
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                React Hook
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Tailwind CSS
-                            </li>
-        
-                        </ul>
-                        <p class="max-w-[600px] leading-7">
-                            Ticket Controle é um sistema web desenvolvido com Next.js, Prisma ORM, MongoDB e TailwindCSS para gerenciar clientes e chamados de atendimento de forma eficiente e fácil.
-                        </p>
-                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-                            <a href="https://github.com/Jaime Martinsgomesdacruz/Chamados" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
-                            <a href="https://chamados-pi.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
-                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
-                        <img class="w-full rounded-lg" src="assets/imgProjects/devmotors.png" alt="imagem inicial do site">
-                    </div>
-                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
-                        <h3 class="font-bold text-2xl uppercase">Dev motors</h3>
-                        <ul class="flex justify-start flex-wrap gap-3">
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                NextJs
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Typescript
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Sass
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                CosmicJs
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                REST API
-                            </li>
-        
-                        </ul>
-                        <p class="max-w-[600px] leading-7">
-                            Desenvolvido utilizando Next.js e SCSS , consome conteúdo de um CMS usando a Cosmic API.
-                            O site oferece uma experiência de usuário suave com design responsivo e uma UI moderna. Ele exibe várias seções, como serviços, informações de contato e muito mais, todas preenchidas dinamicamente com dados da Cosmic. Ele inclui recursos como uma página inicial, página de serviços e detalhes de contato, com tratamento de erros adicional e estados de carregamento para garantir uma navegação perfeita.
-                        </p>
-                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-                            <a href="https://github.com/Jaime Martinsgomesdacruz/devmotors" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
-                            <a href="https://devmotors-teal.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
-                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
-                        <img class="w-full rounded-lg" src="assets/imgProjects/webcarros.png" alt="imagem inicial do site">
-                    </div>
-                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
-                        <h3 class="font-bold text-2xl uppercase">WebCarros</h3>
-                        <ul class="flex justify-start flex-wrap gap-3">
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                HTML5
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                TailwindCss
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                React
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Typescript
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Firebase
-                            </li>
-                        </ul>
-                        <p class="max-w-[600px] leading-7">
-                            WebCarros é uma plataforma de e-commerce para compra e venda de carros, desenvolvida com React, TypeScript e Vite, Listagem de Carros: Veja todos os carros disponíveis para compra, Adicione e remova carros do seu Dashboard, Detalhes do Carro: Informações detalhadas sobre cada carro,
-                            Finalização de Compra: Conclua a compra dos carros atravéz do whatsapp do anunciante Autenticação: Cadastro e login de usuários usando Firebase.
-                        </p>
-                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-                            <a href="https://github.com/Jaime Martinsgomesdacruz/webCarros" target="_blank" rel="noopener noreferrer" aria-label="Visitar Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
-                            <a href="https://web-carros-dun.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
-                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
-                        <img class="w-full rounded-lg" src="assets/imgProjects/petladingpage.png" alt="imagem inicial do site">
-                    </div>
-                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
-                        <h3 class="font-bold text-2xl uppercase">Landing page Pet</h3>
-                        <ul class="flex justify-start flex-wrap gap-3">
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                NextJs
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Typescript
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Tailwind CSS
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                CosmicJs
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Embla Carousel 
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                AOS
-                            </li>
-        
-                        </ul>
-                        <p class="max-w-[600px] leading-7">
-                            Este é um projeto desenvolvido para um pet shop, com o objetivo de oferecer serviços de cuidados para animais de estimação, como banho e tosa, consultas veterinárias, táxi pet, entre outros. O site tem um design responsivo e utiliza diversas tecnologias como Next.js, Tailwind CSS, React, e Embla Carousel - Biblioteca para criar carrosséis interativos de serviços e marcas, AOS - Biblioteca para animações de rolagem, proporcionando efeitos visuais interativos.
-                        </p>
-                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-                            <a href="https://github.com/Jaime Martinsgomesdacruz/pet" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
-                            <a href="https://pet-nine-umber.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
-                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
-                        <img class="w-full rounded-lg" src="assets/imgProjects/dalygames.png" alt="imagem inicial do site">
-                    </div>
-                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
-                        <h3 class="font-bold text-2xl uppercase">DalyGames</h3>
-                        <ul class="flex justify-center flex-wrap gap-3">
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                NextJs
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Typescript
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Tailwind Css
-                            </li>
-                        </ul>
-                        <p class="max-w-[600px] leading-7">
-                            Daly Games é uma aplicação web que exibe uma coleção de jogos, oferecendo aos usuários uma sugestão diária de jogo e informações detalhadas sobre cada jogo. Este projeto foi construído utilizando Next.js e estilizado com Tailwind CSS. A aplicação consome dados de APIs personalizadas para fornecer conteúdo dinâmico e experiências personalizadas.
-                        </p>
-                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-                            <a href="https://github.com/Jaime Martinsgomesdacruz/DalyGames" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
-                            <a href="https://daly-games-j9sy.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
-                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
-                        <img class="w-full rounded-lg" src="assets/imgProjects/PrimeFit.png" alt="imagem inicial do site">
-                    </div>
-                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
-                        <h3 class="font-bold text-2xl uppercase">PrimeFit</h3>
-                        <ul class="flex justify-center flex-wrap gap-3">
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                HTML5
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                CSS
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Bootstrap
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Javascript
-                            </li>
-                        </ul>
-                        <p class="max-w-[600px] leading-7">
-                            Integrando uma API mokada para o blog. Destaco a usabilidade aprimorada com manipulação eficiente do DOM e a modernização visual com FontAwesome. O código organizado e a otimização de imagens para WebP contribuem para um desempenho eficiente. Este projeto demonstra minha habilidade em criar websites interativos e visualmente atraentes. HTML, CSS, Bootstrap e JavaScript.
-                        </p>
-                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-                            <a href="https://github.com/Jaime Martinsgomesdacruz/Primefit" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
-                            <a href="https://Jaime Martinsgomesdacruz.github.io/Primefit/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
-                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
-                        <img class="w-full rounded-lg" src="assets/imgProjects/cardapio.png" alt="imagem inicial do site">
-                    </div>
-                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-wrap flex-col gap-3">
-                        <h3 class="font-bold text-2xl uppercase">Cardápio online</h3>
-                        <ul class="flex justify-center gap-3">
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                HTML5
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                CSS
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Bootstrap
-                            </li>
-                            <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">
-                                Javascript
-                            </li>
-                        </ul>
-                        <p class="max-w-[600px] leading-7">
-                            O Cardápio online é uma aplicação web interativa que simula um cardápio online de uma hamburgueria, permitindo aos clientes visualizar os itens disponíveis, integrando a API via CEP para localizar o endereço, fazer pedidos e enviá-los diretamente para a hamburgueria via WhatsApp. Desenvolvido com HTML, CSS, Bootstrap e JavaScript, o projeto oferece uma experiência fluida e envolvente para os usuários.
-                        </p>
-                        <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-                            <a href="https://github.com/Jaime Martinsgomesdacruz/cardapioOnline" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Repositório de Jaime Martins">Repositório <i class="fab fa-github"></i></a>
-                            <a href="https://Jaime Martinsgomesdacruz.github.io/cardapioOnline/" target="_blank" rel="noopener noreferrer" aria-label="Visitar a demo de Jaime Martins">Ver Demo <i class="fas fa-file-code"></i></a>
-                        </div>
-                    </div>
+
+<section class="max-w-7xl m-auto">
+    <div class="w-full flex justify-center items-center lg:gap-15 gap-10 flex-col lg:py-10 py-5">
+        <h2 class="wow animate__animated animate__fadeInLeft text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text lg:pb-5 pb-2">
+            Projetos <i class="fas fa-sitemap"></i>
+        </h2>
+
+        {% for project in projects %}
+        <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
+            <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
+                <img class="w-full rounded-lg" src="{{ project.image.url }}" alt="Imagem do projeto {{ project.title }}">
+            </div>
+            <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
+                <h3 class="font-bold text-2xl uppercase">{{ project.title }}</h3>
+                <ul class="flex justify-start flex-wrap gap-3">
+                    {% for tech in project.technologies.all %}
+                    <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">{{ tech.name }}</li>
+                    {% endfor %}
+                </ul>
+                <p class="max-w-[600px] leading-7">{{ project.description }}</p>
+                <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                    <a href="{{ project.repository_url }}" target="_blank" rel="noopener noreferrer">Repositório <i class="fab fa-github"></i></a>
+                    <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer">Ver Demo <i class="fas fa-file-code"></i></a>
                 </div>
             </div>
-        </section>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
         <section class="wow animate__animated animate__fadeIn max-w-7xl m-auto" id="contato">
             <div class="max-w-[90%] lg:text-start md:text-start text-center flex justify-center items-center gap-3 flex-col lg:pt-10 pt-7 lg:pb-20 md:pb-10 pb-7 mx-auto">
                 <h2 class="text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">

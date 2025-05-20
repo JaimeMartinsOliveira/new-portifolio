@@ -15,18 +15,36 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return self.titulo
-    
+
+class Tecnologia(models.Model):
+        nome = models.CharField(max_length=50)
+        descricao = models.TextField(blank=True)
+
+        def __str__(self):
+            return self.nome
+
 class Experience(models.Model):
     titulo = models.CharField(max_length=100) 
     empresa = models.CharField(max_length=100, blank=True) 
     periodo = models.CharField(max_length=100, blank=True)  
     descricao = models.TextField()
-    tecnologias = models.CharField(max_length=300) 
+    tecnologias = models.ManyToManyField(Tecnologia, blank=True)
     imagem = models.ImageField(upload_to='experiencias/', blank=True, null=True)
     link = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.empresa} - {self.titulo}"
+
+class Projeto(models.Model):
+    titulo = models.CharField(max_length=100)
+    descricao = models.TextField()
+    tecnologias = models.ManyToManyField(Tecnologia, blank=True)
+    imagem = models.ImageField(upload_to='projetos/', blank=True, null=True)
+    link = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return self.titulo
+
 
 class Skill(models.Model):
         nome = models.CharField(max_length=100)
