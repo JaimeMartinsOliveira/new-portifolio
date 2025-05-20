@@ -1,15 +1,13 @@
-import menuHamburgue from "./js/menu.js";
-import scrollSuave from "./js/scrollSuave.js"
-import submitEmail from "./js/submitEmail.js";
-import validaForm from "./js/validaForm.js";
-import buttonTop from "./js/scrollToTop.js"
-import mensagem from "./js/mensagem.js";
+import menuHamburgue from "./menu";
+import scrollSuave from "./scrollSuave"
+import submitEmail from "./submitEmail";
+import validaForm from "./validaForm";
+import buttonTop from "./scrollToTop"
 
-new WOW().init();
+new WOW().init()
     
 menuHamburgue()
 scrollSuave()
 submitEmail()
 validaForm()
 buttonTop()
-mensagem()
