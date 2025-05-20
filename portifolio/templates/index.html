@@ -90,9 +90,13 @@
         <section class="max-w-7xl m-auto" id="sobre">
             <div class="wow animate__animated animate__fadeIn flex justify-center items-center flex-col lg:gap-10 gap-7 lg:py-10 md:py-7 py-10 mx-3">
                 <h2 class="font-bold lg:text-4xl md:text-4xl text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">Sobre mim <i class="fas fa-code"></i></h2>
-                <p class="max-w-6xl lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">Possuo experiência como <strong>Front End</strong> utilizando <strong> Javascript, React, NextJs, TypeScript, Tailwind Css, Bootstrap, e Sass</strong>, <strong>metodologia Scrum</strong> e aplicando o fluxo de trabalho <strong>Git Flow</strong>, Formado em <strong>Análise e Desenvolvimento de Sistemas</strong>🎓, praticando e buscando novas oportunidades.</p>
-            </div>
-        </section>
+                 {% if sobre %}
+                 <p class="text-lg leading-relaxed text-justify">{{ sobre.sobre }}</p>
+                  {% else %}
+                  <p>Informação não disponível no momento.</p>
+                 {% endif %}
+  </div>
+</section>
 
 <section id="skills">
   <div class="wow animate__animated animate__fadeIn flex justify-center items-center lg:gap-10 gap-4 flex-col lg:py-10 md:py-10 py-5 mx-3">

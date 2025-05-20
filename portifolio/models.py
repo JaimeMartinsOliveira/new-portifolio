@@ -50,7 +50,7 @@ class Formacao(models.Model):
 
 
 class SobreMim(models.Model):
-    sobre = models.CharField(max_length=1000)
+    sobre = models.TextField()
 
     def __str__(self):
-        return self.sobre
+        return self.sobre[:50]

@@ -1,14 +1,18 @@
 from django.shortcuts import render
-from .models import Experience, BlogPost, Skill, Formacao
+from .models import Experience, BlogPost, Skill, Formacao, SobreMim
+
 
 def home(request):
     experiencias = Experience.objects.all()
     skills = Skill.objects.all()
     formacoes = Formacao.objects.all()
+    sobre = SobreMim.objects.first()  # Adicionando o "Sobre Mim"
+
     return render(request, 'index.html', {
         'experiencias': experiencias,
         'skills': skills,
         'formacoes': formacoes,
+        'sobre': sobre,
     })
 
 def blog(request):
