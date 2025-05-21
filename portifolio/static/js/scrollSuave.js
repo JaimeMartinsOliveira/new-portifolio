@@ -15,5 +15,5 @@ export default function scrollSuave() {
 
     linksInternos.forEach((link) => {
         link.addEventListener('click', scrollToSection)
-    })    
+    })
 }

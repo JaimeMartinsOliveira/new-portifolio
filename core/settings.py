@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-u)t-wixl$5j8j_jqh4@-wp^0^m)emy1@2u-1u4skh%qj3jffr*
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'portifolio/portifolio/../portifolio/templates')
-STATIC_DIR=os.path.join(BASE_DIR, 'portifolio/portifolio/../portifolio/static')
+STATIC_DIR = os.path.join(BASE_DIR, 'portifolio/portifolio/../portifolio/static')
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -80,21 +80,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
-USE_L10N = True 
+USE_L10N = True
 
 USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # apenas para produção
 STATIC_URL = '/static/'
 
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

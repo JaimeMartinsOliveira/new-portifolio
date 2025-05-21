@@ -1,8 +1,10 @@
-<h1>Blog</h1>
-<ul>
-    {% for post in posts %}
-        <li>
-            <a href="{% url 'post_detail' post.slug %}">{{ post.titulo }}</a> - {{ post.data_publicacao|date:"d/m/Y" }}
-        </li>
-    {% endfor %}
-</ul>
+{% block content %}
+    <div class="min-h-screen w-screen flex items-center justify-center bg-black">
+        <img src="../../media/image.png"
+             alt="Formigas trabalhando"
+        />
+        <a href="/" class="text-white text-lg hover:underline bg-purple-700 px-6 py-2 rounded shadow-lg">
+            Voltar para o início
+        </a>
+    </div>
+{% endblock %}

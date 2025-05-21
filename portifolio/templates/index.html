@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conheça meu portfólio e descubra meus projetos e habilidades.">
+    <meta name="description" content="Conheça meu portfólio e descubra minhas habilidades e projetos.">
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"/>
-    <link rel="shortcut icon" href="{% static 'img/profile.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static '../media/apresentacao/perfil.png' %}" type="image/x-icon">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Jaime Martins - desenvolvedor">
@@ -18,7 +18,9 @@
     <link rel="stylesheet" href="{% static 'styles/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'styles/css/output.css' %}">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <script src="{% static 'js/main.js' %}"></script>
@@ -29,263 +31,291 @@
 </head>
 
 <body>
-    <script>
+<script>
     new WOW().init();
-    </script>
-    <header class="max-w-7xl m-auto">
-        <button id="scrollTopButton" class="scrollTop" aria-label="Ir para o topo da página">
-            <i class="fas fa-arrow-up"></i>
-        </button>
-       <nav class="nav w-full flex justify-between items-center flex-row lg:my-6 my-5 px-5">
-            <h1 class="text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text mb-0">Portifólio</h1>
-            <div>
-                <ul class="js-menu nav-list flex items-center gap-5 text-gray-800">
-                    <li>
-                        <a class="relative flex items-center text-lg transition before:absolute before:text-purple-900 before:opacity-0 before:transition before:content-['{'] after:absolute after:right-0 after:text-purple-900 after:opacity-0 after:transition after:content-['}'] hover:text-target before:hover:-translate-x-4 before:hover:opacity-100 after:hover:translate-x-4 after:hover:opacity-100" href="#Blog">Blog</a>
-                    </li>
-                    <li>
-                        <a class="relative flex items-center text-lg transition before:absolute before:text-purple-900 before:opacity-0 before:transition before:content-['{'] after:absolute after:right-0 after:text-purple-900 after:opacity-0 after:transition after:content-['}'] hover:text-target before:hover:-translate-x-4 before:hover:opacity-100 after:hover:translate-x-4 after:hover:opacity-100" href="#sobre">Sobre mim</a>
-                    </li>
-                    <li>
-                        <a class="relative flex items-center text-lg transition before:absolute before:text-purple-900 before:opacity-0 before:transition before:content-['{'] after:absolute after:right-0 after:text-purple-900 after:opacity-0 after:transition after:content-['}'] hover:text-target before:hover:-translate-x-4 before:hover:opacity-100 after:hover:translate-x-4 after:hover:opacity-100" href="#experiencia">Experiência</a>
-                    </li>
-                    <li>
-                        <a class="relative flex items-center text-lg transition before:absolute before:text-purple-900 before:opacity-0 before:transition before:content-['{'] after:absolute after:right-0 after:text-purple-900 after:opacity-0 after:transition after:content-['}'] hover:text-target before:hover:-translate-x-4 before:hover:opacity-100 after:hover:translate-x-4 after:hover:opacity-100" href="#contato">Contato</a>
-                    </li>
-                </ul>
-            </div> 
-            <div class="mobile-menu lg:hidden lg:remove md:hidden md:remove flex">
-                <button class="hamburguer"></button>
-            </div>
-        </nav> 
-    </header>
-    <main>
-     <section class="max-w-7xl flex items-center m-auto">
-    <div class="w-full flex justify-center items-center lg:flex-row flex-col lg:gap-16 md:gap-16 gap-10 lg:pt-10 md:pt-10 pt-0 lg:min-h-[90vh] md:min-h-[70vh] min-h-[60vh]">
+</script>
+<header class="max-w-7xl m-auto">
+    <button id="scrollTopButton" class="scrollTop" aria-label="Ir para o topo da página">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <nav class="nav w-full flex justify-between items-center flex-row lg:my-6 my-5 px-5">
+        <h1 class="text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text mb-0">
+            Portifólio</h1>
         <div>
-            <img class="lg:max-w-[400px] md:max-w-[400px] max-w-[250px] object-contain rounded-full" src="{{ apresentacao.imagem.url }}" alt="Foto de perfil">
-        </div>
-        <div class="flex justify-center lg:items-start items-center flex-col lg:gap-6 md:gap-8 gap-7 mx-3">
-            <h2 class="font-bold lg:text-start md:text-center text-center lg:text-5xl md:text-4xl text-2xl flex flex-col text-gray-800">
-            <span>{{ apresentacao.titulo }}</span>
-             <span class="bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-                {{ apresentacao.subtitulo }} <i class="fas fa-code"></i>
-             </span>
-            </h2>
-            <p class="max-w-4xl lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">
-                {{ apresentacao.descricao }}
-            </p>
-            <ul class="flex items-center gap-5 lg:text-xl md:text-xl text-base">
-                {% if apresentacao.github %}
+            <ul class="js-menu nav-list flex items-center gap-5 text-gray-800">
                 <li>
-                    <a class="hover:text-purple-900 transition-all duration-300 ease-in-out" href="{{ apresentacao.github }}" target="_blank">Github <i class="fab fa-github"></i></a>
+                    <a class="relative flex items-center text-lg transition before:absolute before:text-purple-900 before:opacity-0 before:transition before:content-['{'] after:absolute after:right-0 after:text-purple-900 after:opacity-0 after:transition after:content-['}'] hover:text-target before:hover:-translate-x-4 before:hover:opacity-100 after:hover:translate-x-4 after:hover:opacity-100"
+                       href="/blog">Blog</a>
                 </li>
-                {% endif %}
-                {% if apresentacao.linkedin %}
                 <li>
-                    <a class="hover:text-purple-900 transition-all duration-300 ease-in-out" href="{{ apresentacao.linkedin }}" target="_blank">Linkedin <i class="fab fa-linkedin-in"></i></a>
+                    <a class="relative flex items-center text-lg transition before:absolute before:text-purple-900 before:opacity-0 before:transition before:content-['{'] after:absolute after:right-0 after:text-purple-900 after:opacity-0 after:transition after:content-['}'] hover:text-target before:hover:-translate-x-4 before:hover:opacity-100 after:hover:translate-x-4 after:hover:opacity-100"
+                       href="#sobre">Sobre mim</a>
                 </li>
-                {% endif %}
-                {% if apresentacao.curriculo %}
                 <li>
-                    <a class="hover:text-purple-900 transition-all duration-300 ease-in-out" href="{{ apresentacao.curriculo }}" target="_blank">Currículo <i class="fas fa-file-alt"></i></a>
+                    <a class="relative flex items-center text-lg transition before:absolute before:text-purple-900 before:opacity-0 before:transition before:content-['{'] after:absolute after:right-0 after:text-purple-900 after:opacity-0 after:transition after:content-['}'] hover:text-target before:hover:-translate-x-4 before:hover:opacity-100 after:hover:translate-x-4 after:hover:opacity-100"
+                       href="#experiencia">Experiência</a>
                 </li>
-                {% endif %}
+                <li>
+                    <a class="relative flex items-center text-lg transition before:absolute before:text-purple-900 before:opacity-0 before:transition before:content-['{'] after:absolute after:right-0 after:text-purple-900 after:opacity-0 after:transition after:content-['}'] hover:text-target before:hover:-translate-x-4 before:hover:opacity-100 after:hover:translate-x-4 after:hover:opacity-100"
+                       href="#contato">Contato</a>
+                </li>
             </ul>
         </div>
-    </div>
-</section>
-
-        <section class="max-w-7xl m-auto" id="sobre">
-            <div class="wow animate__animated animate__fadeIn flex justify-center items-center flex-col lg:gap-10 gap-7 lg:py-10 md:py-7 py-10 mx-3">
-                <h2 class="font-bold lg:text-4xl md:text-4xl text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">Sobre mim <i class="fas fa-code"></i></h2>
-                 {% if sobre %}
-                 <p class="text-lg leading-relaxed text-justify">{{ sobre.sobre }}</p>
-                  {% else %}
-                  <p>Informação não disponível no momento.</p>
-                 {% endif %}
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wow animate__animated animate__fadeIn flex justify-center items-center lg:gap-10 gap-4 flex-col lg:py-10 md:py-10 py-5 mx-3">
-    <h2 class="text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent pb-10 bg-clip-text">
-      Skills <i class="fas fa-brain"></i>
-    </h2>
-
-    <!-- Grid com até 8 por linha, quebra automática e centralização -->
-    <div class="flex flex-wrap justify-center gap-6 max-w-6xl w-full">
-      {% for skill in skills %}
-        <div class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
-          {% if skill.imagem %}
-            <img
-              class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain"
-              src="{{ skill.imagem.url }}"
-              alt="{{ skill.nome }}"
-              title="{{ skill.nome }}"
-            >
-          {% endif %}
-          <span class="font-bold text-center select-none">{{ skill.nome }}</span>
+        <div class="mobile-menu lg:hidden lg:remove md:hidden md:remove flex">
+            <button class="hamburguer"></button>
         </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-
-<section id="formacoes">
-  <div class="flex justify-center items-center lg:gap-10 gap-4 flex-col lg:pt-10 pt-5 lg:pb-10 md:pb-10 pb-5 mx-3">
-    <h2 class="font-bold text-center text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent pb-10 bg-clip-text">
-      Formação Acadêmica <i class="fas fa-graduation-cap"></i>
-    </h2>
-
-    <!-- Container de cards -->
-    <div class="flex flex-wrap justify-center gap-10 max-w-6xl w-full">
-      {% for formacao in formacoes %}
-        <div class="w-[70px] flex flex-col items-center text-center gap-3">
-          {% if formacao.imagem %}
-            <img
-              class="w-full lg:h-[80px] md:h-[80px] h-[80px] object-contain rounded-full"
-              src="{{ formacao.imagem.url }}"
-              alt="{{ formacao.curso }}"
-              title="{{ formacao.nome }}"
-            >
-          {% endif %}
-          <span class="font-bold text-sm">{{ formacao.curso }}</span>
-          <p class="text-xs text-gray-600">{{ formacao.instituicao }}</p>
-          <p class="text-xs text-gray-500">{{ formacao.ano_conclusao }}</p>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-
-
-
-<section class="max-w-7xl m-auto wow animate__animated animate__fadeIn" id="experiencia">
-  <div class="flex justify-center items-center flex-col lg:gap-10 gap-7 lg:py-10 md:py-7 py-10 mx-3">
-    <h2 class="font-bold lg:text-4xl md:text-4xl text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-      Experiência <i class="fas fa-code"></i>
-    </h2>
-    <div class="flex flex-col justify-center items-center gap-3">
-
-      {% for exp in experiences %}
-      <div class="flex flex-col gap-3">
-        <h2 class="font-bold sm:text-xl md:text-2xl lg:text-2xl text-center">{{ exp.empresa }}</h2>
-        <div class="flex lg:flex-row md:flex-row flex-col gap-3">
-          <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">{{ exp.titulo }}</p>
-          <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">{{ exp.periodo }}</p>
-        </div>
-      </div>
-
-      <p class="max-w-4xl sm:text-base md:text-lg lg:text-lg lg:leading-4">
-        {{ exp.descricao|linebreaksbr }}
-      </p>
-
-      {% if exp.tecnologias.all %}
-      <ul class="flex justify-center flex-wrap gap-3 mt-2">
-        {% for tech in exp.tecnologias.all %}
-        <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none" title="{{ tech.descricao|default:'' }}">
-          {{ tech.nome }}
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-
-<section class="max-w-7xl m-auto">
-    <div class="w-full flex justify-center items-center lg:gap-15 gap-10 flex-col lg:py-10 py-5">
-        <h2 class="wow animate__animated animate__fadeInLeft text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text lg:pb-5 pb-2">
-            Projetos <i class="fas fa-sitemap"></i>
-        </h2>
-
-        {% for projeto in projetos %}
-        <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
-            <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
-                {% if projeto.imagem %}
-                <img class="w-full rounded-lg" src="{{ projeto.imagem.url }}" alt="Imagem do projeto {{ projeto.titulo }}">
-                {% endif %}
+    </nav>
+</header>
+<main>
+    <section class="max-w-7xl flex items-center m-auto">
+        <div class="w-full flex justify-center items-center lg:flex-row flex-col lg:gap-16 md:gap-16 gap-10 lg:pt-10 md:pt-10 pt-0 lg:min-h-[90vh] md:min-h-[70vh] min-h-[60vh]">
+            <div>
+                <img class="lg:max-w-[400px] md:max-w-[400px] max-w-[250px] object-contain rounded-full"
+                     src="{{ apresentacao.imagem.url }}" alt="Foto de perfil">
             </div>
-            <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
-                <h3 class="font-bold text-2xl uppercase">{{ projeto.titulo }}</h3>
-                <ul class="flex justify-start flex-wrap gap-3">
-                    {% for tech in projeto.tecnologias.all %}
-                    <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">{{ tech.nome }}</li>
-                    {% endfor %}
-                </ul>
-                <p class="max-w-[600px] leading-7">{{ projeto.descricao }}</p>
-                {% if projeto.link %}
-                <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-                    <a href="{{ projeto.link }}" target="_blank" rel="noopener noreferrer">Ver Projeto <i class="fas fa-link"></i></a>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
-
-
-        <section class="wow animate__animated animate__fadeIn max-w-7xl m-auto" id="contato">
-            <div class="max-w-[90%] lg:text-start md:text-start text-center flex justify-center items-center gap-3 flex-col lg:pt-10 pt-7 lg:pb-20 md:pb-10 pb-7 mx-auto">
-                <h2 class="text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-                    Contato <i class="far fa-paper-plane"></i>
+            <div class="flex justify-center lg:items-start items-center flex-col lg:gap-6 md:gap-8 gap-7 mx-3">
+                <h2 class="font-bold lg:text-start md:text-center text-center lg:text-5xl md:text-4xl text-2xl flex flex-col text-gray-800">
+                    <span>{{ apresentacao.titulo }}</span>
+                    <span class="bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                {{ apresentacao.subtitulo }} <i class="fas fa-code"></i>
+             </span>
                 </h2>
-                <h3 class="lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">Manda-me uma mensagem!</h3>
-                <p class="lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">Tem uma pergunta ou proposta, ou apenas quer dizer "olá"? Vá em frente.</p>
+                <p class="max-w-4xl lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">
+                    {{ apresentacao.descricao }}
+                </p>
+                <ul class="flex items-center gap-5 lg:text-xl md:text-xl text-base">
+                    {% if apresentacao.github %}
+                        <li>
+                            <a class="hover:text-purple-900 transition-all duration-300 ease-in-out"
+                               href="{{ apresentacao.github }}" target="_blank">Github <i class="fab fa-github"></i></a>
+                        </li>
+                    {% endif %}
+                    {% if apresentacao.linkedin %}
+                        <li>
+                            <a class="hover:text-purple-900 transition-all duration-300 ease-in-out"
+                               href="{{ apresentacao.linkedin }}" target="_blank">Linkedin <i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </li>
+                    {% endif %}
+                    {% if apresentacao.curriculo %}
+                        <li>
+                            <a class="hover:text-purple-900 transition-all duration-300 ease-in-out"
+                               href="{{ apresentacao.curriculo }}" target="_blank">Currículo <i
+                                    class="fas fa-file-alt"></i></a>
+                        </li>
+                    {% endif %}
+                </ul>
             </div>
-            <div class="flex justify-center items-center">
-                <form action="https://formspree.io/f/mblobbpo" method="POST" id="contactForm" class="w-full max-w-[1000px] bg-gray-100 p-2 rounded-lg">
-                    <div class="grid lg:grid-cols-2 grid-cols-1 gap-4 mb-4">
-                        <div>
-                            <label for="nome" class="block text-gray-800 font-bold mb-2">Seu nome:</label>
-                            <input type="text" id="nome" name="nome" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none" required>
-                            <span class="erro"></span>
+        </div>
+    </section>
+    <i class="animate__animated animate__fadeIn fas fa-angle-down text-4xl text-purple-900"></i>
+    <section class="max-w-7xl m-auto" id="sobre">
+        <div class="wow animate__animated animate__fadeIn flex justify-center items-center flex-col lg:gap-10 gap-7 lg:py-10 md:py-7 py-10 mx-3">
+            <h2 class="font-bold lg:text-4xl md:text-4xl text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                Sobre mim <i class="fas fa-code"></i></h2>
+            {% if sobre %}
+                <p class="text-lg leading-relaxed text-justify">{{ sobre.sobre }}</p>
+            {% else %}
+                <p>Informação não disponível no momento.</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="wow animate__animated animate__fadeIn flex justify-center items-center lg:gap-10 gap-4 flex-col lg:py-10 md:py-10 py-5 mx-3">
+            <h2 class="text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent pb-10 bg-clip-text">
+                Skills <i class="fas fa-brain"></i>
+            </h2>
+
+            <!-- Grid com até 8 por linha, quebra automática e centralização -->
+            <div class="flex flex-wrap justify-center gap-6 max-w-6xl w-full">
+                {% for skill in skills %}
+                    <div class="max-w-[90px] w-full flex justify-center items-center flex-col gap-1">
+                        {% if skill.imagem %}
+                            <img
+                                    class="w-full lg:h-[80px] md:h-[70px] h-[60px] object-contain"
+                                    src="{{ skill.imagem.url }}"
+                                    alt="{{ skill.nome }}"
+                                    title="{{ skill.nome }}"
+                            >
+                        {% endif %}
+                        <span class="font-bold text-center select-none">{{ skill.nome }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+    <section id="formacoes">
+        <div class="flex justify-center items-center lg:gap-10 gap-4 flex-col lg:pt-10 pt-5 lg:pb-10 md:pb-10 pb-5 mx-3">
+            <h2 class="font-bold text-center text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent pb-10 bg-clip-text">
+                Formação Acadêmica <i class="fas fa-graduation-cap"></i>
+            </h2>
+
+            <!-- Container de cards -->
+            <div class="flex flex-wrap justify-center gap-10 max-w-6xl w-full">
+                {% for formacao in formacoes %}
+                    <div class="w-[70px] flex flex-col items-center text-center gap-3">
+                        {% if formacao.imagem %}
+                            <img
+                                    class="w-full lg:h-[80px] md:h-[80px] h-[80px] object-contain rounded-full"
+                                    src="{{ formacao.imagem.url }}"
+                                    alt="{{ formacao.curso }}"
+                                    title="{{ formacao.nome }}"
+                            >
+                        {% endif %}
+                        <span class="font-bold text-sm">{{ formacao.curso }}</span>
+                        <p class="text-xs text-gray-600">{{ formacao.instituicao }}</p>
+                        <p class="text-xs text-gray-500">{{ formacao.ano_conclusao }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+    <section class="max-w-7xl m-auto wow animate__animated animate__fadeIn" id="experiencia">
+        <div class="flex justify-center items-center flex-col lg:gap-10 gap-7 lg:py-10 md:py-7 py-10 mx-3">
+            <h2 class="font-bold lg:text-4xl md:text-4xl text-4xl bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                Experiência <i class="fas fa-code"></i>
+            </h2>
+            <div class="flex flex-col justify-center items-center gap-3">
+
+                {% for exp in experiences %}
+                    <div class="flex flex-col gap-3">
+                        <h2 class="font-bold sm:text-xl md:text-2xl lg:text-2xl text-center">{{ exp.empresa }}</h2>
+                        <div class="flex lg:flex-row md:flex-row flex-col gap-3">
+                            <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">{{ exp.titulo }}</p>
+                            <p class="font-normal lg:text-xl md:text-lg sm:text-lg text-center">{{ exp.periodo }}</p>
                         </div>
-                        <div>
-                            <label for="endereco" class="block text-gray-800 font-bold mb-2">Endereço de E-mail:</label>
-                            <input type="email" id="endereco" name="endereco" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none" required>
-                            <span class="erro"></span>
-                        </div>
+                    </div>
+
+                    <p class="max-w-4xl sm:text-base md:text-lg lg:text-lg lg:leading-4">
+                        {{ exp.descricao|linebreaksbr }}
+                    </p>
+
+                    {% if exp.tecnologias.all %}
+                        <ul class="flex justify-center flex-wrap gap-3 mt-2">
+                            {% for tech in exp.tecnologias.all %}
+                                <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none"
+                                    title="{{ tech.descricao|default:'' }}">
+                                    {{ tech.nome }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+    <section class="max-w-7xl m-auto">
+        <div class="w-full flex justify-center items-center lg:gap-15 gap-10 flex-col lg:py-10 py-5">
+            <h2 class="wow animate__animated animate__fadeInLeft text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text lg:pb-5 pb-2">
+                Projetos <i class="fas fa-sitemap"></i>
+            </h2>
+
+            {% for projeto in projetos %}
+                <div class="lg:max-w-[100%] max-w-[90%] flex justify-center items-center gap-10 lg:flex-row flex-col">
+                    <div class="wow animate__animated animate__fadeInLeft max-w-[600px]">
+                        {% if projeto.imagem %}
+                            <img class="w-full rounded-lg" src="{{ projeto.imagem.url }}"
+                                 alt="Imagem do projeto {{ projeto.titulo }}">
+                        {% endif %}
+                    </div>
+                    <div class="wow animate__animated animate__fadeInRight flex justify-center items-start flex-col gap-3">
+                        <h3 class="font-bold text-2xl uppercase">{{ projeto.titulo }}</h3>
+                        <ul class="flex justify-start flex-wrap gap-3">
+                            {% for tech in projeto.tecnologias.all %}
+                                <li class="bg-zinc-600/30 py-1 px-2 rounded-md text-xs select-none">{{ tech.nome }}</li>
+                            {% endfor %}
+                        </ul>
+                        <p class="max-w-[600px] leading-7">{{ projeto.descricao }}</p>
+                        {% if projeto.link %}
+                            <div class="flex gap-3 text-xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                                <a href="{{ projeto.link }}" target="_blank" rel="noopener noreferrer">Ver Projeto <i
+                                        class="fas fa-link"></i></a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <section class="wow animate__animated animate__fadeIn max-w-7xl m-auto" id="contato">
+        <div class="max-w-[90%] lg:text-start md:text-start text-center flex justify-center items-center gap-3 flex-col lg:pt-10 pt-7 lg:pb-20 md:pb-10 pb-7 mx-auto">
+            <h2 class="text-4xl font-bold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                Contato <i class="far fa-paper-plane"></i>
+            </h2>
+            <h3 class="lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">Manda-me uma mensagem!</h3>
+            <p class="lg:text-xl md:text-2xl text-base lg:leading-8 md:leading-9 leading-7">Tem uma pergunta ou
+                proposta, ou apenas quer dizer "olá"? Vá em frente.</p>
+        </div>
+        <div class="flex justify-center items-center">
+            <form action="https://formspree.io/f/mblobbpo" method="POST" id="contactForm"
+                  class="w-full max-w-[1000px] bg-gray-100 p-2 rounded-lg">
+                <div class="grid lg:grid-cols-2 grid-cols-1 gap-4 mb-4">
+                    <div>
+                        <label for="nome" class="block text-gray-800 font-bold mb-2">Seu nome:</label>
+                        <input type="text" id="nome" name="nome"
+                               class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none"
+                               required>
+                        <span class="erro"></span>
                     </div>
                     <div>
-                        <label for="mensagem" class="block text-gray-800 font-bold mb-2">Mensagem:</label>
-                        <textarea id="mensagem" name="mensagem" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none" required></textarea>
+                        <label for="endereco" class="block text-gray-800 font-bold mb-2">Endereço de E-mail:</label>
+                        <input type="email" id="endereco" name="endereco"
+                               class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none"
+                               required>
+                        <span class="erro"></span>
                     </div>
-                    <div class="flex justify-center mt-5">
-                        <button
+                </div>
+                <div>
+                    <label for="mensagem" class="block text-gray-800 font-bold mb-2">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4"
+                              class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none"
+                              required></textarea>
+                </div>
+                <div class="flex justify-center mt-5">
+                    <button
                             aria-label="Enviar E-mail para Jaime Martins"
-                            type="submit" class="w-[200px] bg-blue-700 hover:bg-blue-500  text-white font-bold py-2 px-4 rounded focus:outline-none transition-all">
-                            Enviar
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </main>
-    <footer class="wow animate__animated animate__fadeIn  max-w-7xl m-auto">
-        <div class="w-full flex justify-center items-center flex-wrap-reverse gap-5 pt-10 pb-10">
-            <p class="w-full text-center font-bold lg:text-xl md:text-xl text-sm text-gray-500">
-                © 2024 - Design and Code by Jaime Martins.
-            </p>
-            <div class="flex justify-center items-center lg:flex-row md:flex-row flex-col font-medium gap-5">
-                <a class="hover:text-purple-900 transition-all duration-300 ease-in-out lg:text-xl text-2xl" href="https://www.linkedin.com/in/jaime-martins-de-oliveira/" target="_blank" rel="noopener noreferrer" aria-label="Visitar LinkedIn de Jaime Martins">
-                    Linkedin <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a class="hover:text-purple-900 transition-all duration-300 ease-in-out lg:text-xl text-2xl" href="https://wa.me/5548996354498" target="_blank" rel="noopener noreferrer" aria-label="Enviar mensagem para WhatsApp">
-                    WhatsApp <i class="fab fa-whatsapp"></i>
-                </a>
-                <a class="hover:text-purple-900 transition-all duration-300 ease-in-out lg:text-xl text-2xl" href="mailto:contato.jaimemartins@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Enviar E-mail para Jaime Martins" >
-                    E-mail <i class="fas fa-envelope"></i>
-                </a>
-            </div>
+                            type="submit"
+                            class="w-[200px] bg-blue-700 hover:bg-blue-500  text-white font-bold py-2 px-4 rounded focus:outline-none transition-all">
+                        Enviar
+                    </button>
+                </div>
+            </form>
         </div>
-    </footer>
+    </section>
+</main>
+<footer class="wow animate__animated animate__fadeIn  max-w-7xl m-auto">
+    <div class="w-full flex justify-center items-center flex-wrap-reverse gap-5 pt-10 pb-10">
+        <p class="w-full text-center font-bold lg:text-xl md:text-xl text-sm text-gray-500">
+            © 2024 - Design and Code by Jaime Martins.
+        </p>
+        <div class="flex justify-center items-center lg:flex-row md:flex-row flex-col font-medium gap-5">
+            <a class="hover:text-purple-900 transition-all duration-300 ease-in-out lg:text-xl text-2xl"
+               href="https://www.linkedin.com/in/jaime-martins-de-oliveira/" target="_blank" rel="noopener noreferrer"
+               aria-label="Visitar LinkedIn de Jaime Martins">
+                Linkedin <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a class="hover:text-purple-900 transition-all duration-300 ease-in-out lg:text-xl text-2xl"
+               href="https://wa.me/5548996354498" target="_blank" rel="noopener noreferrer"
+               aria-label="Enviar mensagem para WhatsApp">
+                WhatsApp <i class="fab fa-whatsapp"></i>
+            </a>
+            <a class="hover:text-purple-900 transition-all duration-300 ease-in-out lg:text-xl text-2xl"
+               href="mailto:contato.jaimemartins@gmail.com" target="_blank" rel="noopener noreferrer"
+               aria-label="Enviar E-mail para Jaime Martins">
+                E-mail <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
 }
 
 body {
@@ -15,14 +15,13 @@ body {
 }
 
 
-
 .hamburguer {
     display: block;
     border: none;
     background: none;
     border-top: 3px solid #000000;
     cursor: pointer;
-   
+
 }
 
 .hamburguer::before,
@@ -34,7 +33,7 @@ body {
     background: #000000;
     margin-top: 5px;
     position: relative;
-    transition: 0.3s;  
+    transition: 0.3s;
 }
 
 .invalido {
@@ -46,6 +45,7 @@ body {
         display: block;
         z-index: 2;
     }
+
     .nav-list {
         position: fixed;
         top: 0;
@@ -68,16 +68,19 @@ body {
         opacity: 0;
     }
 
-    .nav-list li:nth-child(1) a{
+    .nav-list li:nth-child(1) a {
         transition: 0.5s 0.2s;
     }
-    .nav-list li:nth-child(2) a{
+
+    .nav-list li:nth-child(2) a {
         transition: 0.5s 0.4s;
     }
-    .nav-list li:nth-child(3) a{
+
+    .nav-list li:nth-child(3) a {
         transition: 0.5s 0.6s;
     }
-    .nav-list li:nth-child(4) a{
+
+    .nav-list li:nth-child(4) a {
         transition: 0.5s 0.8s;
     }
 
@@ -86,11 +89,11 @@ body {
         pointer-events: all;
     }
 
-    .nav.active .nav-list a{
-       opacity: 1;
+    .nav.active .nav-list a {
+        opacity: 1;
     }
 
-    .nav.active .hamburguer{
+    .nav.active .hamburguer {
         position: fixed;
         top: 35px;
         right: 16px;
@@ -99,13 +102,13 @@ body {
 
     .nav.active .hamburguer::before {
         transform: rotate(135deg);
-        
+
     }
 
     .nav.active .hamburguer::after {
         transform: rotate(-135deg);
         top: -7px;
-        
+
     }
 }
 

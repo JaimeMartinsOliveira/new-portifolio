@@ -5,7 +5,7 @@ import validaForm from "./validaForm";
 import buttonTop from "./scrollToTop"
 
 new WOW().init()
-    
+
 menuHamburgue()
 scrollSuave()
 submitEmail()
