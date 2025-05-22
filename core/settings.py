@@ -16,7 +16,7 @@ STATICFILES_DIRS = [
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['15.228.28.91', 'jaimemartins.tech', 'www.jaimemartins.tech']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
