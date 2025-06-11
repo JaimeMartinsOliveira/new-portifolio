@@ -71,183 +71,164 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-    <!-- Navigation (similar to blog.html) -->
-    <nav class="fixed w-full bg-white shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center">
-                    <a href="index.html" class="text-xl font-bold text-blue-600">Jaime Martins</a>
-                </div>
-                <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
-                    <a href="index.html#sobre" class="nav-link text-gray-700 hover:text-blue-600">Sobre mim</a>
-                    <a href="index.html#experiencia" class="nav-link text-gray-700 hover:text-blue-600">Experiência</a>
-                    <a href="index.html#projetos" class="nav-link text-gray-700 hover:text-blue-600">Projetos</a>
-                    <a href="index.html#contato" class="nav-link text-gray-700 hover:text-blue-600">Contato</a>
-                    <a href="blog.html" class="px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50">Blog</a>
-                    <button id="theme-toggle" class="p-2 text-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-200" aria-label="Alternar tema">
-                        <i id="theme-icon" class="fas fa-moon dark:hidden"></i>
-                        <i id="theme-icon-dark" class="fas fa-sun hidden dark:inline"></i>
-                    </button>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
+<!-- Navigation (similar to blog.html) -->
+<nav class="fixed w-full bg-white shadow-sm z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center">
+                <a href="{% url 'portfolio:home' %}" class="text-xl font-bold text-blue-600">Jaime Martins</a>
             </div>
-        </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html#sobre" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Sobre mim</a>
-                <a href="index.html#experiencia" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Experiência</a>
-                <a href="index.html#projetos" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Projetos</a>
-                <a href="index.html#contato" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Contato</a>
-                <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:bg-blue-50">Blog</a>
-                <button id="mobile-theme-toggle" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50 dark:text-gray-200 dark:hover:bg-gray-700" aria-label="Alternar tema">
-                    <i id="mobile-theme-icon" class="fas fa-moon mr-2 dark:hidden"></i>
-                    <i id="mobile-theme-icon-dark" class="fas fa-sun mr-2 hidden dark:inline"></i> Alternar tema
+            <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
+                <a href="{% url 'portfolio:home' %}#sobre" class="nav-link text-gray-700 hover:text-blue-600">Sobre
+                    mim</a>
+                <a href="{% url 'portfolio:home' %}#experiencia" class="nav-link text-gray-700 hover:text-blue-600">Experiência</a>
+                <a href="{% url 'portfolio:home' %}#projetos" class="nav-link text-gray-700 hover:text-blue-600">Projetos</a>
+                <a href="{% url 'portfolio:home' %}#contato"
+                   class="nav-link text-gray-700 hover:text-blue-600">Contato</a>
+                <a href="{% url 'blog:list' %}"
+                   class="px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50">Blog</a>
+                <button id="theme-toggle"
+                        class="p-2 text-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-200"
+                        aria-label="Alternar tema">
+                    <i id="theme-icon" class="fas fa-moon dark:hidden"></i>
+                    <i id="theme-icon-dark" class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
                 </button>
             </div>
         </div>
-    </nav>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="{% url 'portfolio:home' %}#sobre"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Sobre
+                mim</a>
+            <a href="{% url 'portfolio:home' %}#experiencia"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Experiência</a>
+            <a href="{% url 'portfolio:home' %}#projetos"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Projetos</a>
+            <a href="{% url 'portfolio:home' %}#contato"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Contato</a>
+            <a href="{% url 'blog:list' %}"
+               class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:bg-blue-50">Blog</a>
+            <button id="mobile-theme-toggle"
+                    class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50 dark:text-gray-200 dark:hover:bg-gray-700"
+                    aria-label="Alternar tema">
+                <i id="mobile-theme-icon" class="fas fa-moon mr-2 dark:hidden"></i>
+                <i id="mobile-theme-icon-dark" class="fas fa-sun mr-2 hidden dark:inline"></i> Alternar tema
+            </button>
+        </div>
+    </div>
+</nav>
 
-    <!-- Post Content Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <img src="https://placehold.co/800x400/b0e0e6/000000?text=FastAPI+Cover" alt="Capa do Artigo FastAPI" class="w-full h-auto rounded-lg shadow-md mb-8">
-            <h1 class="text-4xl font-bold text-gray-800 mb-4">Construindo APIs RESTful com FastAPI: Um Guia Completo</h1>
-            <p class="text-gray-500 text-sm mb-8">Publicado em 05 de Junho de 2025 por Jaime Martins</p>
+<!-- Post Content Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {% if post.cover_image %}
+            <img src="{{ post.cover_image.url }}" alt="Capa do {{ post.title }}"
+                class="w-full h-auto rounded-lg shadow-md mb-8">
+        {% endif %}
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">{{ post.title }}</h1>
+        <p class="text-gray-500 text-sm mb-8">Publicado em {{ post.published_date|date:"d de F de Y" }} por {{ post.author }}</p>
 
-            <div class="prose max-w-none text-gray-700 leading-relaxed">
-                <p class="mb-4">
-                    FastAPI é um framework web moderno e de alta performance para a construção de APIs com Python 3.7+ baseado nas tipagens padrão do Python. Ele é amplamente utilizado por sua velocidade de desenvolvimento, desempenho impressionante e documentação automática interativa.
-                </p>
-                <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-8">Por que FastAPI?</h2>
-                <p class="mb-4">
-                    FastAPI vem com alguns recursos notáveis que o tornam uma escolha excelente para o desenvolvimento de APIs modernas:
-                </p>
-                <ul class="list-disc list-inside mb-4 pl-5">
-                    <li>**Alta Performance:** Equivalente ao NodeJS e Go (graças ao Starlette e Pydantic).</li>
-                    <li>**Desenvolvimento Rápido:** Aumenta a velocidade de desenvolvimento em 200% a 300%.</li>
-                    <li>**Menos Bugs:** Reduz os erros em 40% com o uso de tipagem de dados.</li>
-                    <li>**Documentação Automática:** Gera documentação interativa (Swagger UI e ReDoc) automaticamente.</li>
-                    <li>**Padrões Abertos:** Baseado em padrões de API abertos como OpenAPI e JSON Schema.</li>
-                </ul>
-                <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-8">Primeiros Passos</h2>
-                <p class="mb-4">
-                    Para começar com FastAPI, você precisa instalá-lo juntamente com um servidor ASGI, como `uvicorn`:
-                </p>
-                <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto mb-6"><code>pip install fastapi uvicorn</code></pre>
-                <p class="mb-4">
-                    Um exemplo básico de aplicação FastAPI:
-                </p>
-                <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto mb-6"><code>from fastapi import FastAPI
+        <div class="prose max-w-none text-gray-700 leading-relaxed">
+            {{ content_html|safe }}
+        </div>
 
-app = FastAPI()
+        <div class="mt-12 text-center">
+            <a href="{% url 'blog:list' %}" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                <i class="fas fa-arrow-left mr-2"></i> Voltar para o Blog
+            </a>
+        </div>
+    </div>
+</section>
 
-@app.get("/")
-async def read_root():
-    return {"message": "Olá, FastAPI!"}
 
-@app.get("/items/{item_id}")
-async def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "q": q}
-</code></pre>
-                <p class="mb-4">
-                    Para rodar sua aplicação, salve o código acima como `main.py` e execute:
-                </p>
-                <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto mb-6"><code>uvicorn main:app --reload</code></pre>
-                <p>
-                    Isso iniciará o servidor Uvicorn com recarregamento automático. Você pode então acessar sua API em `http://127.0.0.1:8000`. A documentação interativa estará disponível em `http://127.0.0.1:8000/docs`.
-                </p>
+<!-- Footer (similar to blog.html) -->
+<footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <p class="text-gray-400">© 2024 - Design and Code by Jaime Martins.</p>
+                <p class="text-gray-400 text-sm mt-1">Visitas: <span id="view-counter">0</span></p>
             </div>
-
-            <div class="mt-12 text-center">
-                <a href="blog.html" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                    <i class="fas fa-arrow-left mr-2"></i> Voltar para o Blog
+            <div class="flex space-x-6">
+                <a href="https://www.linkedin.com/in/jaime-martins-de-oliveira/"
+                   class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="https://wa.me/5548996354498" class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                </a>
+                <a href="mailto:contato.jaimemartins@gmail.com"
+                   class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+                <a href="https://github.com/JaimeMartinsOliveira"
+                   class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fab fa-github text-xl"></i>
                 </a>
             </div>
         </div>
-    </section>
+    </div>
+</footer>
 
-    <!-- Footer (similar to blog.html) -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <p class="text-gray-400">© 2024 - Design and Code by Jaime Martins.</p>
-                    <p class="text-gray-400 text-sm mt-1">Visitas: <span id="view-counter">0</span></p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="https://www.linkedin.com/in/jaime-martins-de-oliveira/" class="text-gray-400 hover:text-white transition duration-300">
-                        <i class="fab fa-linkedin-in text-xl"></i>
-                    </a>
-                    <a href="https://wa.me/5548996354498" class="text-gray-400 hover:text-white transition duration-300">
-                        <i class="fab fa-whatsapp text-xl"></i>
-                    </a>
-                    <a href="mailto:contato.jaimemartins@gmail.com" class="text-gray-400 hover:text-white transition duration-300">
-                        <i class="fas fa-envelope text-xl"></i>
-                    </a>
-                    <a href="https://github.com/JaimeMartinsOliveira" class="text-gray-400 hover:text-white transition duration-300">
-                        <i class="fab fa-github text-xl"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
+<!-- JavaScript for theme toggle (similar to blog.html) -->
+<script>
+    // Funcionalidade de alternar tema
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+    const html = document.documentElement;
 
-    <!-- JavaScript for theme toggle (similar to blog.html) -->
-    <script>
-        // Funcionalidade de alternar tema
-        const themeToggle = document.getElementById('theme-toggle');
-        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const mobileThemeIcon = document.getElementById('mobile-theme-icon');
-        const html = document.documentElement;
+    // Verifica a preferência de tema salva ou usa a preferência do sistema
+    const savedTheme = localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
-        // Verifica a preferência de tema salva ou usa a preferência do sistema
-        const savedTheme = localStorage.getItem('theme') ||
-                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    // Aplica o tema salvo
+    if (savedTheme === 'dark') {
+        html.classList.add('dark');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+        mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
 
-        // Aplica o tema salvo
-        if (savedTheme === 'dark') {
-            html.classList.add('dark');
+    function toggleTheme() {
+        html.classList.toggle('dark');
+        const isDark = html.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+        // Alterna ícones
+        if (isDark) {
             themeIcon.classList.replace('fa-moon', 'fa-sun');
             mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+            mobileThemeIcon.classList.replace('fa-sun', 'fa-moon');
         }
+    }
 
-        function toggleTheme() {
-            html.classList.toggle('dark');
-            const isDark = html.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    themeToggle.addEventListener('click', toggleTheme);
+    mobileThemeToggle.addEventListener('click', toggleTheme);
 
-            // Alterna ícones
-            if (isDark) {
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                mobileThemeIcon.classList.replace('fa-sun', 'fa-moon');
-            }
-        }
+    // Alternar menu móvel
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-        themeToggle.addEventListener('click', toggleTheme);
-        mobileThemeToggle.addEventListener('click', toggleTheme);
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
 
-        // Alternar menu móvel
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Contador de visitas local (não persistente, apenas para fins de demonstração)
-        let localViewCount = parseInt(localStorage.getItem('portfolioLocalViewCount') || '0');
-        document.getElementById('view-counter').textContent = localViewCount;
-    </script>
+    // Contador de visitas local (não persistente, apenas para fins de demonstração)
+    let localViewCount = parseInt(localStorage.getItem('portfolioLocalViewCount') || '0');
+    document.getElementById('view-counter').textContent = localViewCount;
+</script>
 </body>
 </html>
