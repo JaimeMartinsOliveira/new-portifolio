@@ -1,0 +1,36 @@
+/* dark-mode.css: Estilos para o modo escuro */
+
+body.dark {
+    background-color: #1a202c; /* Fundo escuro */
+    color: #e2e8f0; /* Texto claro */
+}
+
+body.dark a {
+    color: #3b82f6; /* Links em azul claro */
+}
+
+body.dark a:hover {
+    color: #60a5fa; /* Links com hover azul mais claro */
+}
+
+body.dark .card {
+    background-color: #2d3748; /* Fundo do card no modo escuro */
+    border-color: #4a5568; /* Borda do card */
+}
+
+body.dark .nav-link::after {
+    background-color: #60a5fa; /* Azul claro para hover nos links */
+}
+
+body.dark footer {
+    background-color: #1a202c; /* Fundo do footer no modo escuro */
+    color: #cbd5e0; /* Texto claro */
+}
+
+body.dark footer a {
+    color: #93c5fd; /* Links no footer */
+}
+
+body.dark footer a:hover {
+    color: #60a5fa; /* Links com hover no footer */
+}
