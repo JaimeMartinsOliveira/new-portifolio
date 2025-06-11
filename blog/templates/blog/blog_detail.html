@@ -1,3 +1,4 @@
+{% load blog_extras %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -68,6 +69,14 @@
         .nav-link:hover::after {
             width: 100%;
         }
+
+        pre code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -129,21 +138,25 @@
 </nav>
 
 <!-- Post Content Section -->
-<section class="py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 bg-white shadow-2xl rounded-xl p-8">
         {% if post.cover_image %}
             <img src="{{ post.cover_image.url }}" alt="Capa do {{ post.title }}"
-                class="w-full h-auto rounded-lg shadow-md mb-8">
+                 class="w-full h-auto rounded-lg shadow-md mb-8">
         {% endif %}
-        <h1 class="text-4xl font-bold text-gray-800 mb-4">{{ post.title }}</h1>
-        <p class="text-gray-500 text-sm mb-8">Publicado em {{ post.published_date|date:"d de F de Y" }} por {{ post.author }}</p>
 
-        <div class="prose max-w-none text-gray-700 leading-relaxed">
-            {{ content_html|safe }}
+        <h1 class="text-4xl font-bold text-gray-800 mb-6 leading-tight">{{ post.title }}</h1>
+        <p class="text-gray-500 text-sm mb-8">Publicado em {{ post.published_date|date:"d de F de Y" }}
+            por {{ post.author }}</p>
+
+        <div class="prose max-w-none">
+            {{ post.content_html|safe }}
         </div>
 
+
         <div class="mt-12 text-center">
-            <a href="{% url 'blog:list' %}" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+            <a href="{% url 'blog:list' %}"
+               class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm">
                 <i class="fas fa-arrow-left mr-2"></i> Voltar para o Blog
             </a>
         </div>
