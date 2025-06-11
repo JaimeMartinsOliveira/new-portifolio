@@ -1,0 +1,91 @@
+/* style.css: Estilos globais do site */
+
+/* Definição geral da fonte e comportamento de rolagem */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #f9fafb; /* Cor de fundo clara padrão */
+    color: #374151; /* Cor de texto padrão */
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #2563eb; /* Azul para hover */
+}
+
+/* Botões */
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* Estilo do contêiner */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Navegação */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #2563eb; /* Azul */
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Cards */
+.card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb; /* Cinza claro */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    background-color: #374151; /* Cinza escuro */
+    color: #d1d5db; /* Texto branco claro */
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+footer a {
+    color: #93c5fd; /* Azul claro */
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #2563eb; /* Azul para hover */
+}
