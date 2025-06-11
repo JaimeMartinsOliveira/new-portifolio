@@ -76,14 +76,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-xl font-bold text-blue-600">Jaime Martins</a>
+                    <a href="{% url 'portfolio:home' %}" class="text-xl font-bold text-blue-600">Jaime Martins</a>
                 </div>
                 <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
-                    <a href="http://127.0.0.1:8000/#sobremim" class="nav-link text-gray-700 hover:text-blue-600">Sobre mim</a>
-                    <a href="" class="nav-link text-gray-700 hover:text-blue-600">Experiência</a>
-                    <a href="" class="nav-link text-gray-700 hover:text-blue-600">Projetos</a>
-                    <a href="" class="nav-link text-gray-700 hover:text-blue-600">Contato</a>
-                    <a href="blog.html" class="px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50">Blog</a>
+                    <a href="{% url 'portfolio:home' %}#sobre" class="nav-link text-gray-700 hover:text-blue-600">Sobre mim</a>
+                    <a href="{% url 'portfolio:home' %}#experiencia" class="nav-link text-gray-700 hover:text-blue-600">Experiência</a>
+                    <a href="{% url 'portfolio:home' %}#projetos" class="nav-link text-gray-700 hover:text-blue-600">Projetos</a>
+                    <a href="{% url 'portfolio:home' %}#contato" class="nav-link text-gray-700 hover:text-blue-600">Contato</a>
+                    <a href="{% url 'blog:list' %}" class="px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50">Blog</a>
                     <button id="theme-toggle" class="p-2 text-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-200" aria-label="Alternar tema">
                         <i id="theme-icon" class="fas fa-moon dark:hidden"></i>
                         <i id="theme-icon-dark" class="fas fa-sun hidden dark:inline"></i>
@@ -101,11 +101,17 @@
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html#sobre" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Sobre mim</a>
-                <a href="index.html#experiencia" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Experiência</a>
-                <a href="index.html#projetos" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Projetos</a>
-                <a href="index.html#contato" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Contato</a>
-                <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:bg-blue-50">Blog</a>
+                <a href="{% url 'portfolio:home' %}#sobre"
+                   class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Sobre mim</a>
+                <a href="{% url 'portfolio:home' %}#experiencia"
+                   class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Experiência</a>
+                <a href="{% url 'portfolio:home' %}#projetos"
+                   class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Projetos</a>
+                <a href="{% url 'portfolio:home' %}#contato"
+                   class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Contato</a>
+                <a href="{% url 'blog:list' %}"
+                   class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:bg-blue-50">Blog</a>
+
                 <button id="mobile-theme-toggle" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50 dark:text-gray-200 dark:hover:bg-gray-700" aria-label="Alternar tema">
                     <i id="mobile-theme-icon" class="fas fa-moon mr-2 dark:hidden"></i>
                     <i id="mobile-theme-icon-dark" class="fas fa-sun mr-2 hidden dark:inline"></i> Alternar tema
@@ -135,7 +141,7 @@
                             Descubra como FastAPI pode otimizar o desenvolvimento de APIs com alta performance e tipagem.
                         </p>
                         <span class="text-gray-500 text-xs">Publicado em 05 de Junho de 2025</span>
-                        <a href="post1.html" class="block mt-4 text-blue-600 hover:text-blue-800 font-medium">Leia mais <i class="fas fa-arrow-right ml-1"></i></a>
+                        <a href="{% url 'blog:detail' %}" class="block mt-4 text-blue-600 hover:text-blue-800 font-medium">Leia mais <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </article>
 
