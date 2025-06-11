@@ -1,34 +1,28 @@
-import markdown2
+# blog/models.py
 from django.db import models
-from django.utils import timezone
 from django.contrib.auth.models import User
-from django.urls import reverse
+from django.utils.text import slugify
+import markdown2
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=200, verbose_name="Título")
-    subtitle = models.CharField(max_length=200, verbose_name="Subtítulo")
-    slug = models.SlugField(max_length=200, unique=True, help_text="Uma versão curta e legível do título para URLs.")
-    content_markdown = models.TextField(verbose_name="Conteúdo em Markdown")
-    # Torna o campo não editável no admin
-    content_html = models.TextField(editable=False, verbose_name="Conteúdo em HTML")
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts', verbose_name="Autor")
-    published_date = models.DateTimeField(default=timezone.now, verbose_name="Data de Publicação")
-    cover_image = models.ImageField(upload_to='blog_covers/', blank=True, null=True, verbose_name="Imagem de Capa")
-
-    class Meta:
-        ordering = ['-published_date']
-        verbose_name = "Post"
-        verbose_name_plural = "Posts"
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    subtitle = models.CharField(max_length=200, blank=True, null=True)
+    slug = models.SlugField(max_length=255, unique=True, blank=True,help_text="Deixe em branco para gerar automaticamente a partir do título.")
+    content_markdown = models.TextField(verbose_name="Conteúdo (Markdown)", blank=True)
+    content_html = models.TextField(verbose_name="Conteúdo (HTML)", editable=False, blank=True)
+    published_date = models.DateTimeField(auto_now_add=True)
+    cover_image = models.ImageField(upload_to='blog_covers/', blank=True, null=True)
 
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        # Garante que o URL é construído com o slug
-        return reverse('blog:detail', kwargs={'slug': self.slug})
-
     def save(self, *args, **kwargs):
-        # Converte Markdown para HTML automaticamente ao salvar
-        self.content_html = markdown2.markdown(self.content_markdown)
+        if self.content_markdown:
+            self.content_html = markdown2.markdown(self.content_markdown,
+                                                   extras=['fenced-code-blocks', 'code-friendly'])
+        if not self.slug:
+            self.slug = slugify(self.title)
+
         super().save(*args, **kwargs)
