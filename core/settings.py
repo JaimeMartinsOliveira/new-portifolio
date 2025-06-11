@@ -11,7 +11,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'portfolio/portfolio/../portfolio/static')
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'portfolio/static'),
+    #os.path.join(BASE_DIR, 'portfolio/static'),
 ]
 
 DEBUG = True
@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'portfolio',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +80,35 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'user_access.log',  # Nome do arquivo onde os logs serão salvos
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'user_access': {  # Logger personalizado para acessos de usuários
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
 
 LANGUAGE_CODE = 'pt-br'
 
