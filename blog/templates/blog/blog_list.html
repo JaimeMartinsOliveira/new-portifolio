@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Jaime Martins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Dark mode styles */
+        body.dark {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+
+        .dark .bg-white {
+            background-color: #2d3748;
+        }
+
+        .dark .bg-gray-50 {
+            background-color: #1a202c;
+        }
+
+        .dark .text-gray-800 {
+            color: #e2e8f0;
+        }
+
+        .dark .text-gray-600,
+        .dark .text-gray-700 {
+            color: #cbd5e0;
+        }
+
+        .dark .bg-gray-100 {
+            background-color: #2d3748;
+        }
+
+        .dark .bg-gray-200 {
+            background-color: #4a5568;
+        }
+
+        .dark .text-gray-500 {
+            color: #a0aec0;
+        }
+
+        /* Nav link underline effect for blog page */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-blue-600">Jaime Martins</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
+                    <a href="index.html#sobre" class="nav-link text-gray-700 hover:text-blue-600">Sobre mim</a>
+                    <a href="index.html#experiencia" class="nav-link text-gray-700 hover:text-blue-600">Experiência</a>
+                    <a href="index.html#projetos" class="nav-link text-gray-700 hover:text-blue-600">Projetos</a>
+                    <a href="index.html#contato" class="nav-link text-gray-700 hover:text-blue-600">Contato</a>
+                    <a href="blog.html" class="px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50">Blog</a>
+                    <button id="theme-toggle" class="p-2 text-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-200" aria-label="Alternar tema">
+                        <i id="theme-icon" class="fas fa-moon dark:hidden"></i>
+                        <i id="theme-icon-dark" class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#sobre" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Sobre mim</a>
+                <a href="#experiencia" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Experiência</a>
+                <a href="#projetos" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Projetos</a>
+                <a href="#contato" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Contato</a>
+                <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:bg-blue-50">Blog</a>
+                <button id="mobile-theme-toggle" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50 dark:text-gray-200 dark:hover:bg-gray-700" aria-label="Alternar tema">
+                    <i id="mobile-theme-icon" class="fas fa-moon mr-2 dark:hidden"></i>
+                    <i id="mobile-theme-icon-dark" class="fas fa-sun mr-2 hidden dark:inline"></i> Alternar tema
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Hero Section -->
+    <section class="bg-blue-600 text-white py-20 md:py-32 text-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Meu Blog Técnico</h1>
+            <p class="text-xl opacity-90">Insights e artigos sobre desenvolvimento Back-end e IA Generativa.</p>
+        </div>
+    </section>
+
+    <!-- Blog Posts Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- O laço do Django começa aqui. Ele irá repetir este bloco para cada post. -->
+                {% for post in posts %}
+                <article class="bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition duration-300 overflow-hidden">
+                    <!-- Verifica se o post tem uma imagem para exibir -->
+                    {% if post.imagem %}
+                    <img src="{{ post.imagem.url }}" alt="Capa do Artigo {{ post.titulo }}" class="w-full h-48 object-cover">
+                    {% else %}
+                    <!-- Caso não tenha imagem, mostra um placeholder -->
+                    <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
+                         <span class="text-gray-500">Sem Imagem</span>
+                    </div>
+                    {% endif %}
+
+                    <div class="p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ post.titulo }}</h2>
+                        <p class="text-gray-600 text-sm mb-4">
+                            <!-- Mostra apenas um trecho do conteúdo e usa 'safe' para renderizar HTML, se houver -->
+                            {{ post.conteudo|truncatewords_html:20|safe }}
+                        </p>
+                        <!-- Formata a data de publicação -->
+                        <span class="text-gray-500 text-xs">Publicado em {{ post.published_date|date:"d \d\e F \d\e Y" }}</span>
+
+                        <!-- Link dinâmico para a página de detalhe do post -->
+                        <a href="{% url 'blog:detail' post.pk %}" class="block mt-4 text-blue-600 hover:text-blue-800 font-medium">Leia mais <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </article>
+                {% empty %}
+                <!-- Esta mensagem aparecerá se não houver nenhum post cadastrado -->
+                <p class="col-span-3 text-center text-gray-500">Ainda não há posts no blog. Volte em breve!</p>
+                {% endfor %}
+                <!-- Fim do laço do Django -->
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-400">© 2024 - Design and Code by Jaime Martins.</p>
+                    <p class="text-gray-400 text-sm mt-1">Visitas: <span id="view-counter">0</span></p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/jaime-martins-de-oliveira/" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://wa.me/5548996354498" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                    <a href="mailto:contato.jaimemartins@gmail.com" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    <a href="https://github.com/JaimeMartinsOliveira" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for theme toggle (similar to index.html) -->
+    <script>
+        // Funcionalidade de alternar tema
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+        const html = document.documentElement;
+
+        // Verifica a preferência de tema salva ou usa a preferência do sistema
+        const savedTheme = localStorage.getItem('theme') ||
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        // Aplica o tema salvo
+        if (savedTheme === 'dark') {
+            html.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+            // Alterna ícones
+            if (isDark) {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                mobileThemeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        mobileThemeToggle.addEventListener('click', toggleTheme);
+
+        // Alternar menu móvel
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Contador de visitas local (não persistente, apenas para fins de demonstração no blog)
+        let localViewCount = parseInt(localStorage.getItem('portfolioLocalViewCount') || '0');
+        document.getElementById('view-counter').textContent = localViewCount;
+    </script>
+</body>
+</html>

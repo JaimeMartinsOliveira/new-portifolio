@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {# Estende o template base #}
+{% load static %} {# Para carregar arquivos estáticos #}
+
+{% block title %}{{ post.title }}{% endblock %} {# Define o título da página com o título do post #}
+
+{% block content %}
+    <!-- Seção de Conteúdo do Post -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            {% if post.cover_image %}
+                {# Exibe a imagem de capa do post, se existir #}
+                <img src="{{ post.cover_image.url }}" alt="{{ post.title }}" class="w-full h-auto rounded-lg shadow-md mb-8">
+            {% else %}
+                {# Caso contrário, usa uma imagem de placeholder #}
+                <img src="https://placehold.co/800x400/b0e0e6/000000?text=Capa+do+Artigo" alt="Capa Padrão do Artigo" class="w-full h-auto rounded-lg shadow-md mb-8">
+            {% endif %}
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">{{ post.title }}</h1>
+            <p class="text-gray-500 text-sm mb-8">Publicado em {{ post.published_date|date:"d M Y" }} por {{ post.author.get_full_name|default:post.author.username }}</p>
+
+            <div class="prose max-w-none text-gray-700 leading-relaxed">
+                {# Exibe o conteúdo completo do post. Use '|safe' se o conteúdo puder conter HTML (ex: de um editor rich text no admin). #}
+                {{ post.content|safe }}
+            </div>
+
+            <div class="mt-12 text-center">
+                {# Link para voltar para a lista de posts do blog #}
+                <a href="{% url 'blog:post_list' %}" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                    <i class="fas fa-arrow-left mr-2"></i> Voltar para o Blog
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+    {# Scripts JavaScript específicos para a página de detalhes do post, se houver #}
+    <script>
+        // Exemplo: Você pode adicionar scripts para comentários, compartilhamento, etc., aqui.
+    </script>
+{% endblock %}
+

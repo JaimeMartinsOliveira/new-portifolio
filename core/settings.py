@@ -6,17 +6,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u)t-wixl$5j8j_jqh4@-wp^0^m)emy1@2u-1u4skh%qj3jffr*'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'portifolio/portifolio/../portifolio/templates')
-STATIC_DIR = os.path.join(BASE_DIR, 'portifolio/portifolio/../portifolio/static')
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'portfolio/portfolio/../portfolio/templates')
+STATIC_DIR = os.path.join(BASE_DIR, 'portfolio/portfolio/../portfolio/static')
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'portifolio/static'),
+    os.path.join(BASE_DIR, 'portfolio/static'),
 ]
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['15.228.28.91', 'jaimemartins.tech', 'www.jaimemartins.tech']
+ALLOWED_HOSTS = ['15.228.28.91', 'jaimemartins.tech', 'www.jaimemartins.tech', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -25,8 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'portifolio',
+    'blog',
+    'portfolio',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +61,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'Portifolio/../db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'portfolio/../db.sqlite3'),
     }
 }
 
