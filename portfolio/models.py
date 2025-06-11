@@ -54,10 +54,12 @@ class Formacao(models.Model):
 
 
 class SobreMim(models.Model):
-    sobre = models.TextField()
+    titulo = models.CharField(max_length=200)  # Novo campo para o título
+    sobre = models.TextField()  # Texto do "Sobre mim"
 
     def __str__(self):
-        return self.sobre[:50]
+        return self.titulo
+
 
 
 class Apresentacao(models.Model):
