@@ -5,6 +5,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('captcha/', include('captcha.urls')),
     path('blog/', include('blog.urls', namespace='blog')),
     path('', include('portfolio.urls', namespace='portfolio')),
 ]
