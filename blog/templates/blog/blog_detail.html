@@ -96,7 +96,44 @@
         .copy-btn:hover {
             background-color: #2d3748;
         }
+                /* Estilo para o MODO CLARO (padrão) */
+        .markdown-body {
+            background-color: rgba(222, 222, 222, 0.57);  /* Fundo branco */
+            color: #24292e;             /* Texto escuro */
+            border: 1px solid #e1e4e8;  /* Borda cinza clara */
+            border-radius: 8px;
+            padding: 25px;
+        }
 
+        /* Estilos para o MODO ESCURO */
+        .dark .markdown-body {
+            background-color: rgba(13, 17, 23, 0.56);  /* Fundo escuro (cor do GitHub) */
+            color: #c9d1d9;             /* Texto claro */
+            border-color: #30363d;      /* Borda escura */
+        }
+
+        /* Ajustes finos para títulos e links no modo escuro */
+        .dark .markdown-body h1,
+        .dark .markdown-body h2,
+        .dark .markdown-body h3,
+        .dark .markdown-body h4,
+        .dark .markdown-body h5,
+        .dark .markdown-body h6 {
+            color: #c9d1d9;
+            border-bottom-color: #30363d; /* Cor da linha abaixo dos títulos */
+        }
+
+        .dark .markdown-body a {
+            color: #58a6ff; /* Cor azul clara para links */
+        }
+
+        .dark .markdown-body hr {
+            background-color: #30363d; /* Cor da linha horizontal */
+        }
+
+        .dark .markdown-body strong {
+            color: #c9d1d9; /* Cor para texto em negrito */
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
