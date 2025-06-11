@@ -5,14 +5,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-u)t-wixl$5j8j_jqh4@-wp^0^m)emy1@2u-1u4skh%qj3jffr*'
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'portfolio/portfolio/../portfolio/templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'portfolio/portfolio/../portfolio/static')
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    #os.path.join(BASE_DIR, 'portfolio/static'),
+    STATIC_DIR,  # Use Path e remova redundâncias
 ]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Apenas para produção
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 DEBUG = True
 
@@ -45,7 +49,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
