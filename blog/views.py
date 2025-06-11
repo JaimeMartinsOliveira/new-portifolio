@@ -1,5 +1,5 @@
+import markdown2
 from django.shortcuts import render, get_object_or_404
-# Se o seu modelo se chamar Post, mantenha. Se for BlogPost, altere aqui.
 from .models import Post
 
 def blog_list(request):
@@ -11,7 +11,11 @@ def blog_list(request):
 
 def blog_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+
+    content_html = markdown2.markdown(post.content)
+
     context = {
-        'post': post
+        'post': post,
+        'content_html': content_html,
     }
     return render(request, 'blog/blog_detail.html', context)
