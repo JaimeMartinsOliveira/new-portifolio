@@ -1,5 +1,5 @@
+import markdown2
 from django.db import models
-from django.utils.text import slugify
 
 
 class Tecnologia(models.Model):
@@ -61,11 +61,15 @@ class Formacao(models.Model):
 
 
 class SobreMim(models.Model):
-    titulo = models.CharField(max_length=200)  # Novo campo para o título
-    sobre = models.TextField()  # Texto do "Sobre mim"
+    conteudo_md = models.TextField(verbose_name="Conteúdo (Markdown)")
+    conteudo_html = models.TextField(verbose_name="Conteúdo (HTML)", editable=False, blank=True)
 
     def __str__(self):
-        return self.titulo
+        return "Conteúdo da seção 'Sobre Mim'"
+
+    def save(self, *args, **kwargs):
+        self.conteudo_html = markdown2.markdown(self.conteudo_md, extras=["smarty-pants"])
+        super().save(*args, **kwargs)
 
 
 
