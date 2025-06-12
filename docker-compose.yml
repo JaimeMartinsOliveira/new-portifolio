@@ -1,12 +1,83 @@
 # docker-compose.yml
-version: '3.9'
+version: '3.8'
 
 services:
   web:
     build: .
-    ports:
-      - "8000:8000"
+    container_name: portfolio_web
+    command: >
+      sh -c "python manage.py migrate &&
+             gunicorn core.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    expose:
+      - 8000
+    env_file:
+      - .env # Vamos carregar as variáveis de ambiente daqui
+    depends_on:
+      - db # Dependência para um futuro banco de dados
+
+  db:
+    image: postgres:15
+    container_name: portfolio_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+
+  nginx:
+    image: nginx:latest
+    container_name: portfolio_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    depends_on:
+      - web
+
+  evolution-api:
+    container_name: evolution_api
+    image: atendai/evolution-api:v2.1.1
+    restart: always
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    volumes:
+      - evolution_instances:/evolution/instances
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    container_name: evo_postgres
+    image: postgres:15
+    command: ["postgres", "-c", "max_connections=1000"]
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    expose:
+      - 5432
+
+  redis:
+    image: redis:latest
+    container_name: redis
     command: >
-      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+      redis-server --port 6379 --appendonly yes
+    volumes:
+      - redis:/data
+    ports:
+      - 6379:6379
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+  evolution_instances:
