@@ -26,15 +26,15 @@
         .neural-node {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.2);
+            background: rgba(243, 243, 243, 0.39);
+            box-shadow: 0 0 20px 5px rgba(20, 45, 96, 0.32);
             transition: transform 0.1s ease-out;
             pointer-events: none;
         }
 
         .neural-connection {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
             height: 1px;
             transform-origin: left center;
             pointer-events: none;
@@ -172,8 +172,8 @@
             color: white;
             padding: 15px 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);-
-            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            -z-index: 1000;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -246,55 +246,58 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
-    <!-- Título e Subtítulo dinâmicos -->
-     <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100">
-        {{ apresentacao.titulo }}
-        <span class="block md:inline font-semibold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text dark:text-blue-300">
-            - {{ apresentacao.subtitulo }}
-        </span>
-    </h1>
+                <!-- Título e Subtítulo dinâmicos -->
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+                    {{ apresentacao.titulo }}
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-medium mb-6 text-gray-800 dark:text-gray-100">
+                        <span class="block md:inline font-semibold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text dark:text-blue-300">
+            {{ apresentacao.subtitulo }}
+                        </span>
+                </h2>
 
-    <!-- Descrição dinâmica -->
-    <p class="text-lg mb-8 opacity-90">
-        {{ apresentacao.descricao }}
-    </p>
+                <!-- Descrição dinâmica -->
+                <p class="text-lg mb-8 opacity-90">
+                    {{ apresentacao.descricao }}
+                </p>
 
-    <!-- Links dinâmicos: GitHub, LinkedIn e Currículo -->
-    <div class="flex space-x-4">
-        {% if apresentacao.github %}
-            <a href="{{ apresentacao.github }}"
-               class="bg-white text-blue-600 px-6 py-2 rounded-md font-medium hover:bg-gray-100 transition duration-300 flex items-center">
-                <i class="fab fa-github mr-2"></i> GitHub
-            </a>
-        {% endif %}
-        {% if apresentacao.linkedin %}
-            <a href="{{ apresentacao.linkedin }}"
-               class="bg-transparent border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-white hover:text-blue-600 transition duration-300 flex items-center">
-                <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
-            </a>
-        {% endif %}
-        {% if apresentacao.curriculo %}
-            <a href="{{ apresentacao.curriculo }}"
-               class="bg-transparent border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-white hover:text-blue-600 transition duration-300 flex items-center">
-                <i class="fas fa-file-alt mr-2"></i> Currículo
-            </a>
-        {% endif %}
-    </div>
-</div>
+                <!-- Links dinâmicos: GitHub, LinkedIn e Currículo -->
+                <div class="flex space-x-4">
+                    {% if apresentacao.github %}
+                        <a href="{{ apresentacao.github }}"
+                           class="bg-white text-blue-600 px-6 py-2 rounded-md font-medium hover:bg-gray-100 transition duration-300 flex items-center">
+                            <i class="fab fa-github mr-2"></i> GitHub
+                        </a>
+                    {% endif %}
+                    {% if apresentacao.linkedin %}
+                        <a href="{{ apresentacao.linkedin }}"
+                           class="bg-transparent border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-white hover:text-blue-600 transition duration-300 flex items-center">
+                            <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
+                        </a>
+                    {% endif %}
+                    {% if apresentacao.curriculo %}
+                        <a href="{{ apresentacao.curriculo }}"
+                           class="bg-transparent border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-white hover:text-blue-600 transition duration-300 flex items-center">
+                            <i class="fas fa-file-alt mr-2"></i> Currículo
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
 
-<div class="md:w-1/2 flex justify-center mt-8 md:mt-0">
-    <div class="relative">
-        <!-- Imagem dinâmica -->
-        <div class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
-            <img class="w-full h-full object-cover" src="{{ apresentacao.imagem.url }}" alt="Foto de perfil">
-        </div>
+            <div class="md:w-1/2 flex justify-center mt-8 md:mt-0">
+                <div class="relative">
+                    <!-- Imagem dinâmica -->
+                    <div class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                        <img class="w-full h-full object-cover" src="{{ apresentacao.imagem.url }}"
+                             alt="Foto de perfil">
+                    </div>
 
-        <!-- Texto Dinâmico (Desenvolvedor) -->
-        <div class="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 bg-blue-500 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-lg font-medium text-sm md:text-base">
-            <i class="fas fa-code mr-1 md:mr-2"></i> Desenvolvedor
-        </div>
-    </div>
-</div>
+                    <!-- Texto Dinâmico (Desenvolvedor) -->
+                    <div class="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 bg-blue-500 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-lg font-medium text-sm md:text-base">
+                        <i class="fas fa-code mr-1 md:mr-2"></i> Desenvolvedor
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -310,19 +313,19 @@
 
         <div class="flex flex-col md:flex-row items-center">
             <div class="flex flex-col md:flex-row md:gap-10 lg:gap-12 items-start md:items-center px-4">
-            {% if sobre %}
-                <!-- Exibe título e texto -->
-                <div class="md:w-1/2 md:pr-10">
-                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">{{ sobre.titulo }}</h3>
-                    <p class="text-lg leading-relaxed text-justify text-gray-600">{{ sobre.sobre }}</p>
-                </div>
-            {% else %}
-                <!-- Caso não exista conteúdo -->
-                <div class="md:w-1/2 md:pr-10">
-                    <p>Informação não disponível no momento.</p>
-                </div>
-            {% endif %}
-        </div>
+                {% if sobre %}
+                    <!-- Exibe título e texto -->
+                    <div class="md:w-1/2 md:pr-10">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">{{ sobre.titulo }}</h3>
+                        <p class="text-lg leading-relaxed text-justify text-gray-600">{{ sobre.sobre }}</p>
+                    </div>
+                {% else %}
+                    <!-- Caso não exista conteúdo -->
+                    <div class="md:w-1/2 md:pr-10">
+                        <p>Informação não disponível no momento.</p>
+                    </div>
+                {% endif %}
+            </div>
 
 
             <div class="md:w-1/2">
@@ -355,28 +358,55 @@
 </section>
 
 <!-- Skills Section -->
-<section class="py-20 bg-gray-50">
+<section id="skills" class="py-20 sm:py-32 bg-gray-50 dark:bg-gray-900 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Skills</h2>
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+                Habilidades Técnicas
+            </h2>
             <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
-            {% for skill in skills %}
-                <div class="skill-card bg-white p-3 sm:p-4 md:p-6 rounded-lg shadow-sm text-center transition duration-300 hover:shadow-md">
-                    <div class="mb-2 sm:mb-3 md:mb-4">
-                        {% if skill.imagem %}
-                            <img src="{{ skill.imagem.url }}" alt="{{ skill.nome }}"
-                                 class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mx-auto object-contain"
-                                 title="{{ skill.nome }}">
-                        {% endif %}
-                    </div>
-                    <h3 class="font-medium text-gray-800 text-sm sm:text-base">{{ skill.nome }}</h3>
-                </div>
-            {% endfor %}
-        </div>
+        {% if skills_by_category %}
+            <div class="carousel-container relative">
+                <div class="carousel-track flex transition-transform duration-500 ease-in-out">
 
+                    {% for category_name, skills_in_category in skills_by_category.items %}
+                        <div class="skill-category min-w-full px-4">
+                            <h3 class="text-xl font-semibold mb-8 text-center text-blue-600 dark:text-blue-400">{{ category_name }}</h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
+                                {% for skill in skills_in_category %}
+                                    <div class="skill-badge flex flex-col items-center justify-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="{{ skill.imagem.url }}" alt="{{ skill.nome }}"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-gray-800 dark:text-gray-200 text-sm sm:text-base">{{ skill.nome }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+                <button class="carousel-btn carousel-btn--left absolute top-1/2 left-0 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                        aria-label="Anterior">
+                    <i class="fas fa-chevron-left text-gray-800 dark:text-white"></i>
+                </button>
+                <button class="carousel-btn carousel-btn--right absolute top-1/2 right-0 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                        aria-label="Próximo">
+                    <i class="fas fa-chevron-right text-gray-800 dark:text-white"></i>
+                </button>
+
+                <div class="carousel-indicators flex justify-center mt-8 space-x-2">
+                    {% for category_name in skills_by_category %}
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600"
+                                aria-label="Slide {{ forloop.counter }}"></button>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <p class="text-center text-gray-500 dark:text-gray-400">Nenhuma habilidade cadastrada para exibir.</p>
+        {% endif %}
     </div>
 </section>
 
@@ -572,22 +602,22 @@
             </div>
 
             <div class="md:w-1/2">
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm mb-6">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Apoie meu trabalho via PIX</h3>
-                    <div class="text-center mb-4">
-                        <img src="https://jaimemartins.tech/media/pix-qrcode.png" alt="QR Code PIX"
-                             class="pix-qr-code mx-auto mb-3">
-                    </div>
-                    <div class="bg-gray-100 p-3 rounded-lg mb-4 flex justify-between items-center">
-                        <span class="text-gray-800 font-medium truncate">contato.jaimemartins@gmail.com</span>
-                        <button onclick="copyPixKey()"
-                                class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition">
-                            Copiar
-                        </button>
-                    </div>
-                    <p class="text-gray-600 text-sm">Todo apoio é bem-vindo! Ao doar, você me ajuda a criar mais
-                        conteúdo de qualidade.</p>
-                </div>
+                {#                <div class="bg-gray-50 p-6 rounded-xl shadow-sm mb-6">#}
+                {#                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Apoie meu trabalho via PIX</h3>#}
+                {#                    <div class="text-center mb-4">#}
+                {#                        <img src="https://jaimemartins.tech/media/pix-qrcode.png" alt="QR Code PIX"#}
+                {#                             class="pix-qr-code mx-auto mb-3">#}
+                {#                    </div>#}
+                {#                    <div class="bg-gray-100 p-3 rounded-lg mb-4 flex justify-between items-center">#}
+                {#                        <span class="text-gray-800 font-medium truncate">contato.jaimemartins@gmail.com</span>#}
+                {#                        <button onclick="copyPixKey()"#}
+                {#                                class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition">#}
+                {#                            Copiar#}
+                {#                        </button>#}
+                {#                    </div>#}
+                {#                    <p class="text-gray-600 text-sm">Todo apoio é bem-vindo! Ao doar, você me ajuda a criar mais#}
+                {#                        conteúdo de qualidade.</p>#}
+                {#                </div>#}
 
                 <form class="bg-gray-50 p-8 rounded-xl shadow-sm">
                     <div class="mb-6">
@@ -1016,6 +1046,56 @@
             },
         });
     });
+    const track = document.querySelector('.carousel-track');
+    if (track) {
+        const items = document.querySelectorAll('.skill-category');
+        const btnPrev = document.querySelector('.carousel-btn--left');
+        const btnNext = document.querySelector('.carousel-btn--right');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        let currentIndex = 0;
+        const totalSlides = items.length;
+        let autoRotateTimeout;
+
+        if (totalSlides > 0) {
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                indicators.forEach((indicator, i) => {
+                    indicator.classList.toggle('bg-blue-600', i === currentIndex);
+                    indicator.classList.toggle('dark:bg-blue-400', i === currentIndex);
+                });
+                btnPrev.disabled = currentIndex === 0;
+                btnNext.disabled = currentIndex === totalSlides - 1;
+                clearTimeout(autoRotateTimeout);
+                autoRotateTimeout = setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    updateCarousel();
+                }, 5000);
+            }
+
+            btnNext.addEventListener('click', () => {
+                if (currentIndex < totalSlides - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            btnPrev.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            updateCarousel(); // Inicia o carrossel
+        }
+    }
 </script>
 
 </body>
