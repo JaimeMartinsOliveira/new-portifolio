@@ -281,9 +281,9 @@
 
          /* Estilo para o MODO CLARO (padrão) */
         .markdown-body {
-            background-color: rgba(222, 222, 222, 0.85);  /* Fundo branco */
+            background-color: rgb(247, 248, 249);  /* Fundo branco */
             color: rgb(0, 0, 0);             /* Texto escuro */
-            border: 1px solid rgba(225, 228, 232, 0.6);  /* Borda cinza clara */
+            border: 1px solid rgb(247, 248, 249);  /* Borda cinza clara */
             border-radius: 8px;
             padding: 25px;
         }
@@ -449,7 +449,7 @@
 
             <div class="md:w-1/2 mb-10 md:mb-0">
                 {% if sobre_mim %}
-                    <div class="markdown-body dark:bg-transparent">
+                    <div id="markdown-content" class="markdown-body">
                         {{ sobre_mim.conteudo_html|safe }}
                     </div>
                 {% else %}
