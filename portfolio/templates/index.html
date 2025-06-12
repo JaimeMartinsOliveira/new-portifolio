@@ -15,43 +15,32 @@
             scroll-behavior: smooth;
         }
 
-        .hero-gradient {
-            background: linear-gradient(-45deg, #1e3a8a, #0ea5e9, #3b82f6, #60a5fa);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+
+        /* ===================================================================
+           2. ESTILOS DE COMPONENTES REUTILIZÁVEIS
+           =================================================================== */
+
+        /* --- Links da Barra de Navegação --- */
+        .nav-link {
             position: relative;
-            overflow: hidden;
         }
 
-        .neural-node {
+        .nav-link::after {
+            content: '';
             position: absolute;
-            border-radius: 50%;
-            background: rgba(243, 243, 243, 0.39);
-            box-shadow: 0 0 20px 5px rgba(20, 45, 96, 0.32);
-            transition: transform 0.1s ease-out;
-            pointer-events: none;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
         }
 
-        .neural-connection {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.5);
-            height: 1px;
-            transform-origin: left center;
-            pointer-events: none;
+        .nav-link:hover::after {
+            width: 100%;
         }
 
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
+        /* --- Efeitos Hover para Cards --- */
         .skill-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
@@ -75,25 +64,158 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
-        .nav-link {
+
+        /* ===================================================================
+           3. ESTILOS DE SEÇÕES ESPECÍFICAS
+           =================================================================== */
+
+        /* --- Banner Principal (Hero) --- */
+        .hero-gradient {
+            background: linear-gradient(-45deg, #1e3a8a, #0ea5e9, #3b82f6, #60a5fa);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
             position: relative;
+            overflow: hidden;
         }
 
-        .nav-link::after {
-            content: '';
+        .dark .hero-gradient {
+            background: linear-gradient(-45deg, #0f172a, #1e40af, #1e3a8a, #2563eb);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        /* Animação de Partículas (se aplicável) */
+        .neural-node {
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #3b82f6;
-            transition: width 0.3s ease;
+            border-radius: 50%;
+            background: rgba(243, 243, 243, 0.39);
+            box-shadow: 0 0 20px 5px rgba(20, 45, 96, 0.32);
+            transition: transform 0.1s ease-out;
+            pointer-events: none;
         }
 
-        .nav-link:hover::after {
-            width: 100%;
+        .neural-connection {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+            height: 1px;
+            transform-origin: left center;
+            pointer-events: none;
         }
 
+        /* --- Seção de Skills & Carrossel --- */
+        /* Modo Claro (Padrão) */
+        #skills {
+            background-color: #f9fafb;
+        }
+
+        #skills h2, #skills .skill-badge span {
+            color: #1f2937;
+        }
+
+        #skills .skill-category h3 {
+            color: #2563eb;
+        }
+
+        #skills .skill-badge {
+            background-color: #ffffff;
+            border-color: #e5e7eb;
+        }
+
+        #skills .carousel-btn {
+            background-color: #ffffff;
+            border: 1px solid #e1e4e8;
+        }
+
+        #skills .carousel-btn i {
+            color: #1f2937;
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .carousel-indicator.active {
+            background-color: #2563eb;
+        }
+
+        /* Modo Escuro */
+        .dark #skills {
+            background-color: #111827;
+        }
+
+        .dark #skills h2, .dark #skills .skill-badge span {
+            color: #f3f4f6;
+        }
+
+        .dark #skills .skill-category h3 {
+            color: #60a5fa;
+        }
+
+        .dark #skills .skill-badge {
+            background-color: #1f2937;
+            border-color: #374151;
+        }
+
+        .dark #skills .carousel-btn {
+            background-color: #1f2937;
+            border-color: #374151;
+        }
+
+        .dark #skills .carousel-btn i {
+            color: #f9fafb;
+        }
+
+        .dark .carousel-indicator.active {
+            background-color: #60a5fa;
+        }
+
+
+        /* --- Formulário de Contato e PIX --- */
+        .pix-qr-code {
+            max-width: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .message-box {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        .message-box.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* ===================================================================
+           4. ANIMAÇÕES (KEYFRAMES)
+           =================================================================== */
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* A animação 'pulse' é idêntica à 'gradient', pode ser removida se não houver diferença */
         .animated-bg {
             animation: pulse 6s infinite;
         }
@@ -110,7 +232,12 @@
             }
         }
 
-        /* Dark mode styles */
+
+        /* ===================================================================
+           5. DARK MODE GENÉRICO (LEGADO)
+           Nota: É preferível usar as classes 'dark:' do Tailwind diretamente
+           no HTML em vez destas regras genéricas.
+           =================================================================== */
         body.dark {
             background-color: #1a202c;
             color: #e2e8f0;
@@ -149,40 +276,6 @@
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
         }
 
-        .dark .hero-gradient {
-            background: linear-gradient(-45deg, #0f172a, #1e40af, #1e3a8a, #2563eb);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-        }
-
-        /* PIX section styles */
-        .pix-qr-code {
-            max-width: 200px;
-            margin: 0 auto;
-            display: block;
-        }
-
-        /* Message box for form submission */
-        .message-box {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            -z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-        }
-
-        .message-box.show {
-            opacity: 1;
-            visibility: visible;
-        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -312,18 +405,13 @@
         </div>
 
         <div class="flex flex-col md:flex-row items-center">
-            <div class="flex flex-col md:flex-row md:gap-10 lg:gap-12 items-start md:items-center px-4">
-                {% if sobre %}
-                    <!-- Exibe título e texto -->
-                    <div class="md:w-1/2 md:pr-10">
-                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">{{ sobre.titulo }}</h3>
-                        <p class="text-lg leading-relaxed text-justify text-gray-600">{{ sobre.sobre }}</p>
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                {% if sobre_mim %}
+                    <div class="markdown-body dark:bg-transparent">
+                        {{ sobre_mim.conteudo_html|safe }}
                     </div>
                 {% else %}
-                    <!-- Caso não exista conteúdo -->
-                    <div class="md:w-1/2 md:pr-10">
-                        <p>Informação não disponível no momento.</p>
-                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">Informações sobre mim não disponíveis no momento.</p>
                 {% endif %}
             </div>
 
@@ -358,10 +446,10 @@
 </section>
 
 <!-- Skills Section -->
-<section id="skills" class="py-20 sm:py-32 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+<section id="skills" class="py-20 sm:py-32 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+            <h2 class="text-3xl font-extrabold sm:text-4xl">
                 Habilidades Técnicas
             </h2>
             <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
@@ -370,36 +458,34 @@
         {% if skills_by_category %}
             <div class="carousel-container relative">
                 <div class="carousel-track flex transition-transform duration-500 ease-in-out">
-
                     {% for category_name, skills_in_category in skills_by_category.items %}
                         <div class="skill-category min-w-full px-4">
-                            <h3 class="text-xl font-semibold mb-8 text-center text-blue-600 dark:text-blue-400">{{ category_name }}</h3>
+                            <h3 class="text-xl font-semibold mb-8 text-center">{{ category_name }}</h3>
                             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
                                 {% for skill in skills_in_category %}
-                                    <div class="skill-badge flex flex-col items-center justify-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                                         <img src="{{ skill.imagem.url }}" alt="{{ skill.nome }}"
                                              class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
-                                        <span class="font-medium text-gray-800 dark:text-gray-200 text-sm sm:text-base">{{ skill.nome }}</span>
+                                        <span class="font-medium text-sm sm:text-base">{{ skill.nome }}</span>
                                     </div>
                                 {% endfor %}
                             </div>
                         </div>
                     {% endfor %}
-
                 </div>
 
-                <button class="carousel-btn carousel-btn--left absolute top-1/2 left-0 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                <button class="carousel-btn carousel-btn--left absolute top-1/2 left-0 md:-left-4 -translate-y-1/2 rounded-full w-10 h-10 flex items-center justify-center shadow-md transition"
                         aria-label="Anterior">
-                    <i class="fas fa-chevron-left text-gray-800 dark:text-white"></i>
+                    <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="carousel-btn carousel-btn--right absolute top-1/2 right-0 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                <button class="carousel-btn carousel-btn--right absolute top-1/2 right-0 md:-right-4 -translate-y-1/2 rounded-full w-10 h-10 flex items-center justify-center shadow-md transition"
                         aria-label="Próximo">
-                    <i class="fas fa-chevron-right text-gray-800 dark:text-white"></i>
+                    <i class="fas fa-chevron-right"></i>
                 </button>
 
                 <div class="carousel-indicators flex justify-center mt-8 space-x-2">
                     {% for category_name in skills_by_category %}
-                        <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600"
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transition"
                                 aria-label="Slide {{ forloop.counter }}"></button>
                     {% endfor %}
                 </div>
