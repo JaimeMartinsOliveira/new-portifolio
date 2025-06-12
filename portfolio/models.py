@@ -35,13 +35,20 @@ class Projeto(models.Model):
 
 
 class Skill(models.Model):
+    # CORRIJA ESTA LISTA DE OPÇÕES
+    CATEGORY_CHOICES = [
+        ('backend', 'Backend Development'),
+        ('frontend', 'Frontend Development'), # <-- Adicione esta linha
+        ('database_tools', 'Database & Tools'),
+        ('ai_other', 'AI & Other Skills'),
+    ]
+
     nome = models.CharField(max_length=100)
-    nivel = models.CharField(max_length=50, blank=True)
-    imagem = models.ImageField(upload_to='experiencias/', blank=True, null=True)
+    imagem = models.ImageField(upload_to='skills/')
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='backend', verbose_name="Categoria")
 
     def __str__(self):
-        return self.nome
-
+        return f"{self.nome} ({self.get_category_display()})"
 
 class Formacao(models.Model):
     imagem = models.ImageField(upload_to='experiencias/', blank=True, null=True)
