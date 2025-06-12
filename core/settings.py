@@ -1,15 +1,27 @@
+# core/settings.py (Versão Pronta para Produção)
+
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 
-# Configuração base do projeto
+# Carrega as variáveis de ambiente do arquivo .env
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = 'django-insecure-u)t-wixl$5j8j_jqh4@-wp^0^m)emy1@2u-1u4skh%qj3jffr*'
-DEBUG = True
-ALLOWED_HOSTS = ['15.228.28.91', 'jaimemartins.tech', 'www.jaimemartins.tech', '127.0.0.1']
-ROOT_URLCONF = 'core.urls'
-WSGI_APPLICATION = 'core.wsgi.application'
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
-# Aplicações instaladas
+# --- Configurações de Segurança ---
+# Carrega a SECRET_KEY do ambiente. NUNCA deixe a chave exposta no código.
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+# DEBUG deve ser False em produção. Carrega do ambiente.
+# A conversão para booleano garante que 'False' ou a ausência da variável resulte em False.
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+# Carrega os hosts permitidos do ambiente, separados por vírgula
+ALLOWED_HOSTS_str = os.getenv('ALLOWED_HOSTS', '')
+ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_str.split(',') if host.strip()]
+
+
+# --- Aplicações e Middlewares ---
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -17,7 +29,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Suas aplicações
     'blog',
     'portfolio',
     'captcha',
@@ -34,11 +45,16 @@ MIDDLEWARE = [
     'captcha.middleware.VisitorNotificationMiddleware',
 ]
 
-# Configuração de Templates
+ROOT_URLCONF = 'core.urls'
+WSGI_APPLICATION = 'core.wsgi.application'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# --- Templates ---
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'], # Procure por uma pasta 'templates' na raiz
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -50,36 +66,36 @@ TEMPLATES = [
     },
 ]
 
-# Base de Dados
+
+# --- Banco de Dados (Configurado para PostgreSQL via Docker) ---
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': 'db',  # Nome do serviço do banco de dados no docker-compose.yml
+        'PORT': '5432',
     }
 }
 
-# Ficheiros Estáticos e Média
+
+# --- Arquivos Estáticos e de Mídia ---
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static', # Procure por uma pasta 'static' na raiz
-]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles' # O collectstatic vai juntar os arquivos aqui
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+# Não é mais necessário STATICFILES_DIRS se os arquivos estáticos estiverem dentro das apps
 
-# Configuração do Tailwind CSS
-TAILWIND_APP_NAME = 'theme'
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
 
-# Internacionalização
+# --- Internacionalização ---
 LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 USE_TZ = True
 
-# Validadores de Password
+
+# --- Validadores de Senha (padrão) ---
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -87,10 +103,20 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Logging
+
+# --- Logging ---
 LOGGING = {
     'version': 1, 'disable_existing_loggers': False,
     'formatters': {'verbose': {'format': '{levelname} {asctime} {module} {message}', 'style': '{'}},
-    'handlers': {'file': {'level': 'INFO', 'class': 'logging.FileHandler', 'filename': 'user_access.log', 'formatter': 'verbose'}},
-    'loggers': {'user_access': {'handlers': ['file'], 'level': 'INFO', 'propagate': True}},
+    'handlers': {'console': {'class': 'logging.StreamHandler'}, 'file': {'level': 'INFO', 'class': 'logging.FileHandler', 'filename': 'user_access.log', 'formatter': 'verbose'}},
+    'loggers': {'user_access': {'handlers': ['file', 'console'], 'level': 'INFO', 'propagate': True}},
 }
+
+# --- Segurança Adicional para Produção (quando não estiver em modo DEBUG) ---
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 ano
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
