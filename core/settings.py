@@ -1,22 +1,15 @@
-# core/settings.py (Versão Pronta para Produção)
-
+# core/settings.py
 import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Carrega as variáveis de ambiente do arquivo .env
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
-# --- Configurações de Segurança ---
-# Carrega a SECRET_KEY do ambiente. NUNCA deixe a chave exposta no código.
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# DEBUG deve ser False em produção. Carrega do ambiente.
-# A conversão para booleano garante que 'False' ou a ausência da variável resulte em False.
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-# Carrega os hosts permitidos do ambiente, separados por vírgula
 ALLOWED_HOSTS_str = os.getenv('ALLOWED_HOSTS', '')
 ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_str.split(',') if host.strip()]
 
@@ -50,7 +43,6 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# --- Templates ---
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -67,35 +59,40 @@ TEMPLATES = [
 ]
 
 
-# --- Banco de Dados (Configurado para PostgreSQL via Docker) ---
-DATABASES = {
-    'default': {
+DATABASES = {}
+USE_DOCKER_DB = os.getenv('USE_DOCKER_DB', 'True') == 'True'
+
+if USE_DOCKER_DB:
+    print("INFO: Usando o banco de dados PostgreSQL (Docker).")
+    DATABASES['default'] = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('POSTGRES_DB'),
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': 'db',  # Nome do serviço do banco de dados no docker-compose.yml
+        'HOST': 'db',
         'PORT': '5432',
     }
-}
+else:
+    print("INFO: Usando o banco de dados SQLite (Local).")
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 
 
-# --- Arquivos Estáticos e de Mídia ---
+
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles' # O collectstatic vai juntar os arquivos aqui
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-# Não é mais necessário STATICFILES_DIRS se os arquivos estáticos estiverem dentro das apps
 
 
-# --- Internacionalização ---
 LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 USE_TZ = True
 
 
-# --- Validadores de Senha (padrão) ---
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -104,7 +101,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# --- Logging ---
 LOGGING = {
     'version': 1, 'disable_existing_loggers': False,
     'formatters': {'verbose': {'format': '{levelname} {asctime} {module} {message}', 'style': '{'}},
@@ -112,7 +108,6 @@ LOGGING = {
     'loggers': {'user_access': {'handlers': ['file', 'console'], 'level': 'INFO', 'propagate': True}},
 }
 
-# --- Segurança Adicional para Produção (quando não estiver em modo DEBUG) ---
 if not DEBUG:
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
