@@ -1,27 +1,23 @@
-# docker-compose.yml (Versão Corrigida e Comentada)
 version: '3.8'
 
 services:
-  # --- Serviço da sua Aplicação Portfolio (Django) ---
   web:
     build: .
     container_name: portfolio_web
     command: >
-      sh -c "python manage.py collectstatic --noinput && 
-             python manage.py migrate &&
-             gunicorn core.wsgi:application --bind 0.0.0.0:8000"
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8001"
     volumes:
       - .:/app
-      - static_volume:/app/staticfiles  # Volume para arquivos estáticos
-      - media_volume:/app/media        # Volume para uploads de mídia
-    expose:
-      - 8000
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    ports:
+      - "8001:8001"
     env_file:
       - .env
     depends_on:
-      - db  # Depende do banco de dados do portfólio
+      - db
 
-  # --- Banco de Dados para o Portfolio ---
   db:
     image: postgres:15
     container_name: portfolio_db
@@ -30,20 +26,6 @@ services:
     env_file:
       - .env
 
-  # --- Servidor Web Nginx (Fica na frente de tudo) ---
-  nginx:
-    image: nginx:latest
-    container_name: portfolio_nginx
-    ports:
-      - "80:80" # Mapeia a porta 80 do seu PC para a porta 80 do contêiner
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      - static_volume:/app/staticfiles
-      - media_volume:/app/media
-    depends_on:
-      - web
-
-  # --- Serviço da Evolution API ---
   evolution-api:
     container_name: evolution_api
     image: atendai/evolution-api:v2.1.1
@@ -55,23 +37,21 @@ services:
     volumes:
       - evolution_instances:/evolution/instances
     depends_on:
-      - postgres  # Correção: Depende do serviço 'postgres'
+      - postgres
       - redis
 
-  # --- Banco de Dados para a Evolution API ---
   postgres:
     container_name: evo_postgres
     image: postgres:15
     command: ["postgres", "-c", "max_connections=1000"]
     restart: always
     environment:
-      POSTGRES_USER: ${EVO_POSTGRES_USER} # Usa variáveis do .env
+      POSTGRES_USER: ${EVO_POSTGRES_USER}
       POSTGRES_PASSWORD: ${EVO_POSTGRES_PASSWORD}
       POSTGRES_DB: ${EVO_POSTGRES_DB}
     volumes:
       - evolution_postgres_data:/var/lib/postgresql/data
 
-  # --- Serviço do Redis para Cache da Evolution API ---
   redis:
     image: redis:latest
     container_name: redis
@@ -79,7 +59,18 @@ services:
     volumes:
       - redis_data:/data
 
-# Definição dos volumes nomeados para persistência de dados
+  nginx:
+    image: nginx:latest
+    container_name: portfolio_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    depends_on:
+      - web
+
 volumes:
   portfolio_postgres_data:
   evolution_postgres_data:
