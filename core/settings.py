@@ -102,10 +102,33 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 LOGGING = {
-    'version': 1, 'disable_existing_loggers': False,
-    'formatters': {'verbose': {'format': '{levelname} {asctime} {module} {message}', 'style': '{'}},
-    'handlers': {'console': {'class': 'logging.StreamHandler'}, 'file': {'level': 'INFO', 'class': 'logging.FileHandler', 'filename': 'user_access.log', 'formatter': 'verbose'}},
-    'loggers': {'user_access': {'handlers': ['file', 'console'], 'level': 'INFO', 'propagate': True}},
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            # CORREÇÃO AQUI:
+            'filename': '/app/logs/user_access.log',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'user_access': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
 }
 
 if not DEBUG:
