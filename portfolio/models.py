@@ -85,3 +85,17 @@ class Apresentacao(models.Model):
 
     def __str__(self):
         return self.nome
+
+class VisitorCount(models.Model):
+    """
+    Modelo para armazenar a contagem global de visitantes.
+    Haverá apenas uma entrada nesta tabela (com ID=1).
+    """
+    count = models.PositiveIntegerField(default=0, verbose_name="Contagem")
+
+    def __str__(self):
+        return f"Contagem de Visitantes: {self.count}"
+
+    class Meta:
+        verbose_name = "Contagem de Visitante"
+        verbose_name_plural = "Contagens de Visitantes"
