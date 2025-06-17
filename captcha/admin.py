@@ -1,8 +1,13 @@
+# captcha/admin.py
 from django.contrib import admin
-from .models import PageView
+from .models import CaptchaLog, PageView # Importe o PageView
+
+@admin.register(CaptchaLog)
+class CaptchaLogAdmin(admin.ModelAdmin):
+    list_display = ('ip_address', 'timestamp', 'action')
 
 @admin.register(PageView)
 class PageViewAdmin(admin.ModelAdmin):
-    list_display = ('ip_address', 'source', 'country', 'region', 'city', 'browser', 'operating_system', 'timestamp')
-    search_fields = ('ip_address', 'source', 'country', 'referrer', 'browser', 'operating_system')
-    list_filter = ('source', 'country', 'region', 'timestamp')
+    list_display = ('ip_address', 'source', 'country', 'city', 'browser', 'operating_system', 'timestamp')
+    list_filter = ('source', 'country', 'browser', 'operating_system', 'timestamp')
+    search_fields = ('ip_address', 'city', 'country')
