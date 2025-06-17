@@ -786,7 +786,7 @@
         <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
                 <p class="text-gray-400">© 2024 - Design and Code by Jaime Martins.</p>
-                <p class="text-gray-400 text-sm mt-1">Visitas: <span id="view-counter">0</span></p>
+                <p class="text-gray-400 text-sm mt-1">Visitas: <span id="visitor-count">{{ total_visitors }}</span></p>
             </div>
             <div class="flex space-x-6">
                 <a href="https://www.linkedin.com/in/jaime-martins-de-oliveira/"
@@ -1002,99 +1002,6 @@
         }, 3000); // Ocultar após 3 segundos
     }
 
-    // Contador de visitas local (não persistente)
-    let localViewCount = parseInt(localStorage.getItem('portfolioLocalViewCount') || '0');
-
-    // Registrar visitante e obter contagem de visualizações
-    async function registerVisit() {
-        // Verifica se já registrou uma visita recentemente (para evitar duplicações por recarregamento)
-        const lastVisit = localStorage.getItem('lastPortfolioVisit');
-        const now = new Date().getTime();
-        const oneDay = 24 * 60 * 60 * 1000; // 24 horas em milissegundos
-
-        if (lastVisit && (now - lastVisit < oneDay)) {
-            console.log('Visita já registrada recentemente. Pulando.');
-            return;
-        }
-
-        const visitData = {
-            timestamp: new Date().toISOString(),
-            userAgent: navigator.userAgent,
-            screenWidth: window.screen.width,
-            screenHeight: window.screen.height,
-            language: navigator.language || navigator.browserLanguage,
-            referrer: document.referrer,
-            urlVisited: window.location.href
-        };
-
-        try {
-            // IMPORTANTE: Substitua 'https://your-backend-domain/api/register-visit' pela sua URL real do backend.
-            // Esta URL será fornecida pelo DeepSite assim que o backend for criado.
-            // Enquanto o backend não estiver ativo, a requisição abaixo está comentada para evitar erros.
-            /*
-            const response = await fetch('https://your-backend-domain/api/register-visit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(visitData)
-            });
-
-            if (response.ok) {
-                console.log('Visita registrada com sucesso no backend!');
-                localStorage.setItem('lastPortfolioVisit', now);
-
-                // Atualiza a contagem de visualizações se o backend retornar
-                const data = await response.json();
-                if (data.totalViews) {
-                    document.getElementById('view-counter').textContent = data.totalViews;
-                }
-            } else {
-                console.error('Falha ao registrar visita no backend:', response.statusText);
-                // Fallback para o contador local se o novo backend falhar
-                updateViewCounterLocal();
-            }
-            */
-            console.warn('O registro de visitas no backend está desabilitado. Por favor, configure e inicie seu backend em "https://your-backend-domain/api/register-visit" para ativar o rastreamento.');
-            localStorage.setItem('lastPortfolioVisit', now); // Ainda marca a visita para evitar spam de console
-            updateViewCounterLocal(); // Incrementa o contador local
-        } catch (error) {
-            console.error('Erro de rede ao tentar registrar visita no backend:', error);
-            // Fallback para o contador local se o novo backend falhar
-            updateViewCounterLocal();
-        }
-    }
-
-    // Atualizador de contador de visualizações local (não persistente)
-    function updateViewCounterLocal() {
-        localViewCount++;
-        localStorage.setItem('portfolioLocalViewCount', localViewCount.toString()); // Salva para reabrir a aba no mesmo navegador
-        document.getElementById('view-counter').textContent = localViewCount;
-
-        // A lógica de notificação do WhatsApp está desabilitada pois depende de uma API externa e de um contador persistente.
-        /*
-        if (localViewCount === 1) { // Nota: Isso só funcionará na primeira "visita" após um cache limpo ou se o localStorage for apagado.
-            const whatsappNotification = {
-                number: "5548996354498", // Seu número de WhatsApp com código do país
-                message: `🚀 Nova visita no seu portfólio! Total de acessos: ${localViewCount}`
-            };
-
-            // IMPORTANTE: Substitua 'https://your-evolution-api-instance/send-message' pelo seu endpoint real da Evolution API.
-            // Além disso, garanta que 'YOUR_EVOLUTION_API_KEY' seja uma chave válida, se necessário.
-            fetch('https://your-evolution-api-instance/send-message', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer YOUR_EVOLUTION_API_KEY'
-                },
-                body: JSON.stringify(whatsappNotification)
-            })
-            .then(response => response.json())
-            .then(data => console.log('Notificação do WhatsApp enviada:', data))
-            .catch(error => console.error('Erro ao enviar notificação do WhatsApp:', error));
-        }
-        */
-    }
 
     // Enhanced PIX key copy with better feedback
     function copyPixKey() {
