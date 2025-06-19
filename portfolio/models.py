@@ -1,7 +1,6 @@
 import markdown2
 from django.db import models
 
-
 class Tecnologia(models.Model):
     nome = models.CharField(max_length=50)
     descricao = models.TextField(blank=True)
@@ -14,7 +13,8 @@ class Experience(models.Model):
     titulo = models.CharField(max_length=100)
     empresa = models.CharField(max_length=100, blank=True)
     periodo = models.CharField(max_length=100, blank=True)
-    descricao = models.TextField()
+    descricao_md = models.TextField(verbose_name="Descrição (Markdown)", blank=True)
+    descricao_html = models.TextField(verbose_name="Descrição (HTML)", editable=False, blank=True)
     tecnologias = models.ManyToManyField(Tecnologia, blank=True)
     imagem = models.ImageField(upload_to='experiencias/', blank=True, null=True)
     link = models.URLField(blank=True, null=True)
@@ -22,6 +22,9 @@ class Experience(models.Model):
     def __str__(self):
         return f"{self.empresa} - {self.titulo}"
 
+    def save(self, *args, **kwargs):
+        self.descricao_html = markdown2.markdown(self.descricao_md, extras=["smarty-pants"])
+        super().save(*args, **kwargs)
 
 class Projeto(models.Model):
     titulo = models.CharField(max_length=100)
