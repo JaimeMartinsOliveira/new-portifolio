@@ -63,7 +63,6 @@ def save_detailed_page_view(request):
 
 def send_whatsapp_notification(request):
     """ Envia notificação do WhatsApp. """
-    # ... (O código desta função continua exatamente o mesmo que antes) ...
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
         ip_address = x_forwarded_for.split(',')[0]
@@ -72,18 +71,42 @@ def send_whatsapp_notification(request):
 
     one_hour_ago = timezone.now() - timedelta(hours=1)
     if CaptchaLog.objects.filter(ip_address=ip_address, timestamp__gte=one_hour_ago).exists():
+        # Adicionado um log para clareza
+        logging.info(f"Notificação para o IP {ip_address} já foi enviada na última hora. Pulando.")
+        return
+
+    # CORREÇÃO: Carregar o número do destinatário do .env
+    recipient_phone = os.getenv('WHATSAPP_RECIPIENT_PHONE')
+    if not recipient_phone:
+        logging.error("A variável de ambiente WHATSAPP_RECIPIENT_PHONE não está definida.")
         return
 
     path_info = request.path_info
-    print(f"Tentando enviar notificação para o IP: {ip_address} que acessou {path_info}")
+    logging.info(f"Tentando enviar notificação para o IP: {ip_address} que acessou {path_info}")
+
     try:
-        message = f"🚨 *Alerta de Visita no Portfólio* 🚨\n\nUm novo visitante acessou seu site!\n\n*IP:* `{ip_address}`\n*Página:* `{path_info}`"
+        # Monta a mensagem a ser enviada
+        message = (
+            f"🚨 *Alerta de Visita no Portfólio* 🚨\n\n"
+            f"Um novo visitante acessou seu site!\n\n"
+            f"*IP:* `{ip_address}`\n"
+            f"*Página:* `{path_info}`"
+        )
+
         api = EvolutionAPI()
-        api.send_text_message(message)
-        CaptchaLog.objects.create(ip_address=ip_address, action='notification_sent')
-        print(f"Notificação enviada com sucesso para o IP: {ip_address}")
+
+        # CORREÇÃO: Chamar a função com os dois argumentos necessários: número e texto
+        response = api.send_text_message(number=recipient_phone, text=message)
+
+        # Adicionar verificação de resposta
+        if response:
+            CaptchaLog.objects.create(ip_address=ip_address, action='notification_sent')
+            logging.info(f"Notificação enviada com sucesso para o IP: {ip_address}")
+        else:
+            logging.error(f"Falha ao enviar notificação para o IP: {ip_address}. Resposta da API foi nula.")
+
     except Exception as e:
-        print(f"Erro ao enviar notificação para o IP {ip_address}: {e}")
+        logging.error(f"Erro inesperado ao processar notificação para o IP {ip_address}: {e}")
 
 
 def process_first_visit(request):
