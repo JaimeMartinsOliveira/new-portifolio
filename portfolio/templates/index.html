@@ -9,9 +9,10 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -281,20 +282,20 @@
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
         }
 
-         /* Estilo para o MODO CLARO (padrão) */
+        /* Estilo para o MODO CLARO (padrão) */
         .markdown-body {
-            background-color: rgb(247, 248, 249);  /* Fundo branco */
-            color: rgb(0, 0, 0);             /* Texto escuro */
-            border: 1px solid rgb(247, 248, 249);  /* Borda cinza clara */
+            background-color: rgb(247, 248, 249); /* Fundo branco */
+            color: rgb(0, 0, 0); /* Texto escuro */
+            border: 1px solid rgb(247, 248, 249); /* Borda cinza clara */
             border-radius: 8px;
             padding: 25px;
         }
 
         /* Estilos para o MODO ESCURO */
         .dark .markdown-body {
-            background-color: rgba(13, 17, 23, 0.56);  /* Fundo escuro (cor do GitHub) */
-            color: #c9d1d9;             /* Texto claro */
-            border-color: #30363d;      /* Borda escura */
+            background-color: rgba(13, 17, 23, 0.56); /* Fundo escuro (cor do GitHub) */
+            color: #c9d1d9; /* Texto claro */
+            border-color: #30363d; /* Borda escura */
         }
 
         /* Ajustes finos para títulos e links no modo escuro */
@@ -318,6 +319,22 @@
 
         .dark .markdown-body strong {
             color: #c9d1d9; /* Cor para texto em negrito */
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
         }
     </style>
 </head>
@@ -357,8 +374,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a href="#sobre"
-               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Sobre
-                mim</a>
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Sobre mim</a>
             <a href="#experiencia"
                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Experiência</a>
             <a href="#projetos"
@@ -423,7 +439,7 @@
             <div class="md:w-1/2 flex justify-center mt-8 md:mt-0">
                 <div class="relative">
                     <!-- Imagem dinâmica -->
-                    <div class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                    <div class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl animate-float">
                         <img class="w-full h-full object-cover" src="{{ apresentacao.imagem.url }}"
                              alt="Foto de perfil">
                     </div>
@@ -479,7 +495,7 @@
                                 </div>
                             </div>
                         {% empty %}
-                             <p class="text-gray-500 dark:text-gray-400">Nenhuma formação acadêmica para exibir.</p>
+                            <p class="text-gray-500 dark:text-gray-400">Nenhuma formação acadêmica para exibir.</p>
                         {% endfor %}
                     </div>
                 </div>
@@ -565,7 +581,8 @@
                     {% endif %}
 
                     <!-- Descrição -->
-                    <<div id="markdown-content" class="markdown-body">
+                    <
+                    <div id="markdown-content" class="markdown-body">
                         {{ exp.descricao_html|safe }}
                     </div>
 
@@ -1135,60 +1152,60 @@
     }
 </script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Procura por todos os itens de experiência na página
-    document.querySelectorAll('.experience-item').forEach(item => {
-        const rawMarkdownDiv = item.querySelector('.raw-markdown');
-        const markdownContainer = item.querySelector('.markdown-container');
+    document.addEventListener('DOMContentLoaded', () => {
+        // Procura por todos os itens de experiência na página
+        document.querySelectorAll('.experience-item').forEach(item => {
+            const rawMarkdownDiv = item.querySelector('.raw-markdown');
+            const markdownContainer = item.querySelector('.markdown-container');
 
-        // Verifica se os elementos necessários existem
-        if (rawMarkdownDiv && markdownContainer) {
-            // Usa a biblioteca 'marked' para converter o texto
-            const renderedHtml = marked.parse(rawMarkdownDiv.innerHTML);
-            // Insere o HTML convertido no container visível
-            markdownContainer.innerHTML = renderedHtml;
+            // Verifica se os elementos necessários existem
+            if (rawMarkdownDiv && markdownContainer) {
+                // Usa a biblioteca 'marked' para converter o texto
+                const renderedHtml = marked.parse(rawMarkdownDiv.innerHTML);
+                // Insere o HTML convertido no container visível
+                markdownContainer.innerHTML = renderedHtml;
+            }
+        });
+
+        // Se a biblioteca de realce de sintaxe (hljs) estiver carregada, a executa
+        if (typeof hljs !== 'undefined') {
+            hljs.highlightAll();
         }
     });
-
-    // Se a biblioteca de realce de sintaxe (hljs) estiver carregada, a executa
-    if (typeof hljs !== 'undefined') {
-        hljs.highlightAll();
-    }
-});
 </script>
 <script>
-      document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
         // Encontra o elemento com a classe '.swiper' e o inicializa
         const swiper = new Swiper('.swiper', {
-          // Opções do carrossel
-          loop: true, // Faz o carrossel girar em loop
-          slidesPerView: 1, // Começa mostrando 1 slide em telas pequenas
-          spaceBetween: 30, // Espaço entre os slides
+            // Opções do carrossel
+            loop: true, // Faz o carrossel girar em loop
+            slidesPerView: 1, // Começa mostrando 1 slide em telas pequenas
+            spaceBetween: 30, // Espaço entre os slides
 
-          // Bolinhas de paginação
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
-
-          // Setas de navegação
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-            // Deixa o carrossel responsivo
-          breakpoints: {
-            // Quando a largura da tela for >= 768px
-            768: {
-              slidesPerView: 2, // Mostra 2 slides
+            // Bolinhas de paginação
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
             },
-            // Quando a largura da tela for >= 1024px
-            1024: {
-              slidesPerView: 3, // Mostra 3 slides
+
+            // Setas de navegação
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            // Deixa o carrossel responsivo
+            breakpoints: {
+                // Quando a largura da tela for >= 768px
+                768: {
+                    slidesPerView: 2, // Mostra 2 slides
+                },
+                // Quando a largura da tela for >= 1024px
+                1024: {
+                    slidesPerView: 3, // Mostra 3 slides
+                }
             }
-          }
         });
-      });
+    });
 </script>
 </body>
 </html>
