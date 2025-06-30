@@ -63,7 +63,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/certificates:/etc/letsencrypt:ro
       - static_volume:/app/staticfiles
       - media_volume:/app/media
     depends_on:
