@@ -1,9 +1,9 @@
 # captcha/utils.py
-
+import os
 import threading
 import logging
 from .evolution import EvolutionAPI
-from .models import CaptchaLog, PageView  # Importe o novo PageView
+from .models import CaptchaLog, PageView
 from django.utils import timezone
 from datetime import timedelta
 from ipware import get_client_ip
@@ -11,11 +11,9 @@ from django.contrib.gis.geoip2 import GeoIP2
 from urllib.parse import urlparse
 import user_agents
 
-# Configuração do logger
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 
 def get_source_from_referrer(referrer):
-    # (Função auxiliar para descobrir a fonte da visita)
     if not referrer:
         return "Direto"
     parsed_uri = urlparse(referrer)
@@ -29,7 +27,6 @@ def get_source_from_referrer(referrer):
 
 
 def save_detailed_page_view(request):
-    """ Salva os dados detalhados da visita no modelo PageView. """
     try:
         ip, _ = get_client_ip(request)
         if ip:
@@ -53,7 +50,7 @@ def save_detailed_page_view(request):
                 page_view.city = city_data.get('city')
                 page_view.region = city_data.get('region')
             except Exception:
-                pass  # Falha silenciosamente se o IP for local ou não encontrado
+                pass
 
             page_view.save()
             print(f"PageView salvo para o IP: {ip}")
@@ -62,7 +59,6 @@ def save_detailed_page_view(request):
 
 
 def send_whatsapp_notification(request):
-    """ Envia notificação do WhatsApp. """
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
         ip_address = x_forwarded_for.split(',')[0]
@@ -71,11 +67,9 @@ def send_whatsapp_notification(request):
 
     one_hour_ago = timezone.now() - timedelta(hours=1)
     if CaptchaLog.objects.filter(ip_address=ip_address, timestamp__gte=one_hour_ago).exists():
-        # Adicionado um log para clareza
         logging.info(f"Notificação para o IP {ip_address} já foi enviada na última hora. Pulando.")
         return
 
-    # CORREÇÃO: Carregar o número do destinatário do .env
     recipient_phone = os.getenv('WHATSAPP_RECIPIENT_PHONE')
     if not recipient_phone:
         logging.error("A variável de ambiente WHATSAPP_RECIPIENT_PHONE não está definida.")
@@ -85,7 +79,6 @@ def send_whatsapp_notification(request):
     logging.info(f"Tentando enviar notificação para o IP: {ip_address} que acessou {path_info}")
 
     try:
-        # Monta a mensagem a ser enviada
         message = (
             f"🚨 *Alerta de Visita no Portfólio* 🚨\n\n"
             f"Um novo visitante acessou seu site!\n\n"
@@ -95,10 +88,8 @@ def send_whatsapp_notification(request):
 
         api = EvolutionAPI()
 
-        # CORREÇÃO: Chamar a função com os dois argumentos necessários: número e texto
         response = api.send_text_message(number=recipient_phone, text=message)
 
-        # Adicionar verificação de resposta
         if response:
             CaptchaLog.objects.create(ip_address=ip_address, action='notification_sent')
             logging.info(f"Notificação enviada com sucesso para o IP: {ip_address}")
@@ -110,16 +101,11 @@ def send_whatsapp_notification(request):
 
 
 def process_first_visit(request):
-    """
-    Função principal que é chamada na view.
-    Ela dispara a notificação e o salvamento detalhado da visita em threads.
-    """
-    # Inicia a thread para a notificação do WhatsApp
+
     notification_thread = threading.Thread(target=send_whatsapp_notification, args=(request,))
     notification_thread.daemon = True
     notification_thread.start()
 
-    # Inicia a thread para salvar os detalhes da visita
     page_view_thread = threading.Thread(target=save_detailed_page_view, args=(request,))
     page_view_thread.daemon = True
     page_view_thread.start()
