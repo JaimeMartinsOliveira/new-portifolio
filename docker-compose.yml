@@ -35,7 +35,7 @@ services:
     volumes:
       - evolution_instances:/evolution/instances
     depends_on:
-      - postgres
+      - evo_postgres
       - redis
 
   postgres:
