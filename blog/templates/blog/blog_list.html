@@ -49,7 +49,6 @@
             color: #a0aec0;
         }
 
-        /* Nav link underline effect for blog page */
         .nav-link {
             position: relative;
         }
@@ -71,7 +70,6 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-<!-- Navigation (similar to index.html for consistent look) -->
 <nav class="fixed w-full bg-white shadow-sm z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
@@ -150,11 +148,9 @@
                         <div class="p-6">
                             <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ post.title }}</h2>
                             <p class="text-gray-600 text-sm mb-4">
-                                {# Use content_html com striptags para remover o HTML do resumo #}
                                 {{ post.content_html|striptags|truncatewords:20 }}
                             </p>
                             <span class="text-gray-500 text-xs">Publicado em {{ post.published_date|date:"d de F de Y" }}</span>
-                            {# Altere post.pk para post.slug para corresponder ao novo URL #}
                             <a href="{% url 'blog:detail' post.slug %}"
                                class="block mt-4 text-blue-600 hover:text-blue-800 font-medium">
                                 Leia mais <i class="fas fa-arrow-right ml-1"></i>
@@ -246,7 +242,6 @@
         mobileMenu.classList.toggle('hidden');
     });
 
-    // Contador de visitas local (não persistente, apenas para fins de demonstração no blog)
     let localViewCount = parseInt(localStorage.getItem('portfolioLocalViewCount') || '0');
     document.getElementById('view-counter').textContent = localViewCount;
 </script>
