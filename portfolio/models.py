@@ -38,10 +38,9 @@ class Projeto(models.Model):
 
 
 class Skill(models.Model):
-    # CORRIJA ESTA LISTA DE OPÇÕES
     CATEGORY_CHOICES = [
         ('backend', 'Backend Development'),
-        ('frontend', 'Frontend Development'), # <-- Adicione esta linha
+        ('frontend', 'Frontend Development'),
         ('database_tools', 'Database & Tools'),
         ('ai_other', 'AI & Other Skills'),
     ]
@@ -90,10 +89,7 @@ class Apresentacao(models.Model):
         return self.nome
 
 class VisitorCount(models.Model):
-    """
-    Modelo para armazenar a contagem global de visitantes.
-    Haverá apenas uma entrada nesta tabela (com ID=1).
-    """
+
     count = models.PositiveIntegerField(default=0, verbose_name="Contagem")
 
     def __str__(self):
