@@ -6,15 +6,13 @@ from collections import OrderedDict
 from captcha.utils import process_first_visit
 
 def home(request):
-    # --- Busca todos os dados necessários ---
     apresentacao = Apresentacao.objects.first()
     experiences = Experience.objects.all()
     formacoes = Formacao.objects.all()
-    sobre_mim = SobreMim.objects.first() # Renomeado para 'sobre_mim' para consistência
+    sobre_mim = SobreMim.objects.first()
     projetos = Projeto.objects.all()
     visitor_count_obj, created = VisitorCount.objects.get_or_create(pk=1)
 
-    # --- Agrupa as Skills por Categoria ---
     skills_by_category = OrderedDict()
     category_order = ['backend', 'frontend', 'database_tools', 'ai_other']
     category_names = dict(Skill.CATEGORY_CHOICES)
