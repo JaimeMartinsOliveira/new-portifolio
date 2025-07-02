@@ -11,7 +11,7 @@ mkdir -p /app/media
 echo "Ajustando permissões dos diretórios..."
 chown -R app:app /app/staticfiles
 chown -R app:app /app/media
-chown -R app:app /app/logs # <-- ESTA LINHA É FUNDAMENTAL
+chown -R app:app /app/logs
 
 # Aplica as migrações do banco de dados
 echo "Aplicando as migrações do banco de dados..."
