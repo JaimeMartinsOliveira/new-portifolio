@@ -11,18 +11,17 @@ class CaptchaLog(models.Model):
     def __str__(self):
         return f'{self.ip_address} - {self.timestamp} - {self.action}'
 
-# Adicione este novo modelo
 class PageView(models.Model):
-    ip_address = models.GenericIPAddressField()  # IP do visitante
-    user_agent = models.TextField(null=True, blank=True)  # Dados do navegador e dispositivo
-    referrer = models.URLField(max_length=2048, null=True, blank=True)  # URL de origem (link de chegada)
-    source = models.CharField(max_length=255, null=True, blank=True)  # Nome resumido da fonte
-    country = models.CharField(max_length=100, null=True, blank=True)  # País
-    city = models.CharField(max_length=100, null=True, blank=True)  # Cidade
-    region = models.CharField(max_length=100, null=True, blank=True)  # Região ou estado
-    operating_system = models.CharField(max_length=50, null=True, blank=True)  # Sistema operacional
-    browser = models.CharField(max_length=50, null=True, blank=True)  # Navegador usado
-    timestamp = models.DateTimeField(default=now)  # Data e hora da visita
+    ip_address = models.GenericIPAddressField()
+    user_agent = models.TextField(null=True, blank=True)
+    referrer = models.URLField(max_length=2048, null=True, blank=True)
+    source = models.CharField(max_length=255, null=True, blank=True)
+    country = models.CharField(max_length=100, null=True, blank=True)
+    city = models.CharField(max_length=100, null=True, blank=True)
+    region = models.CharField(max_length=100, null=True, blank=True)
+    operating_system = models.CharField(max_length=50, null=True, blank=True)
+    browser = models.CharField(max_length=50, null=True, blank=True)
+    timestamp = models.DateTimeField(default=now)
 
     def __str__(self):
         source_label = self.source or "Desconhecida"
