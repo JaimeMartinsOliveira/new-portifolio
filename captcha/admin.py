@@ -1,6 +1,6 @@
 # captcha/admin.py
 from django.contrib import admin
-from .models import CaptchaLog, PageView # Importe o PageView
+from .models import CaptchaLog, PageView
 
 @admin.register(CaptchaLog)
 class CaptchaLogAdmin(admin.ModelAdmin):
