@@ -5,8 +5,7 @@ services:
     build: .
     container_name: portfolio_web
     restart: always
-    env_file:
-      - .env
+    env_file: .env
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
@@ -45,8 +44,7 @@ services:
     restart: always
     volumes:
       - portfolio_postgres_data:/var/lib/postgresql/data/
-    env_file:
-      - .env
+    env_file: .env
 
   evolution-api:
     container_name: evolution_api
@@ -54,8 +52,7 @@ services:
     restart: always
     ports:
       - "8080:8080"
-    env_file:
-      - .env
+    env_file: .env
     volumes:
       - evolution_instances:/evolution/instances
     depends_on:
@@ -67,8 +64,7 @@ services:
     image: postgres:15
     restart: always
     command: ["postgres", "-c", "max_connections=1000"]
-    env_file:
-      - .env
+    env_file: .env
     volumes:
       - evolution_postgres_data:/var/lib/postgresql/data
 
