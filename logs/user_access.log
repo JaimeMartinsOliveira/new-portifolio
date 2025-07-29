@@ -1,0 +1,30 @@
+INFO 2025-07-29 15:03:11,760 autoreload Watching for file changes with StatReloader
+INFO 2025-07-29 15:05:34,418 autoreload Watching for file changes with StatReloader
+INFO 2025-07-29 15:05:38,414 basehttp "GET / HTTP/1.1" 301 0
+INFO 2025-07-29 15:05:38,421 basehttp code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x06')
+ERROR 2025-07-29 15:05:38,422 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-07-29 15:05:38,424 basehttp code 400, message Bad request version ('£Ã\x04>éä\x06g\x90\x89Éb¢_\x06o¡µ\x9bB\\§:²)ïë*ø¡\x8f\x9e·<h:gªu·')
+ERROR 2025-07-29 15:05:38,425 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-07-29 15:05:41,025 basehttp code 400, message Bad request version ("\x1bE\x9b\x95\x1adJIc\x8b½{Ã\x9eÂíËØ5ÊÅ\x13pØÍ\x00(\x13\x02\x13\x01À,À+À0À/À$À#À(À'À")
+ERROR 2025-07-29 15:05:41,026 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-07-29 15:05:41,028 basehttp code 400, message Bad request version ("Û\x97oE']¼º±u\x90\x05\x05`á\x06íÏ½yDâ\x19\x00\x00$À,À+À0À/À$À#À(À'À")
+ERROR 2025-07-29 15:05:41,028 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-07-29 15:15:10,561 basehttp code 400, message Bad request version ('ZZ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06SZZ\x00\x00\x00\x12\x00\x00\x00')
+ERROR 2025-07-29 15:15:10,561 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-07-29 15:15:10,563 basehttp code 400, message Bad request version ('ü')
+ERROR 2025-07-29 15:15:10,563 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-07-29 15:16:28,791 basehttp code 400, message Bad request version ('ö')
+ERROR 2025-07-29 15:16:28,791 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-07-29 15:16:28,794 basehttp code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x003\x04ï\x04í::\x00\x01\x00\x11ì\x04À³E¤½µ')
+ERROR 2025-07-29 15:16:28,794 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-07-29 15:16:35,855 basehttp "GET / HTTP/1.1" 301 0
+INFO 2025-07-29 15:16:35,861 basehttp code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03Ïjæw\x14£\x9fâÌe\x9eS&gë®\x86u\x82ªï:\x8cÀgcu\x8f»\x94Bô')
+ERROR 2025-07-29 15:16:35,861 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-07-29 15:16:35,863 basehttp code 400, message Bad request version ('JJ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063ºº\x00\x00\x00')
+ERROR 2025-07-29 15:16:35,863 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-07-29 15:19:04,598 autoreload Watching for file changes with StatReloader
+INFO 2025-07-29 15:19:07,153 basehttp code 400, message Bad request syntax ('\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03ÇüdD\x97¤\x01Ýpá')
+ERROR 2025-07-29 15:19:07,153 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-07-29 15:19:07,155 basehttp code 400, message Bad request version ('x·Â\x9e\x87×VdFÀ\'ìaè\x8923ÛfÎÙÌ:Ú¼NJ\x08b\x83J¢óXÄ\x08\x96ÉT¦v×³P\x95ÎXç\x11\x19\x8cjÅvv\x90·;å\x92\\~#z\x04ô+xà\x952¥\x07\x17Û3-XÏd6=\x84{"}ðb\x87×$òe;BG\x14¯\x17¦\x0f°{rWwëà')
+ERROR 2025-07-29 15:19:07,156 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-07-29 15:24:57,921 autoreload C:\Users\Jaime Martins\PycharmProjects\new-portifolio\core\settings.py changed, reloading.
