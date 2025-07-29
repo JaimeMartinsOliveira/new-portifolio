@@ -1,0 +1,1616 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaime Martins - Desenvolvedor Back-end GenAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+
+        /* ===================================================================
+           2. ESTILOS DE COMPONENTES REUTILIZÁVEIS
+           =================================================================== */
+
+        /* --- Links da Barra de Navegação --- */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* --- Efeitos Hover para Cards --- */
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-card {
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateX(5px);
+            border-left: 4px solid #3b82f6;
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+
+        /* ===================================================================
+           3. ESTILOS DE SEÇÕES ESPECÍFICAS
+           =================================================================== */
+
+        /* --- Banner Principal (Hero) --- */
+        .hero-gradient {
+            background: linear-gradient(-45deg, #1e3a8a, #0ea5e9, #3b82f6, #60a5fa);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark .hero-gradient {
+            background: linear-gradient(-45deg, #0f172a, #1e40af, #1e3a8a, #2563eb);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        /* Animação de Partículas (se aplicável) */
+        .neural-node {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(243, 243, 243, 0.39);
+            box-shadow: 0 0 20px 5px rgba(20, 45, 96, 0.32);
+            transition: transform 0.1s ease-out;
+            pointer-events: none;
+        }
+
+        .neural-connection {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+            height: 1px;
+            transform-origin: left center;
+            pointer-events: none;
+        }
+
+        /* --- Seção de Skills & Carrossel --- */
+        /* Modo Claro (Padrão) */
+        #skills {
+            background-color: #f9fafb;
+        }
+
+        #skills h2, #skills .skill-badge span {
+            color: #1f2937;
+        }
+
+        #skills .skill-category h3 {
+            color: #2563eb;
+        }
+
+        #skills .skill-badge {
+            background-color: #ffffff;
+            border-color: #e5e7eb;
+        }
+
+        #skills .carousel-btn {
+            background-color: #ffffff;
+            border: 1px solid #e1e4e8;
+        }
+
+        #skills .carousel-btn i {
+            color: #1f2937;
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .carousel-indicator.active {
+            background-color: #2563eb;
+        }
+
+        /* Modo Escuro */
+        .dark #skills {
+            background-color: #111827;
+        }
+
+        .dark #skills h2, .dark #skills .skill-badge span {
+            color: #f3f4f6;
+        }
+
+        .dark #skills .skill-category h3 {
+            color: #60a5fa;
+        }
+
+        .dark #skills .skill-badge {
+            background-color: #1f2937;
+            border-color: #374151;
+        }
+
+        .dark #skills .carousel-btn {
+            background-color: #1f2937;
+            border-color: #374151;
+        }
+
+        .dark #skills .carousel-btn i {
+            color: #f9fafb;
+        }
+
+        .dark .carousel-indicator.active {
+            background-color: #60a5fa;
+        }
+
+
+        /* --- Formulário de Contato e PIX --- */
+        .pix-qr-code {
+            max-width: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .message-box {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        .message-box.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* ===================================================================
+           4. ANIMAÇÕES (KEYFRAMES)
+           =================================================================== */
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* A animação 'pulse' é idêntica à 'gradient', pode ser removida se não houver diferença */
+        .animated-bg {
+            animation: pulse 6s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+        /* ===================================================================
+           5. DARK MODE GENÉRICO (LEGADO)
+           Nota: É preferível usar as classes 'dark:' do Tailwind diretamente
+           no HTML em vez destas regras genéricas.
+           =================================================================== */
+        body.dark {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+
+        .dark .bg-white {
+            background-color: #2d3748;
+        }
+
+        .dark .bg-gray-50 {
+            background-color: #1a202c;
+        }
+
+        .dark .text-gray-800 {
+            color: #e2e8f0;
+        }
+
+        .dark .text-gray-600,
+        .dark .text-gray-700 {
+            color: #cbd5e0;
+        }
+
+        .dark .bg-gray-100 {
+            background-color: #2d3748;
+        }
+
+        .dark .bg-gray-200 {
+            background-color: #4a5568;
+        }
+
+        .dark .text-gray-500 {
+            color: #a0aec0;
+        }
+
+        .dark .shadow-sm {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilo para o MODO CLARO (padrão) */
+        .markdown-body {
+            background-color: rgb(247, 248, 249); /* Fundo branco */
+            color: rgb(0, 0, 0); /* Texto escuro */
+            border: 1px solid rgb(247, 248, 249); /* Borda cinza clara */
+            border-radius: 8px;
+            padding: 25px;
+        }
+
+        /* Estilos para o MODO ESCURO */
+        .dark .markdown-body {
+            background-color: rgba(13, 17, 23, 0.56); /* Fundo escuro (cor do GitHub) */
+            color: #c9d1d9; /* Texto claro */
+            border-color: #30363d; /* Borda escura */
+        }
+
+        /* Ajustes finos para títulos e links no modo escuro */
+        .dark .markdown-body h1,
+        .dark .markdown-body h2,
+        .dark .markdown-body h3,
+        .dark .markdown-body h4,
+        .dark .markdown-body h5,
+        .dark .markdown-body h6 {
+            color: #c9d1d9;
+            border-bottom-color: #30363d; /* Cor da linha abaixo dos títulos */
+        }
+
+        .dark .markdown-body a {
+            color: #58a6ff; /* Cor azul clara para links */
+        }
+
+        .dark .markdown-body hr {
+            background-color: #30363d; /* Cor da linha horizontal */
+        }
+
+        .dark .markdown-body strong {
+            color: #c9d1d9; /* Cor para texto em negrito */
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+<!-- Navigation -->
+<nav class="fixed w-full bg-white shadow-sm z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center">
+                <a href="#" class="text-xl font-bold text-blue-600">Jaime Martins</a>
+            </div>
+            <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
+                <a href="#sobre" class="nav-link text-gray-700 hover:text-blue-600">Sobre mim</a>
+                <a href="#experiencia" class="nav-link text-gray-700 hover:text-blue-600">Experiência</a>
+                <a href="#projetos" class="nav-link text-gray-700 hover:text-blue-600">Projetos</a>
+                <a href="#contato" class="nav-link text-gray-700 hover:text-blue-600">Contato</a>
+                <a href="/blog/"
+                   class="px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50">Blog</a>
+                <button id="theme-toggle"
+                        class="p-2 text-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-200"
+                        aria-label="Alternar tema">
+                    <i id="theme-icon" class="fas fa-moon dark:hidden"></i>
+                    <i id="theme-icon-dark" class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="#sobre"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Sobre mim</a>
+            <a href="#experiencia"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Experiência</a>
+            <a href="#projetos"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Projetos</a>
+            <a href="#contato"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Contato</a>
+            <a href="/blog/"
+               class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:bg-blue-50">Blog</a>
+            <button id="mobile-theme-toggle"
+                    class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50 dark:text-gray-200 dark:hover:bg-gray-700"
+                    aria-label="Alternar tema">
+                <i id="mobile-theme-icon" class="fas fa-moon mr-2 dark:hidden"></i>
+                <i id="mobile-theme-icon-dark" class="fas fa-sun mr-2 hidden dark:inline"></i> Alternar tema
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="hero" class="hero-gradient text-white pt-20 pb-16 md:pt-32 md:pb-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
+                <!-- Título e Subtítulo dinâmicos -->
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+                    Jaime Martins
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-medium mb-6 text-gray-800 dark:text-gray-100">
+                        <span class="block md:inline font-semibold bg-gradient-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text dark:text-blue-300">
+            💻 Desenvolvedor Back-end | Especialista em GenAI &amp; APIs REST
+                        </span>
+                </h2>
+
+                <!-- Descrição dinâmica -->
+                <p class="text-lg mb-8 opacity-90">
+                    Sou desenvolvedor com experiência em Inteligência Artificial Generativa e construção de APIs RESTful escaláveis e seguras. Atuo principalmente com o desenvolvimento de back-ends robustos, integrações com APIs externas e automações inteligentes.
+Atualmente, estou me especializando na área de Governança de Produtos em Cloud e FinOps, com o objetivo de aliar minha bagagem técnica a práticas de gestão eficiente de custos em ambientes de nuvem e governança de produtos digitais.
+                </p>
+
+                <!-- Links dinâmicos: GitHub, LinkedIn e Currículo -->
+                <div class="flex space-x-4">
+
+                        <a href="https://github.com/JaimeMartinsOliveira"
+                           class="bg-white text-blue-600 px-6 py-2 rounded-md font-medium hover:bg-gray-100 transition duration-300 flex items-center">
+                            <i class="fab fa-github mr-2"></i> GitHub
+                        </a>
+
+
+                        <a href="https://www.linkedin.com/in/jaime-martins-de-oliveira/"
+                           class="bg-transparent border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-white hover:text-blue-600 transition duration-300 flex items-center">
+                            <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
+                        </a>
+
+
+                        <a href="https://www.canva.com/design/DAGe0lvysAc/45H9WWZzxP46CaQ700CJEA/edit"
+                           class="bg-transparent border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-white hover:text-blue-600 transition duration-300 flex items-center">
+                            <i class="fas fa-file-alt mr-2"></i> Currículo
+                        </a>
+
+                </div>
+            </div>
+
+            <div class="md:w-1/2 flex justify-center mt-8 md:mt-0">
+                <div class="relative">
+                    <!-- Imagem dinâmica -->
+                    <div class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl animate-float">
+                        <img class="w-full h-full object-cover" src="https://portfolio-jaime.s3.amazonaws.com/apresentacao/Imagem_do_WhatsApp_de_2025-07-26_%C3%A0s_17.39.47_c28f1e43_UECqska.jpg"
+                             alt="Foto de perfil">
+                    </div>
+
+                    <!-- Texto Dinâmico (Desenvolvedor) -->
+                    <div class="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 bg-blue-500 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-lg font-medium text-sm md:text-base">
+                        <i class="fas fa-code mr-1 md:mr-2"></i> Desenvolvedor
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="sobre" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Sobre mim</h2>
+            <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-start md:space-x-12">
+
+            <div class="md:w-1/2 mb-10 md:mb-0">
+
+                    <div id="markdown-content" class="markdown-body">
+                        <p>Sou o Jaime, um entusiasta de tecnologia que gosta de resolver problemas de forma prática e inteligente. Atuo como desenvolvedor Back-end com foco em APIs REST, automações e, mais recentemente, explorando o universo da Inteligência Artificial Generativa.</p>
+
+<p>Gosto de transformar ideias em soluções úteis — seja criando um assistente virtual, integrando sistemas via API ou otimizando processos com dados. Tenho um olhar técnico, mas também me preocupo com o impacto real do que construo.</p>
+
+<p>Nos últimos tempos, venho direcionando minha carreira para áreas que vão além do código puro: <strong>governança técnica</strong>, <strong>eficiência em cloud</strong> e <strong>produto digital</strong> são temas que vêm ganhando cada vez mais espaço no meu dia a dia e nos meus estudos.</p>
+
+<p>Sou movido por curiosidade, aprendizado constante e a vontade de fazer parte de projetos com propósito.</p>
+
+                    </div>
+
+            </div>
+
+            <div class="md:w-1/2">
+                <div class="bg-gray-50 p-5 sm:p-6 md:p-8 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800">Formação Acadêmica</h3>
+                    <div class="space-y-6">
+
+                            <div class="flex items-start mb-4">
+                                <div class="bg-blue-100 p-3 rounded-lg mr-4">
+
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/experiencias/unisul_logo.jpg" alt="Análise e Desenvolvimento de Sistemas"
+                                             class="w-12 h-12 object-contain">
+
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Análise e Desenvolvimento de Sistemas</h4>
+                                    <p class="text-gray-600">Unisul - Concluida</p>
+                                    <p class="text-gray-500 text-sm">2024</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start mb-4">
+                                <div class="bg-blue-100 p-3 rounded-lg mr-4">
+
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/experiencias/logo_puc-minas_eDPHd9.png" alt="Engenharia de Software"
+                                             class="w-12 h-12 object-contain">
+
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Engenharia de Software</h4>
+                                    <p class="text-gray-600">PUC minas - Cursando</p>
+                                    <p class="text-gray-500 text-sm">2026</p>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-20 sm:py-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-extrabold sm:text-4xl">
+                Habilidades Técnicas
+            </h2>
+            <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+
+
+            <div class="carousel-container relative">
+                <div class="carousel-track flex transition-transform duration-500 ease-in-out">
+
+                        <div class="skill-category min-w-full px-4">
+                            <h3 class="text-xl font-semibold mb-8 text-center">Backend Development</h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-python-750.png" alt="Python"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Python</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-django-480.png" alt="Django"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Django</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/156354296.png" alt="FastAPI"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">FastAPI</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-logo-java-coffee-cup-480.png" alt="Java"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Java</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-logotipo-da-primavera-480.png" alt="Spring Boot"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Spring Boot</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/b2791fe6-d9d0-43a2-8d02-cf4db649f372.webp" alt="GoLang"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">GoLang</span>
+                                    </div>
+
+                            </div>
+                        </div>
+
+                        <div class="skill-category min-w-full px-4">
+                            <h3 class="text-xl font-semibold mb-8 text-center">Frontend Development</h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-html-480.png" alt="Html"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Html</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-css-480.png" alt="Css"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Css</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-javascript-480.png" alt="JavaScript"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">JavaScript</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-angular-480.png" alt="Angular"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Angular</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-iluminado-480.png" alt="Streamlit"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Streamlit</span>
+                                    </div>
+
+                            </div>
+                        </div>
+
+                        <div class="skill-category min-w-full px-4">
+                            <h3 class="text-xl font-semibold mb-8 text-center">Database &amp; Tools</h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-postgres-480.png" alt="PostgreSQL"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">PostgreSQL</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-mongodb-480.png" alt="Mongodb"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Mongodb</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-redis-480.png" alt="Redis"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Redis</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-docker-480.png" alt="Docker"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Docker</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-jwt-480.png" alt="JWT"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">JWT</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/Swagger-logo_1.png" alt="Swagger"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Swagger</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-entorpecido-480.png" alt="NumPy"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">NumPy</span>
+                                    </div>
+
+                                    <div class="skill-badge flex flex-col items-center justify-center border rounded-lg p-4 text-center shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/skills/icons8-pandas-480.png" alt="Pandas"
+                                             class="w-12 h-12 sm:w-16 sm:h-16 object-contain mb-3">
+                                        <span class="font-medium text-sm sm:text-base">Pandas</span>
+                                    </div>
+
+                            </div>
+                        </div>
+
+                </div>
+
+                <button class="carousel-btn carousel-btn--left absolute top-1/2 left-0 md:-left-4 -translate-y-1/2 rounded-full w-10 h-10 flex items-center justify-center shadow-md transition"
+                        aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-btn--right absolute top-1/2 right-0 md:-right-4 -translate-y-1/2 rounded-full w-10 h-10 flex items-center justify-center shadow-md transition"
+                        aria-label="Próximo">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <div class="carousel-indicators flex justify-center mt-8 space-x-2">
+
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transition"
+                                aria-label="Slide 1"></button>
+
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transition"
+                                aria-label="Slide 2"></button>
+
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transition"
+                                aria-label="Slide 3"></button>
+
+                </div>
+            </div>
+
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experiencia" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Experiência</h2>
+            <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+
+        <div class="space-y-8">
+
+                <div class="experience-card bg-gray-50 p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                    <!-- Título e Empresa -->
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 md:mb-0">💼 Desenvolvedor Back-End (Freelancer)</h3>
+
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Workana</span>
+
+                    </div>
+
+                    <!-- Período -->
+
+                        <p class="text-sm font-medium text-gray-500 mb-4">📍 Remoto |  2023 – Presente</p>
+
+
+                    <!-- Descrição -->
+                    <div id="markdown-content" class="markdown-body">
+                        <p>Atuação no desenvolvimento de APIs RESTful, automações internas e soluções de back-end com foco em eficiência, rastreabilidade e segurança.<br />
+Criação de agentes inteligentes e chatbots com NLP e machine learning para atendimento automatizado e análise preditiva.<br />
+Desenvolvimento de plataformas completas como sistemas de recomendação, e-commerces com IA e gerenciamento seguro de usuários.<br />
+Participação ativa na construção de pipelines inteligentes e integração com canais como WhatsApp.  </p>
+
+<p><strong>Destaques:</strong><br />
+- Criação de APIs com autenticação JWT e cache Redis<br />
+- Projetos com OpenAI, LLaMA, LangChain e integração com Twilio<br />
+- Processamento assíncrono, classificação inteligente e análise de sentimentos</p>
+
+                    </div>
+
+                    <!-- Tecnologias -->
+
+                        <div class="flex flex-wrap gap-2">
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            Python
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            Scikit-learn
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            Django REST
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            FastAPI
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            PostgreSQL
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            Redis
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            Docker
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            HuggingFace
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            OpenAI
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            LangChain
+                        </span>
+
+                        </div>
+
+
+                    <!-- Link opcional -->
+
+                </div>
+
+                <div class="experience-card bg-gray-50 p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                    <!-- Título e Empresa -->
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 md:mb-0">💼 Sales Operations Manager</h3>
+
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">123Projetei</span>
+
+                    </div>
+
+                    <!-- Período -->
+
+                        <p class="text-sm font-medium text-gray-500 mb-4">📍 Hibrido |  Nov 2023 – Mai 2024</p>
+
+
+                    <!-- Descrição -->
+                    <div id="markdown-content" class="markdown-body">
+                        <p>Atuei liderando a <strong>automação de processos comerciais</strong> e técnicos através do desenvolvimento de <strong>scripts Python</strong> e <strong>integrações com APIs</strong> e CRMs como o WhatsApp Business.<br />
+Implementei soluções voltadas à <strong>eficiência operacional</strong>, <strong>governança técnica</strong> e <strong>controle de recursos em cloud</strong>, promovendo maior <strong>visibilidade de custos</strong> alinhada a princípios de <strong>Cloud FinOps</strong>.<br />
+Com apoio de <strong>modelos de linguagem natural</strong> da OpenAI, criei fluxos automatizados e pipelines que aceleraram o processo de qualificação de leads e geração de relatórios estratégicos.</p>
+
+                    </div>
+
+                    <!-- Tecnologias -->
+
+                        <div class="flex flex-wrap gap-2">
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            Python
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            Pandas
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            PostgreSQL
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            N8N
+                        </span>
+
+                        </div>
+
+
+                    <!-- Link opcional -->
+
+                </div>
+
+                <div class="experience-card bg-gray-50 p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                    <!-- Título e Empresa -->
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 md:mb-0">💼 Analista de Dados</h3>
+
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">123Projetei</span>
+
+                    </div>
+
+                    <!-- Período -->
+
+                        <p class="text-sm font-medium text-gray-500 mb-4">📍 Presencial |  Mai 2023 – Nov 2023</p>
+
+
+                    <!-- Descrição -->
+                    <div id="markdown-content" class="markdown-body">
+                        <p>Responsável pela <strong>estruturação de dados operacionais</strong> e desenvolvimento de <strong>dashboards interativos</strong> voltados à análise de <strong>eficiência técnica</strong> e <strong>uso de infraestrutura em cloud</strong>.<br />
+Implementei <strong>pipelines de dados em Python</strong>, consultas SQL otimizadas e relatórios em <strong>Power BI</strong>, auxiliando a tomada de decisão por meio de <strong>análises preditivas</strong> e métricas relevantes.<br />
+Contribuí diretamente para o fortalecimento da <strong>governança de dados</strong>, com foco na organização de informações entre áreas técnicas e de negócio.</p>
+
+                    </div>
+
+                    <!-- Tecnologias -->
+
+                        <div class="flex flex-wrap gap-2">
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            Python
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            Pandas
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            Power BI
+                        </span>
+
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                                      title="">
+                            SQL
+                        </span>
+
+                        </div>
+
+
+                    <!-- Link opcional -->
+
+                </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projetos" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Projetos</h2>
+            <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+
+
+            <!-- Carousel (Swiper.js ou qualquer outro) -->
+            <div class="swiper">
+                <div class="swiper-wrapper">
+
+                        <!-- Slide -->
+                        <div class="swiper-slide">
+                            <div class="project-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
+                                <div class="h-48 overflow-hidden">
+
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/projetos/Captura_de_tela_2025-07-29_122720.png" alt="Imagem do projeto LlamaScrapeAsync"
+                                             class="w-full h-full object-cover">
+
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-2">LlamaScrapeAsync</h3>
+                                    <p class="text-gray-600 mb-4">Este projeto é uma prova de conceito (PoC) que integra um modelo de linguagem local da Hugging Face com ferramentas de automação de navegador fornecidas pela biblioteca Playwright, tudo envolvido em uma interface amigável com o NiceGUI.
+
+O objetivo principal é permitir a um agente de linguagem natural controlar um navegador de forma autônoma para buscar informações, realizar raspagens e interagir com páginas da web, com uma interface web simples para fins educacionais e de diversão pessoal.</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Pandas</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">transformers</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">LangChain</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Playwright</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">NiceGUI</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Google FLAN-T5 Large</span>
+
+                                    </div>
+
+                                        <a href="https://github.com/JaimeMartinsOliveira/LlamaScrapeAsync"
+                                           class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                                            Ver Projeto <i class="fas fa-arrow-right ml-2"></i>
+                                        </a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div class="swiper-slide">
+                            <div class="project-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
+                                <div class="h-48 overflow-hidden">
+
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Easy-Finance: Finanças Inteligentes para Autônomos</h3>
+                                    <p class="text-gray-600 mb-4">App de finanças pessoais focado em autônomos e pequenos negócios. Desenvolvi o back-end com Python (FastAPI) e o front-end multiplataforma com Ionic/React. A solução resolve a falta de clareza de caixa ao unificar transações bancárias (via API Open Finance da Belvo) com registros manuais. O diferencial é um assistente com IA que gera análises e metas financeiras, aplicando tecnologia de ponta para resolver um problema real.</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">FastAPI</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">PostgreSQL</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Docker</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">N8N</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Belvo Api</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">React</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Ionic</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">JWT</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div class="swiper-slide">
+                            <div class="project-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
+                                <div class="h-48 overflow-hidden">
+
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/projetos/exemplo-interface.png" alt="Imagem do projeto Documentos-Infraestrutura-NLP"
+                                             class="w-full h-full object-cover">
+
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Documentos-Infraestrutura-NLP</h3>
+                                    <p class="text-gray-600 mb-4">🎯 Objetivo
+O assistente inteligente foi treinado para reconhecer e classificar automaticamente descrições de atividades administrativas, operacionais, técnicas, financeiras e jurídicas presentes em documentos e relatórios de gestão de infraestrutura pública.
+
+🧠 Funcionalidades
+Treinamento supervisionado com modelo de Machine Learning baseado em vetores TF-IDF e algoritmo Random Forest.
+Interface interativa com Gradio, permitindo entrada de texto e classificação em tempo real.
+Pipeline completo de NLP: pré-processamento, vetorização, treinamento, avaliação, inferência e deploy.
+Preparado para escalabilidade: pronto para ingestão de dados via web scraping e treinamento com bases</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">NLTK</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Pandas</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">NLP</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Scikit-learn</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Streamlit</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">transformers</span>
+
+                                    </div>
+
+                                        <a href="https://github.com/JaimeMartinsOliveira/Documentos-Infraestrutura-NLP"
+                                           class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                                            Ver Projeto <i class="fas fa-arrow-right ml-2"></i>
+                                        </a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div class="swiper-slide">
+                            <div class="project-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
+                                <div class="h-48 overflow-hidden">
+
+                                        <img src="https://portfolio-jaime.s3.amazonaws.com/projetos/class.png" alt="Imagem do projeto infra-doc-classifier"
+                                             class="w-full h-full object-cover">
+
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-2">infra-doc-classifier</h3>
+                                    <p class="text-gray-600 mb-4">Classificador de Documentos Técnicos de Infraestrutura utilizando NLP com Transformers 🚀
+
+Este projeto tem como objetivo classificar automaticamente documentos técnicos de infraestrutura, segmentando-os por setores como energia, transporte, saneamento, entre outros. Ideal para organizações que lidam com grandes volumes de textos técnicos e desejam automação inteligente na triagem de conteúdos.</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">NLTK</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Pandas</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">NLP</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Scikit-learn</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Streamlit</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">transformers</span>
+
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">NumPy</span>
+
+                                    </div>
+
+                                        <a href="https://github.com/JaimeMartinsOliveira/infra-doc-classifier"
+                                           class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                                            Ver Projeto <i class="fas fa-arrow-right ml-2"></i>
+                                        </a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+                <!-- Botões de navegação < e > -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Paginação -->
+                <div class="swiper-pagination"></div>
+            </div>
+
+
+
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contato" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Contato</h2>
+            <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+
+        <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Manda-me uma mensagem!</h3>
+                <p class="text-gray-600 mb-6">
+                    Tem uma pergunta ou proposta, ou apenas quer dizer "olá"? Vá em frente. Estou sempre aberto a
+                    discutir novos projetos,
+                    ideias criativas ou oportunidades para fazer parte de sua visão.
+                </p>
+
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-envelope text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">E-mail</h4>
+                            <a href="mailto:contato.jaimemartins@gmail.com" class="text-blue-600 hover:text-blue-800">contato.jaimemartins@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <i class="fab fa-whatsapp text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">WhatsApp</h4>
+                            <a href="https://wa.me/5548996354498" class="text-blue-600 hover:text-blue-800">+55 (48)
+                                99635-4498</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <i class="fab fa-linkedin-in text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">LinkedIn</h4>
+                            <a href="https://www.linkedin.com/in/jaime-martins-de-oliveira/"
+                               class="text-blue-600 hover:text-blue-800">linkedin.com/in/jaime-martins-de-oliveira</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:w-1/2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <form class="bg-gray-50 p-8 rounded-xl shadow-sm">
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Seu nome</label>
+                        <input type="text" id="name"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                               placeholder="Digite seu nome">
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Endereço de E-mail</label>
+                        <input type="email" id="email"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                               placeholder="seu.email@exemplo.com">
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Mensagem</label>
+                        <textarea id="message" rows="4"
+                                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                  placeholder="Escreva sua mensagem aqui..."></textarea>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition duration-300 flex justify-center items-center">
+                        <i class="fas fa-paper-plane mr-2"></i> Enviar Mensagem
+                    </button>
+                    <div id="contact-message" class="message-box mt-4"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <p class="text-gray-400">© 2024 - Design and Code by Jaime Martins.</p>
+                <p class="text-gray-400 text-sm mt-1">Visitas: <span id="visitor-count">3635</span></p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://www.linkedin.com/in/jaime-martins-de-oliveira/"
+                   class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="https://wa.me/5548996354498" class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                </a>
+                <a href="mailto:contato.jaimemartins@gmail.com"
+                   class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+                <a href="https://github.com/JaimeMartinsOliveira"
+                   class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="back-to-top"
+        class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+    // Neural Network Animation
+    function createNeuralNetwork() {
+        const hero = document.getElementById('hero');
+        const nodes = [];
+        const connections = [];
+
+        // Cria nós
+        for (let i = 0; i < 20; i++) {
+            const node = document.createElement('div');
+            node.className = 'neural-node';
+            const size = Math.random() * 8 + 4;
+            node.style.width = `${size}px`;
+            node.style.height = `${size}px`;
+
+            // Posição inicial aleatória
+            node.style.left = `${Math.random() * 100}%`;
+            node.style.top = `${Math.random() * 100}%`;
+
+            hero.appendChild(node);
+            nodes.push({
+                element: node,
+                baseX: parseFloat(node.style.left),
+                baseY: parseFloat(node.style.top),
+                speed: Math.random() * 0.4 + 0.1
+            });
+        }
+
+        // Cria conexões entre alguns nós
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                if (Math.random() > 0.85) { // 15% de chance de conexão
+                    const line = document.createElement('div');
+                    line.className = 'neural-connection';
+                    hero.appendChild(line);
+                    connections.push({
+                        element: line,
+                        node1: nodes[i],
+                        node2: nodes[j]
+                    });
+                }
+            }
+        }
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        // Rastreia o movimento do mouse
+        hero.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 100;
+            mouseY = (e.clientY / window.innerHeight) * 100;
+        });
+
+        // Loop de animação
+        function animate() {
+            nodes.forEach(node => {
+                // Move os nós com base na posição do mouse com velocidade diferente
+                const distX = mouseX - node.baseX;
+                const distY = mouseY - node.baseY;
+
+                const newX = node.baseX + (distX * node.speed * 0.03);
+                const newY = node.baseY + (distY * node.speed * 0.03);
+
+                node.element.style.left = `${newX}%`;
+                node.element.style.top = `${newY}%`;
+            });
+
+            // Atualiza as conexões
+            connections.forEach(conn => {
+                const node1 = conn.node1.element;
+                const node2 = conn.node2.element;
+
+                const x1 = parseFloat(node1.style.left) + (parseFloat(node1.style.width) / 2);
+                const y1 = parseFloat(node1.style.top) + (parseFloat(node1.style.height) / 2);
+                const x2 = parseFloat(node2.style.left) + (parseFloat(node2.style.width) / 2);
+                const y2 = parseFloat(node2.style.top) + (parseFloat(node2.style.height) / 2);
+
+                const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+
+                conn.element.style.width = `${length}%`;
+                conn.element.style.left = `${x1}%`;
+                conn.element.style.top = `${y1}%`;
+                conn.element.style.transform = `rotate(${angle}deg)`;
+
+                // Esmaece a conexão com base na distância
+                const opacity = Math.min(0.2, 20 / length);
+                conn.element.style.opacity = opacity;
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    }
+
+    // Chama a função após o DOM ser carregado
+    document.addEventListener('DOMContentLoaded', createNeuralNetwork);
+
+    // Funcionalidade de alternar tema
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+    const html = document.documentElement;
+
+    // Verifica a preferência de tema salva ou usa a preferência do sistema
+    const savedTheme = localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    // Aplica o tema salvo
+    if (savedTheme === 'dark') {
+        html.classList.add('dark');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+        mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    function toggleTheme() {
+        html.classList.toggle('dark');
+        const isDark = html.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+        // Alterna ícones
+        if (isDark) {
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+            mobileThemeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+    }
+
+    themeToggle.addEventListener('click', toggleTheme);
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+
+    // Alternar menu móvel
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Rolagem suave para links de navegação
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+
+            // Fecha o menu móvel se estiver aberto
+            mobileMenu.classList.add('hidden');
+        });
+    });
+
+    // Botão de voltar ao topo
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.remove('opacity-100', 'visible');
+            backToTopButton.classList.add('opacity-0', 'invisible');
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Função para exibir uma mensagem customizada
+    function showMessage(message, type = 'success') {
+        const messageBox = document.getElementById('contact-message');
+        messageBox.textContent = message;
+        messageBox.className = `message-box show bg-${type === 'success' ? 'green' : 'red'}-600`;
+        setTimeout(() => {
+            messageBox.classList.remove('show');
+        }, 3000); // Ocultar após 3 segundos
+    }
+
+
+    // Enhanced PIX key copy with better feedback
+    function copyPixKey() {
+        const pixKey = 'contato.jaimemartins@gmail.com';
+        // Usando document.execCommand('copy') para melhor compatibilidade dentro de iframes
+        const tempInput = document.createElement('textarea');
+        tempInput.value = pixKey;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        try {
+            document.execCommand('copy');
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Copiado!';
+            button.classList.remove('bg-blue-600');
+            button.classList.add('bg-green-600');
+
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('bg-green-600');
+                button.classList.add('bg-blue-600');
+            }, 2000);
+        } catch (err) {
+            console.error('Falha ao copiar texto:', err);
+            // Fallback para caixa de mensagem customizada
+            showMessage('Não foi possível copiar a chave PIX. Por favor, copie manualmente: ' + pixKey, 'error');
+        } finally {
+            document.body.removeChild(tempInput);
+        }
+    }
+
+    // Inicializa o rastreamento de visitantes e o contador de visualizações ao carregar a página
+    document.addEventListener('DOMContentLoaded', () => {
+        registerVisit(); // Inicia o novo rastreamento de visitantes
+        // Atualiza o contador local inicialmente para exibir o valor salvo no localStorage, se houver.
+        document.getElementById('view-counter').textContent = localViewCount;
+    });
+
+    // Submissão do formulário
+    const contactForm = document.querySelector('form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simula o sucesso da submissão do formulário
+            setTimeout(() => {
+                showMessage('Obrigado pela sua mensagem! Em breve entrarei em contato.');
+                contactForm.reset();
+            }, 500);
+        });
+    }
+</script>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 1, // 1 slide visível em telas pequenas
+            spaceBetween: 20, // Espaço entre os slides
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1, // 1 slide no mobile
+                },
+                768: {
+                    slidesPerView: 2, // 2 slides em tablets
+                },
+                1024: {
+                    slidesPerView: 3, // 3 slides em desktops
+                },
+            },
+        });
+    });
+    const track = document.querySelector('.carousel-track');
+    if (track) {
+        const items = document.querySelectorAll('.skill-category');
+        const btnPrev = document.querySelector('.carousel-btn--left');
+        const btnNext = document.querySelector('.carousel-btn--right');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        let currentIndex = 0;
+        const totalSlides = items.length;
+        let autoRotateTimeout;
+
+        if (totalSlides > 0) {
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                indicators.forEach((indicator, i) => {
+                    indicator.classList.toggle('bg-blue-600', i === currentIndex);
+                    indicator.classList.toggle('dark:bg-blue-400', i === currentIndex);
+                });
+                btnPrev.disabled = currentIndex === 0;
+                btnNext.disabled = currentIndex === totalSlides - 1;
+                clearTimeout(autoRotateTimeout);
+                autoRotateTimeout = setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    updateCarousel();
+                }, 5000);
+            }
+
+            btnNext.addEventListener('click', () => {
+                if (currentIndex < totalSlides - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            btnPrev.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            updateCarousel(); // Inicia o carrossel
+        }
+    }
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Procura por todos os itens de experiência na página
+        document.querySelectorAll('.experience-item').forEach(item => {
+            const rawMarkdownDiv = item.querySelector('.raw-markdown');
+            const markdownContainer = item.querySelector('.markdown-container');
+
+            // Verifica se os elementos necessários existem
+            if (rawMarkdownDiv && markdownContainer) {
+                // Usa a biblioteca 'marked' para converter o texto
+                const renderedHtml = marked.parse(rawMarkdownDiv.innerHTML);
+                // Insere o HTML convertido no container visível
+                markdownContainer.innerHTML = renderedHtml;
+            }
+        });
+
+        // Se a biblioteca de realce de sintaxe (hljs) estiver carregada, a executa
+        if (typeof hljs !== 'undefined') {
+            hljs.highlightAll();
+        }
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Encontra o elemento com a classe '.swiper' e o inicializa
+        const swiper = new Swiper('.swiper', {
+            // Opções do carrossel
+            loop: true, // Faz o carrossel girar em loop
+            slidesPerView: 1, // Começa mostrando 1 slide em telas pequenas
+            spaceBetween: 30, // Espaço entre os slides
+
+            // Bolinhas de paginação
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            // Setas de navegação
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            // Deixa o carrossel responsivo
+            breakpoints: {
+                // Quando a largura da tela for >= 768px
+                768: {
+                    slidesPerView: 2, // Mostra 2 slides
+                },
+                // Quando a largura da tela for >= 1024px
+                1024: {
+                    slidesPerView: 3, // Mostra 3 slides
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
